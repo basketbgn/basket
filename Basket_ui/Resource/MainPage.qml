@@ -462,6 +462,7 @@ Item {
 
     Rectangle {
         id: accessCodeSubmitButton
+        objectName: "accessCodeSubmitButton"
         width: neutronRadiationButton.width
         height: accessCodeInput.height
         anchors.left: neutronRadiationButton.left
@@ -471,6 +472,7 @@ Item {
         radius: 5
         color: application.buttonColor
         visible: accessCodeInput.visible
+        signal signalAccessCodeSubmitButton(string str)
         Text {
             id: approveText
             height: parent.height
@@ -496,7 +498,8 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                accessCodeField.accepted()
+                //accessCodeField.accepted()
+                accessCodeSubmitButton.signalAccessCodeSubmitButton(accessCodeField.text)
             }
         }
     }

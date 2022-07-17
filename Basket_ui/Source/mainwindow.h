@@ -14,6 +14,7 @@ public:
     MainWindow(QObject* info);
 public slots:
     void onExitButton();
+    void onAccessCodeSubmitButton(QString str);
 private:
 
 };

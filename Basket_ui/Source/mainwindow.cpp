@@ -5,6 +5,10 @@ MainWindow::MainWindow(QObject* info)
     QObject* exitButton = info->findChild<QObject*>("exitButton");
     QObject::connect(exitButton, SIGNAL(signalExitButton()),this,SLOT(onExitButton()));
 
+    QObject* accessCodeSubmitButton = info->findChild<QObject*>("accessCodeSubmitButton");
+    QObject::connect(accessCodeSubmitButton, SIGNAL(signalAccessCodeSubmitButton(QString))
+                     ,this,SLOT(onAccessCodeSubmitButton(QString)));
+
     QSqlDatabase::addDatabase("QSQLITE","myDB");    //загружаем драйвер БД(SQLITE) и создаем имя подключения к БД
     QSqlDatabase db=QSqlDatabase::database("myDB"); //создаем объект БД и присваиваем ему имя подключения
     db.setDatabaseName("config.db"); //подключаемся к файлу config.db, если его нет создается новый файл базы данных с именем config.db (можно удалить тогда создастся заново)
@@ -36,4 +40,9 @@ MainWindow::MainWindow(QObject* info)
 void MainWindow::onExitButton()
 {
     qDebug() << "system(shutdown now)";
+}
+
+void MainWindow::onAccessCodeSubmitButton(QString str)
+{
+    qDebug() << "onAccessCodeSubmitButton  " << str;
 }
