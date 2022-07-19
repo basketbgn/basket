@@ -1,0 +1,58 @@
+Установить git
+
+For windows:
+Установка
+Если ещё не установлен, то Git можно взять здесь. Вместе с ним будет unix-like консоль Git Bash.
+https://github.com/git-for-windows/git/releases/
+
+For linux (debian, ubuntu, astra):
+   sudo apt install git
+
+in git console:
+ssh-keygen -t rsa -C "basket@mail.ru"
+ничего не вводить, нажимать enter
+
+Найти файл id_rsa.pub 
+linux: ~/.ssh/id_rsa.pub
+windows: C:\Users\%username%\.ssh\id_rsa.pub
+
+и скопировать его содержимое в ключ New SSH key  (старые ключи не удалять)
+    (правая верхняя иконка - Settings -> SSH and GPG keys -> New SSH key ) Title свой, Key-вставить содержимое
+    id_rsa.pub
+
+в папке компьютера запустить git консоль и написать в ней:
+git clone git@github.com:basketbgn/basket.git
+
+скопируется проект и будет доступна возможность записи изменений на сервере через ssh канал
+
+
+
+переключиться на ветку DEVELOP (в ней основные изменения):
+    git checkout DEVELOP
+
+!!!    Теперь работаем только в папке DEVELOP
+
+скопируй последние мои исходники в папку qtsrc и в корень config.db (а то я не уверен что у меня последние)
+
+Отправить изменения на сервер:
+git add *
+git commit -m "коментарий к текущему коммиту"
+git push -u origin DEVELOP
+
+
+--------------------------------------------------------------------------------------
+перед изменением исходников в папке Basket_ui вводи:
+git pull
+
+подтянутся последние мои изменения
+
+после изменения исходников делай коммит и отправляй на сервер
+git add *
+git commit -m "коментарий к текущему коммиту"
+git push -u origin DEVELOP
+
+
+я буду делать также, соответственно у нас будут одинаковые версии исходников
+
+
+
