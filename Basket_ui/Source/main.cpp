@@ -3,9 +3,11 @@
 #include <QQmlApplicationEngine>
 #include <QQmlContext>
 #include <QQmlComponent>
+#include <QQuickView>
 #include <QObject>
 
 #include <QDebug>
+#include <map>
 
 
 int main(int argc, char *argv[])
@@ -17,7 +19,7 @@ int main(int argc, char *argv[])
     QGuiApplication app(argc, argv);
 
     QQmlApplicationEngine engine;
-    const QUrl url(QStringLiteral("qrc:/main.qml"));
+    //const QUrl url(QStringLiteral("qrc:/main.qml"));
 //    QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,
 //                     &app, [url](QObject *obj, const QUrl &objUrl) {
 //        if (!obj && url == objUrl)
@@ -25,11 +27,17 @@ int main(int argc, char *argv[])
 //    }, Qt::QueuedConnection);
     //engine.load(url);
 
-    QQmlComponent comp(&engine, url);
-    QObject* info = comp.create();
-
-    std::unique_ptr<MainWindow> mainWindow = std::make_unique<MainWindow>(info);
 
 
+//    QObject *info =
+//       qobject_cast<QObject *>(engine.rootObjects().value(0));
+
+
+//    static std::map<QString, QObject*> qml;
+//    qml.emplace("MainPage.qml", main_qml);
+//    qml.emplace("Beta.qml", beta_qml);
+
+    std::unique_ptr<MainWindow> mainWindow = std::make_unique<MainWindow>(&engine);
+    
     return app.exec();
 }
