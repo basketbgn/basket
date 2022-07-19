@@ -1,10 +1,32 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.0
-import QtQuick.Controls 2.0
+import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.4
+import QtQuick 2.12
+import QtQuick.Controls 2.5
 
 Item {
     id: beta
+
+    // in Qml 5.15 there is a new syntax for connections
+    Connections {
+        target: _cppApi
+        function onTransmitName(name) {
+            nameField.text = name
+        }
+        function onTransmitSurname(surname) {
+            surnameField.text = surname
+        }
+        function onTransmitSecondName(secondName) {
+            secondNameField.text = secondName
+        }
+    }
+
+    //  old syntax
+//    Connections {
+//        target: _cppApi
+//            onTransmitName: function(name){
+//            surnameField.text = name
+//        }
+//    }
 
     // --- Pane использую для того, чтобы он ловил фокус при клике вне полей ввода, таким образом и само поле ввода будет терять фокус ---
     Pane {
@@ -19,7 +41,7 @@ Item {
     // --- Статус-бар = Заголовок ---
     StatusBar {
         id: betaStatusBar
-        anchors.top: parent.top
+        anchors.top: parent.top        
         style: StatusBarStyle {
             background: Rectangle {
                 color: "#595959"
@@ -54,6 +76,7 @@ Item {
     }
     Rectangle {
         id: name
+        signal sendName(var str)
         width: parent.width/3.5
         height: parent.height/10
         anchors.top: nameText.bottom
@@ -76,8 +99,13 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
-            onAccepted: {
-
+//            onAccepted: {
+//                name.sendName(text)
+//                _cppApi.cppSlot(text)
+//            }
+            onTextChanged: {
+                name.sendName(text)
+                _cppApi.onNameChanged(text)
             }
         }
     }
@@ -210,7 +238,7 @@ Item {
     // --- Кнопка "Измерение" ---
 
     Rectangle {
-        id: measurementButton
+        id: measurementButton        
         width: parent.width/2.8
         height: parent.height/2.6
         anchors.verticalCenter: parent.verticalCenter
@@ -246,6 +274,8 @@ Item {
 
     Rectangle {
         id: backButton
+
+        signal signalBackButton()
         width: parent.width/3
         height: parent.height/5
         anchors.top: hardwareTestButton.bottom
@@ -283,6 +313,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi.onBackButton()
                 stackView.pop()
             }
         }

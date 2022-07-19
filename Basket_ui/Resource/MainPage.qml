@@ -2,15 +2,19 @@ import QtQuick 2.14
 import QtQuick.Controls 2.12
 Item {
     id: mainPage
-
+    objectName: "mainPage"
     function checkCode(codeString) { //тестовая функция проверки пароля
-        if(codeString === "777") {
+        if(codeString === "Изготовитель") {
             accessCodeButton.back = !accessCodeButton.back
             accessCodeInput.visible = accessCodeButton.back
             accessIndicator.visible = !accessCodeButton.back
             vendorSettingsButton.visible = true
             verifierSettingsButton.visible = true
             userTypeText.text = qsTr("Изготовитель")
+        } else if(codeString === "Поверитель"){
+            vendorSettingsButton.visible = false
+            verifierSettingsButton.visible = true
+            userTypeText.text = qsTr("Оператор")
         } else {
             vendorSettingsButton.visible = false
             verifierSettingsButton.visible = false
@@ -50,6 +54,8 @@ Item {
     // --- Кнопка "Бета излучение" ---
     Rectangle {
         id: betaRadiationButton
+        objectName: "betaRadiationButton"
+        signal signalBetaRadiationButton()
         width: gammaRadiationButton.width
         height: gammaRadiationButton.height
         anchors.verticalCenter: parent.verticalCenter
@@ -85,7 +91,8 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                stackView.push("qrc:/Beta/Beta.qml")
+                betaRadiationButton.signalBetaRadiationButton()
+                stackView.push("qrc:/Beta/Beta.qml");
             }
         }
     }
@@ -437,10 +444,10 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            passwordCharacter: "\u2B24"
-            echoMode: TextInput.Password
-            inputMethodHints: Qt.ImhDigitsOnly
-            validator: RegExpValidator{regExp: /\d{8}/}
+            //passwordCharacter: "\u2B24"
+            //echoMode: TextInput.Password
+            //inputMethodHints: Qt.ImhDigitsOnly
+            //validator: RegExpValidator{regExp: /\d{8}/}
             font.pixelSize: parent.height/3.5
             //cursorVisible: true
             color: application.fontColor
@@ -453,7 +460,7 @@ Item {
                 if(!visible) focus = false
             }
             onAccepted: {
-                mainPage.checkCode(text)
+                //mainPage.checkCode(text)
             }
         }
     }

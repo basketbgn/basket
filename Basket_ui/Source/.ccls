@@ -1,0 +1,11 @@
+%c -std=c11
+%cpp -std=c++17
+%h -x
+%h c++-header
+%h %hpp --include=Base.h
+-I/home/debian/qt/Qt5.15/
+-I/home/debian/qt/Qt5.15/include/
+-I/home/debian/qt/Qt5.15/include/QtCore/
+-I/home/debian/qt/Qt5.15/include/QtSql/
+-I/home/debian/qt/Qt5.15/include/QtGui/
+-I/home/debian/qt/Qt5.15/include/QtQml/
