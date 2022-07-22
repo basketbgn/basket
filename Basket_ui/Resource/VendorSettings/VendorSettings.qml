@@ -1,8 +1,16 @@
-import QtQuick 2.0
+import QtQuick 2.14
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.4
 Item {
     id: vendorSettings
+
+    Component.onCompleted: {
+        //_cppApi_VendorSettings.createDatabase()
+    }
+
+    Connections {
+        target: _cppApi_VendorSettings
+    }
 
     // --- Статус-бар ---
     StatusBar {
@@ -90,6 +98,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_VendorSettings.onUserSettingsButton()
                 stackView.push("qrc:/VendorSettings/UsersSettings.qml")
             }
         }
@@ -204,6 +213,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_VendorSettings.onBackButton()
                 stackView.pop()
             }
         }

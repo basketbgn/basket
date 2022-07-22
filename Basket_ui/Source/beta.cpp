@@ -1,12 +1,41 @@
 #include "beta.h"
-#include "QThread"
-Beta::Beta(QQmlApplicationEngine* engine){
-    //QObject* info = this_map.at("Beta.qml");
+
+Beta::Beta(){
+    this_engine = Engine::This_engine;
+    this_engine->rootContext()->setContextProperty("_cppApi_Beta", this);
+
     name = new QString("");
     surname = new QString("");
     secondName = new QString("");
 
+}
 
+Beta::~Beta() {
+    delete name; delete surname; delete secondName;
+}
+
+void Beta::onBackButton() {    
+    updateDB();
+    this->~Beta();
+}
+
+void Beta::onMeasurementButton() {
+    betaMesurementSettings = new BetaMeasurementSettings;
+    updateDB();
+}
+
+void Beta::onNameChanged(const QString &str) {
+    *name = str;
+}
+void Beta::onSurnameChanged(const QString& str) {
+    *surname = str;
+}
+void Beta::onSecondNameChanged(const QString& str) {
+    *secondName = str;
+}
+
+void Beta::initDatabase()
+{
     if(QSqlDatabase::contains("myDB")) {
         QSqlDatabase db = QSqlDatabase::database("myDB");
         db.setDatabaseName("config.db");
@@ -16,23 +45,18 @@ Beta::Beta(QQmlApplicationEngine* engine){
         if(!query.exec(queryStr))
         {qDebug()<<"unable execute query SELECT";}
         if(query.first()) {
-            emit transmitName(query.value("name").toString());
-            emit transmitSurname(query.value("surname").toString());
-            emit transmitSecondName(query.value("patronymic").toString());
+            *name = query.value("name").toString();
+            *surname = query.value("surname").toString();
+            *secondName = query.value("patronymic").toString();
         }
     }
+    emit transmitName(*name);
+    emit transmitSurname(*surname);
+    emit transmitSecondName(*secondName);
 }
 
-Beta::~Beta() {
-    delete name; delete surname; delete secondName;
-}
-
-
-
-void Beta::onBackButton() {
-    qDebug()<<"onBackButton";
-    if(QSqlDatabase::contains("myDB"))
-    {
+void Beta::updateDB() {
+    if(QSqlDatabase::contains("myDB")) {
         QSqlDatabase db = QSqlDatabase::database("myDB");
         db.setDatabaseName("config.db");
         if(!db.open())
@@ -41,18 +65,18 @@ void Beta::onBackButton() {
         QString queryStr;
         //if(!query.exec("DROP TABLE fullName"))
         //{qDebug()<<"unable execute query drop"<<query.lastError().text();}
-        //queryStr = "CREATE TABLE IF NOT EXISTS fullName "
-        //                   "(id INTEGER PRIMARY KEY CHECK (id=0),"
-        //                   "surname TEXT(10),"
-        //                   "name TEXT(10),"
-        //                   "patronymic TEXT(10))";
-        //if(!query.exec(queryStr))
-        //{qDebug()<<"unable execute query CREATE"<<query.lastError().text();}
-        //QString queryStr1 = "INSERT INTO fullName (id, surname, name, patronymic)"
-        //                    "VALUES (0, '1', '2', '3')";
-        //
-        //if(!query.exec(queryStr1))
-        //{qDebug()<<"unable execute query INSERT";}
+        queryStr = "CREATE TABLE IF NOT EXISTS fullName "
+                           "(id INTEGER PRIMARY KEY CHECK (id=0),"
+                           "surname TEXT(10),"
+                           "name TEXT(10),"
+                           "patronymic TEXT(10))";
+        if(!query.exec(queryStr))
+        {qDebug()<<"unable execute query CREATE"<<query.lastError().text();}
+
+//        QString queryStr1 = "INSERT INTO fullName (id, surname, name, patronymic)"
+//                            "VALUES (0, '1', '2', '3')";
+//        if(!query.exec(queryStr1))
+//        {qDebug()<<"unable execute query INSERT";}
 
         QString queryStr1 = "UPDATE fullName SET "
                         "surname = '%1',"
@@ -64,15 +88,4 @@ void Beta::onBackButton() {
         if(!query.exec(queryStr))
         {qDebug()<<"unable execute query UPDATE";}
     }
-    delete this;
-    //~Beta();
-}
-
-void Beta::onNameChanged(const QString &text)
-{
-    //emit transmitName("text" , "opa", "opa1");
-    qDebug() << "text" << text;
-    emit transmitName(text);
-    emit transmitSurname(text);
-    emit transmitSecondName(text);
 }

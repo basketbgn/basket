@@ -11,6 +11,7 @@ Item { //Комбо-бокс с названием
     property alias comboBoxWidth: comboBox.width //Ширина комбо-бокса
     property alias comboBoxHeight: comboBox.height //Высота комбо-бокса
     property alias comboBoxModel: comboBox.cbModel //Модель элементов комбо-бокса
+    property alias comboBoxText: comboBox.cbModelCurrentText //Модель элементов комбо-бокса
     property alias comboBoxFontSizeCoef: comboBox.cbFontSizeCoef //Коэффициент, регулирующий размер шрифта комбо-бокса.
 
     Text {

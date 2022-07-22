@@ -1,14 +1,17 @@
 import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.4
-import QtQuick 2.12
+import QtQuick 2.0
 import QtQuick.Controls 2.5
 
 Item {
     id: beta
-
+    //  --- fill textFields from database ---
+    Component.onCompleted: {
+        _cppApi_Beta.initDatabase();
+    }
     // in Qml 5.15 there is a new syntax for connections
     Connections {
-        target: _cppApi
+        target: _cppApi_Beta
         function onTransmitName(name) {
             nameField.text = name
         }
@@ -18,8 +21,7 @@ Item {
         function onTransmitSecondName(secondName) {
             secondNameField.text = secondName
         }
-    }
-
+    }    
     //  old syntax
 //    Connections {
 //        target: _cppApi
@@ -104,8 +106,7 @@ Item {
 //                _cppApi.cppSlot(text)
 //            }
             onTextChanged: {
-                name.sendName(text)
-                _cppApi.onNameChanged(text)
+                _cppApi_Beta.onNameChanged(text)
             }
         }
     }
@@ -152,6 +153,9 @@ Item {
             onAccepted: {
 
             }
+            onTextChanged: {
+                _cppApi_Beta.onSurnameChanged(text)
+            }
         }
     }
         //--- Отчество ---
@@ -196,6 +200,9 @@ Item {
             text: qsTr("")
             onAccepted: {
 
+            }
+            onTextChanged: {
+                _cppApi_Beta.onSecondNameChanged(text)
             }
         }
     }
@@ -265,6 +272,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_Beta.onMeasurementButton()
                 stackView.push("qrc:/Beta/BetaMeasurementSettings.qml")
             }
         }
@@ -313,7 +321,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                _cppApi.onBackButton()
+                _cppApi_Beta.onBackButton()
                 stackView.pop()
             }
         }
