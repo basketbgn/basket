@@ -6,6 +6,7 @@ Item {
     // Комбо-бокс со стилем
     id: comboBoxStyled
     property alias cbModel: cb.model //Модель, которая используется для заполнения Комбо-бокса
+    property alias cbModelCurrentText: cb.displayText //Модель, которая используется для заполнения Комбо-бокса
     property double cbFontSizeCoef: 0.7 //Коэффициент, регулирующий размер шрифта, относительно высоты элемента
     property color backgroundColor: "transparent" //цвет фона комбо-бокса
 

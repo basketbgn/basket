@@ -1,4 +1,4 @@
-import QtQuick 2.12
+import QtQuick 2.0
 import QtQuick.Controls 2.5
 
 ApplicationWindow {
@@ -11,7 +11,7 @@ ApplicationWindow {
     width: 1280
     height: 800
     visible: true
-    title: qsTr("Basket")
+    //title: qsTr("Basket")
     //flags: Qt.Window | Qt.FramelessWindowHint
     background: Rectangle {
         color: "#39434B"

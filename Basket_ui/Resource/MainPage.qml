@@ -1,27 +1,44 @@
-import QtQuick 2.14
+import QtQuick 2.0
 import QtQuick.Controls 2.12
 Item {
     id: mainPage
-    objectName: "mainPage"
-    function checkCode(codeString) { //тестовая функция проверки пароля
-        if(codeString === "Изготовитель") {
-            accessCodeButton.back = !accessCodeButton.back
-            accessCodeInput.visible = accessCodeButton.back
-            accessIndicator.visible = !accessCodeButton.back
-            vendorSettingsButton.visible = true
-            verifierSettingsButton.visible = true
-            userTypeText.text = qsTr("Изготовитель")
-        } else if(codeString === "Поверитель"){
-            vendorSettingsButton.visible = false
-            verifierSettingsButton.visible = true
-            userTypeText.text = qsTr("Оператор")
-        } else {
-            vendorSettingsButton.visible = false
-            verifierSettingsButton.visible = false
-            userTypeText.text = qsTr("Оператор")
-        }
-        accessCodeField.text = qsTr("")
+
+    Component.onCompleted: {
+        _cppApi_MainWindow.createDatabase()
     }
+
+    Connections {
+        target: _cppApi_MainWindow
+        // signal from cpp: t...;  slot in qml onT...
+        function onTransmitNewText(codeString) { //тестовая функция проверки пароля
+            if(codeString === "Изготовитель") {
+                accessCodeButton.back = !accessCodeButton.back
+                accessCodeInput.visible = accessCodeButton.back
+                accessIndicator.visible = !accessCodeButton.back
+                vendorSettingsButton.visible = true
+                verifierSettingsButton.visible = true
+                userTypeText.text = qsTr("Изготовитель")
+            } else if(codeString === "Поверитель"){
+                vendorSettingsButton.visible = false
+                verifierSettingsButton.visible = true
+                userTypeText.text = qsTr("Оператор")
+            } else {
+                vendorSettingsButton.visible = false
+                verifierSettingsButton.visible = false
+                userTypeText.text = qsTr("Оператор")
+            }
+            accessCodeField.text = qsTr("")
+        }
+    }
+    //  old syntax
+    //    Connections {
+    //        target: _cppApi
+    //            onTransmitName: function(name){
+    //            surnameField.text = name
+    //        }
+    //    }
+
+
 
     // --- Надпись "Выберите вид измеряемого излучения" ---
 
@@ -54,7 +71,6 @@ Item {
     // --- Кнопка "Бета излучение" ---
     Rectangle {
         id: betaRadiationButton
-        objectName: "betaRadiationButton"
         signal signalBetaRadiationButton()
         width: gammaRadiationButton.width
         height: gammaRadiationButton.height
@@ -91,7 +107,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                betaRadiationButton.signalBetaRadiationButton()
+                _cppApi_MainWindow.onBetaRadiationButton()
                 stackView.push("qrc:/Beta/Beta.qml");
             }
         }
@@ -222,6 +238,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_MainWindow.onVendorSettingsButton()
                 stackView.push("qrc:/VendorSettings/VendorSettings.qml")
             }
         }
@@ -277,7 +294,6 @@ Item {
     // --- Кнопка выхода/завершения программы ---
     Rectangle {
         id: exitButton
-        objectName: "exitButton"
         width: neutronRadiationButton.width
         height: (parent.height/2 - neutronRadiationButton.height/2) - parent.height/12
         anchors.horizontalCenter: neutronRadiationButton.horizontalCenter
@@ -316,8 +332,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                //Qt.quit()
-                exitButton.signalExitButton();
+                _cppApi_MainWindow.onExitButton();
             }
         }
     }
@@ -469,7 +484,6 @@ Item {
 
     Rectangle {
         id: accessCodeSubmitButton
-        objectName: "accessCodeSubmitButton"
         width: neutronRadiationButton.width
         height: accessCodeInput.height
         anchors.left: neutronRadiationButton.left
@@ -505,8 +519,8 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                //accessCodeField.accepted()
-                accessCodeSubmitButton.signalAccessCodeSubmitButton(accessCodeField.text)
+                //accessCodeField.accepted()                
+                _cppApi_MainWindow.onAccessCodeSubmitButton(accessCodeField.text)
             }
         }
     }

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include "beta.h"
+#include "vendorsettings.h"
 
 #include <QDebug> //подключаем класс вывода отладочной информации в консоль
 #include <QObject>
@@ -14,23 +15,19 @@
 class MainWindow : public QObject {
     Q_OBJECT
   public:
-    MainWindow(QQmlApplicationEngine* engine);
-
-
+    MainWindow();
+    ~MainWindow();    
   signals:
     void transmitNewText(QVariant);
   public slots:
     void onExitButton();
-    void onAccessCodeSubmitButton(QString str);
+    void onAccessCodeSubmitButton(const QString& str);
     void onBetaRadiationButton();
-
-  private:
+    void onVendorSettingsButton();
     void createDatabase();
-    //std::unique_ptr<Beta> beta;
+  private:
     Beta* beta;
-    QObject* t_info;
-
-    std::map<QString, QObject*> this_map;
+    VendorSettings* vendorSettings;
     QQmlApplicationEngine* this_engine;
 };
 

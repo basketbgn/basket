@@ -1,10 +1,25 @@
-import QtQuick 2.0
+import QtQuick 2.14
 import QtQuick.Controls 1.4
 import QtQuick.Controls.Styles 1.4
 
 Item {
     id: userSettings
     property bool emulatorChecked: true
+
+    Component.onCompleted: {
+        _cppApi_UserSettings.init()
+    }
+
+    Connections {
+        target: _cppApi_UserSettings
+        function onSetChecked(IsEmulatorOrDetector) {
+            if(IsEmulatorOrDetector) {
+                userSettings.emulatorChecked = true
+            } else {
+                userSettings.emulatorChecked = false
+            }
+        }
+    }
 
     // --- Статус-бар ---
     StatusBar {
@@ -68,6 +83,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_UserSettings.onBackButton()
                 stackView.pop()
             }
         }
@@ -189,6 +205,7 @@ Item {
                 hoverEnabled: true
                 onClicked: {
                    userSettings.emulatorChecked = true
+                    _cppApi_UserSettings.onSendChecked(true)
                 }
             }
         }
@@ -235,6 +252,7 @@ Item {
                 hoverEnabled: true
                 onClicked: {
                     userSettings.emulatorChecked = false
+                    _cppApi_UserSettings.onSendChecked(false)
                 }
             }
         }

@@ -3,6 +3,27 @@ import QtQuick 2.0
 Item {
     width: 1280
     height: 800
+    id: mesurement
+
+    Connections {
+        target: parent
+        function onSendTime(t) {
+            time = t
+        }
+        function onSendDoseRate(dr) {
+            currentVal = dr
+        }
+        function onSendAverageDoseRate(avDR) {
+            averageVal = avDR;
+        }
+        function onSendStandardDeviation(sd) {
+            standardDeviation = sd;
+        }
+        function onSendDose(d) {
+            integralVal = d;
+        }
+    }
+
 
     // --- Свойства компонента "Измерение" ---
     property alias time: timeValue.seconds //Время измерения в секундах
@@ -382,6 +403,7 @@ Item {
         buttonFontSizeCoef: 0.3
         buttonText: qsTr("Назад")
         onButtonClicked: {
+            back()
             stackView.pop()
         }
     }
@@ -400,10 +422,11 @@ Item {
         onButtonClicked: {
             start = !start
             if(!start) {
-                measurementTimer.secondsValue = 0
-                measurementTimer.start()
+                //measurementTimer.secondsValue = 0
+                //measurementTimer.start()
+                started()
             } else {
-                measurementTimer.stop()
+                //measurementTimer.stop()
             }
             signalStartButtonClicked(start) //start == true - калибровка остановлена, start == false - калибровка начата
 
