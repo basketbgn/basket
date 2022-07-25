@@ -72,8 +72,22 @@ void BetaMeasurementSettings::onMeasurementButton(const QString& dimension,
     const QString & chamName = chamberComboBoxName;
     betaChamber = new Beta_chamber(iR, Comp, Temp, P, CorrF, chamName);
 
+    int dimensionTime = 0;
+    int pos = dimensionForTime.lastIndexOf(QChar('/'));
+    QString tempStr = dimensionForTime.right(pos);
+    if(tempStr == "/с") {
+        dimensionTime = 0;
+    } else if(tempStr == "/мин") {
+        dimensionTime = 1;
+    } else if(tempStr == "/ч") {
+        dimensionTime = 2;
+    }
+    bool modeTemp = (mode == "Ручной") ? 0 : 1;
+    bool threasholdTemp = thresholds == ("По дозе") ? 2 : ("По времени, с") ? 1 : 0;
 
-    betaMes = new BetaMeasurement;
+    betaMes = new BetaMeasurement(dimension, dimensionTime, modeTemp,
+                                  numberOFMeasurements.toInt(), timeOfOneMeasurement.toInt(),
+                                  threasholdTemp/*, timeThreashold.toInt(), doseThreashold.toInt()*/);
     betaMes->Beta(betaChamber);
     //---------------------------------------------------------------------------------------------------
 //    //передаем эти параметры в конструктор вновь создаваемого объекта класса окна измерения (бета излучения):

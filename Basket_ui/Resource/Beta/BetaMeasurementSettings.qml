@@ -260,7 +260,7 @@ Item {
             buttonFontSizeCoef: 0.3
             buttonText: qsTr("Измерение")
             onButtonClicked: {
-                _cppApi_BetaMeasurementSettings.onMeasurementButton("Гр",
+                _cppApi_BetaMeasurementSettings.onMeasurementButton(dimension.comboBoxText,
                                                                     dimension.comboBoxText,
                                                                     measurementMode.comboBoxText,
                                                                     numberOFMeasurements.inputText,
@@ -364,7 +364,7 @@ Item {
             comboBoxWidth: width * 0.35
             comboBoxHeight: height
             comboBoxFontSizeCoef: 0.85
-            comboBoxModel: [qsTr("Гр/с"), qsTr("...")]
+            comboBoxModel: [qsTr("Гр/с"), qsTr("Гр/мин"), qsTr("Гр/ч")]
             title: qsTr("Размерность\nизмеряемой величины")
         }
 

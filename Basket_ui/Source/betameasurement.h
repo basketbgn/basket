@@ -20,15 +20,20 @@ public:
     void Beta(Beta_chamber* x);
 signals:
     void sendTime(QVariant time);
-    void sendDoseRate(const QString& doseRate);
-    void sendAverageDoseRate(const QString& avDR);
+
     void sendStandardDeviation(const QString& sd);
+    void sendDoseRate(const QString& doseRate);
+    void sendDimension(const QString& dimension);
     void sendDose(const QString& dose);
+    void sendDoseDimension(const QString& dimensionDose);
+    void sendAverageDoseRate(const QString& avDR);
+    void sendAverageDoseRateDimension(const QString& dimensionAverDoseRate);
 
 public slots:
     void init();
     void onBackButton();
     void startPressed();
+    void stopPressed();
 private slots:
     void timeOut(); //основная функция измерения в данном классе, обновляющаяся каждую секунду
     void startTimeOut(); //прогрев

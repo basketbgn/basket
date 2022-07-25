@@ -7,16 +7,23 @@ import "../Components/"
 Item {
     id: betaMeasurement
     signal sendTime(var t)
-    signal sendDoseRate(var dr)
-    signal sendAverageDoseRate(var avDR)
     signal sendStandardDeviation(var sd)
+    signal sendDoseRate(var dr)
+    signal sendDoseRateDimension(var dr)
+    signal sendAverageDoseRate(var avDR)
+    signal sendAverageDoseRateDimension(var avDRd)
     signal sendDose(var d);
+    signal sendDoseDimension(var dd);
+
     function back() {
         _cppApi_BetaMeasurement.onBackButton()
     }
     function started() {
         _cppApi_BetaMeasurement.startPressed()
-    }    
+    }
+    function stopped() {
+        _cppApi_BetaMeasurement.stopPressed()
+    }
 
     Component.onCompleted: {
         _cppApi_BetaMeasurement.init();
@@ -27,17 +34,26 @@ Item {
         function onSendTime(t) {            
             sendTime(t)
         }
-        function onSendDoseRate(dr) {
-            sendDoseRate(dr);
-        }
-        function onSendAverageDoseRate(avDR) {
-            sendAverageDoseRate(avDR);
-        }
         function onSendStandardDeviation(sd) {
             sendStandardDeviation(sd);
         }
+        function onSendDoseRate(dr) {
+            sendDoseRate(dr);
+        }
+        function onSendDimension(dimension) {
+            sendDoseRateDimension(dimension);
+        }
+        function onSendAverageDoseRate(avDR) {
+            sendAverageDoseRate(avDR)
+        }
+        function onSendAverageDoseRateDimension(avDRd) {
+            sendAverageDoseRateDimension(avDRd);
+        }
         function onSendDose(d) {
             sendDose(d);
+        }
+        function onSendDoseDimension(dd) {
+            sendDoseDimension(dd);
         }
     }
 

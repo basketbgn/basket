@@ -47,13 +47,17 @@ void BetaMeasurement::Beta(Beta_chamber* x) {
     //}
 }
 
-void BetaMeasurement::onBackButton() {
-    qDebug() << "backbutton";
+void BetaMeasurement::onBackButton() {    
+    delete this;
 }
 
 void BetaMeasurement::startPressed() {
-    qDebug() << "start";
     timer->start(1000);
+}
+
+void BetaMeasurement::stopPressed()
+{
+    timer->stop();
 }
 
 void BetaMeasurement::timeOut() {
@@ -63,27 +67,42 @@ void BetaMeasurement::timeOut() {
     //ui->label_3->setText(QString::number(time) + " c"); //отображение времени
     //------------------------------------Мощность дозы-------------------------------------------------------
     doseRate = beta->MPD(); //считываем измерение из класса Beta_chamber в Гр/с
-    emit sendDoseRate(QString::number(doseRate, 'g', 4));
     //qDebug()<<beta->getIres();
     //qDebug()<<beta->MPD();
-    //double currentDoseRate = doseRate*timeCoef; //для вывода на экран, Мощности Дозы в Гр/с, Гр/мин, Гр/ч
-    //doseTo4(currentDoseRate,Dimension,ui->label_9,ui->label_2); //передаем в функцию вывода на экран:
+    double currentDoseRate = doseRate * timeCoef; //для вывода на экран, Мощности Дозы в Гр/с, Гр/мин, Гр/ч
+    emit sendDoseRate(QString::number(doseRate, 'g', 4));
+    QString valueCurrentDoseRate;
+    QString currentDimension;
+    doseTo4(currentDoseRate, Dimension, valueCurrentDoseRate, currentDimension, 0, 0); //передаем в функцию вывода на экран:
+    //qDebug() << "valueCurrentDoseRate" << valueCurrentDoseRate << "currentDimension" << currentDimension;
+    //emit sendDoseRate(QString::number(doseRate, 'g', 4));
+    emit sendDimension(currentDimension);
     //значение (которое преобразуется),размерность,
     //указатель на label в который записывется преобразованная величина,
     //указатель на label в который записывется преобразованная размерность,
 
     //------------------------------------Доза-------------------------------------------------------
     dose+=doseRate;         // обнуляется при автоматическом измерении, используется для подсчета среднего по дозе
+
+    doseForAuto += doseRate;  // не обнуляется при автоматическом измерении, используется для рассчета СКО
+    QString valueCurrentDose;
+    QString currentDimensionDose;
+    doseTo4(dose, DimensionDose, valueCurrentDose, currentDimensionDose);
     emit sendDose(QString::number(dose, 'g', 4));
-    doseForAuto+=doseRate;  // не обнуляется при автоматическом измерении, используется для рассчета СКО
-    //doseTo4(dose,DimensionDose,ui->label_8,ui->label_7);
+    emit sendDoseDimension(currentDimensionDose);
+    //qDebug() << "valueCurrentDose" << valueCurrentDose << "currentDimensionDose" << currentDimensionDose;
 
     //------------------------------------СКО и Среднее-------------------------------------------------------
 
-    avDoseRate = (doseForAuto/time)*timeCoef;// - средняя величина мощности дозы
+    avDoseRate = (doseForAuto/time)*timeCoef;// - средняя величина мощности дозы    
+    //double avDoseRate = dose * timeCoef;
     emit sendAverageDoseRate(QString::number(avDoseRate, 'g', 4));
-    //double avDoseRate = dose*timeCoef;
-    //doseTo4(avDoseRate,Dimension,ui->label_22,ui->label_25); //выводим на экран среднее
+    QString valueCurrentAverageDoseRate;
+    QString currentDimensionAverageDoseRate;
+    doseTo4(avDoseRate, Dimension, valueCurrentAverageDoseRate, currentDimensionAverageDoseRate); //выводим на экран среднее
+    emit sendAverageDoseRateDimension(currentDimensionAverageDoseRate);
+    //qDebug() << "valueCurrentAverageDoseRate" << valueCurrentAverageDoseRate
+    //         << "currentDimensionAverageDoseRate" << currentDimensionAverageDoseRate;
     otkl += doseRate*doseRate*timeCoef*timeCoef; //сумма квадратов случайной величины
     if(time>0) {
         double z=sqrt((otkl/time)-avDoseRate*avDoseRate); //CKO по хитрой формуле: корень из D=(1/N)SUM(1,N,Xi^2)-M^2
@@ -93,11 +112,12 @@ void BetaMeasurement::timeOut() {
         // M(X^2) - для равновероятных событий является = (1/N)SUM(1,N,doseRate*doseRate)
         // Дисперсия равняется мат ожиданию квадрата случайной величины минус квадрат мат ожидания случайной величины
         // отсюда и получается данная формула: корень из D=(1/N)SUM(1,N,Xi^2)-(среднее)^2
-
-        StandardDeviation=std::abs(z/avDoseRate); //под СКО подразумеваем СКО деленное на среднее и умножить на 100% (относительное отклонение от среднего)
+        //под СКО подразумеваем СКО деленное на среднее и умножить на 100% (относительное отклонение от среднего)
+        StandardDeviation=std::abs(z/avDoseRate);
+        emit sendStandardDeviation(QString::number(StandardDeviation, 'g', 4));
         //ui->label_20->setText(QString::number(StandardDeviation*100,'f',3)+" %");
     }
-    emit sendStandardDeviation(QString::number(StandardDeviation, 'g', 4));
+
 
 //    //------------------------------Автоматическое измерение-------------------------------------------------------
 //    //условие автоматического измерения (при автоматическом измерении пороги не срабатывают)

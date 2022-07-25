@@ -22,12 +22,12 @@ protected:
     void init();
     void timeThreashold(ulong &time, QString* threashold,QTimer* timer); //функция останавливающая измерение при достижении порога по времени
     void doseThreashold(double &dose, QString* threashold,QTimer* timer,bool Fluence=false); //функция останавливающая измерение при достижении порога по дозе (имеется параметр по умолчанию для флюенса)
-    void doseShow(double&, QString*) const;//метод отображающий ПД на экране (вспомогательный, вызывается из doseTo4)
+    void doseShow(double, QString&) const;//метод отображающий ПД на экране (вспомогательный, вызывается из doseTo4)
 
 // метод включающий в себя два параметра по умолчанию необходимые для передачи флагов измерения Плотности потока и Флюенса:
-    void doseTo4(double&,const QString&, QString*, QString*, bool PP=0,bool Fluence=0) const; //метод переводящий Гр в м, мк, н... для удобства чтения (вызывает в себе метод doseShow() )
+    void doseTo4(double,const QString&, QString&, QString&, bool PP=0,bool Fluence=0); //метод переводящий Гр в м, мк, н... для удобства чтения (вызывает в себе метод doseShow() )
 
-    void autoMode(double &dose, QTimer *timer,QString* time,QString* times);       //метод вызываемый если вызвано автоматическое измерение
+    void autoMode(double dose, QTimer *timer, QString& time, QString& times);       //метод вызываемый если вызвано автоматическое измерение
 
 //------- Далее описан чисто виртуальный метод который необходимо обязательно переопределить в классах потомках (для каждого класса потомка он будет свой и содержать свои параметры)
     /////////////////////////////////////////////////////////////////////////////////////

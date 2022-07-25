@@ -10,17 +10,26 @@ Item {
         function onSendTime(t) {
             time = t
         }
-        function onSendDoseRate(dr) {
-            currentVal = dr
-        }
-        function onSendAverageDoseRate(avDR) {
-            averageVal = avDR;
-        }
         function onSendStandardDeviation(sd) {
             standardDeviation = sd;
         }
+        function onSendDoseRate(dr) {
+            currentVal = dr
+        }
+        function onSendDoseRateDimension(dimension) {
+            measuredValueDimension = dimension
+        }
+        function onSendAverageDoseRate(avDR) {            
+            averageVal = avDR;
+        }
+        function onSendAverageDoseRateDimension(avDRd) {
+           measuredAverageValueDimension = avDRd;
+        }
         function onSendDose(d) {
             integralVal = d;
+        }
+        function onSendDoseDimension(dd) {
+            integralValueDimension = dd;
         }
     }
 
@@ -36,6 +45,7 @@ Item {
 
     property string measuredValueType: qsTr("МПД") //Тип измеряемого значения
     property string measuredValueDimension: qsTr("Гр/с") //Размерность измеряемой величины
+    property string measuredAverageValueDimension: qsTr("Гр/с") //Размерность измеряемой величины
     property alias averageVal: averageValue.text //Среднее значение измеряемой величины
 
     property alias standardDeviation: standardDeviationStringValue.value //СКО
@@ -221,7 +231,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: height * 0.7
         color: application.fontColor
-        text: qsTr("Средняя ") + measuredValueType + ", " + measuredValueDimension
+        text: qsTr("Средняя ") + measuredValueType + ", " + measuredAverageValueDimension
     }
 
     Text {
@@ -427,6 +437,7 @@ Item {
                 started()
             } else {
                 //measurementTimer.stop()
+                stopped()
             }
             signalStartButtonClicked(start) //start == true - калибровка остановлена, start == false - калибровка начата
 
