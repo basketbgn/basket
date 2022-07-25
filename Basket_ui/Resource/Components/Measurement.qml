@@ -7,9 +7,20 @@ Item {
 
     Connections {
         target: parent
-        function onSendT(t) {
-            console.log("onSendT")
+        function onSendTime(t) {
             time = t
+        }
+        function onSendDoseRate(dr) {
+            currentVal = dr
+        }
+        function onSendAverageDoseRate(avDR) {
+            averageVal = avDR;
+        }
+        function onSendStandardDeviation(sd) {
+            standardDeviation = sd;
+        }
+        function onSendDose(d) {
+            integralVal = d;
         }
     }
 

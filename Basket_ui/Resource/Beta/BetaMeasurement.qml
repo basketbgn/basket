@@ -6,17 +6,17 @@ import "../Components/"
 
 Item {
     id: betaMeasurement
-    signal sendT(var t)
+    signal sendTime(var t)
+    signal sendDoseRate(var dr)
+    signal sendAverageDoseRate(var avDR)
+    signal sendStandardDeviation(var sd)
+    signal sendDose(var d);
     function back() {
         _cppApi_BetaMeasurement.onBackButton()
     }
     function started() {
         _cppApi_BetaMeasurement.startPressed()
-    }
-    function sendTime(t) {
-        sendT(t)
-        //console.log(mesurement.time);
-    }
+    }    
 
     Component.onCompleted: {
         _cppApi_BetaMeasurement.init();
@@ -24,9 +24,20 @@ Item {
     // in Qml 5.15 there is a new syntax for connections
     Connections {
         target: _cppApi_BetaMeasurement
-        function onSendTime(t) {
-            console.log(t);
+        function onSendTime(t) {            
             sendTime(t)
+        }
+        function onSendDoseRate(dr) {
+            sendDoseRate(dr);
+        }
+        function onSendAverageDoseRate(avDR) {
+            sendAverageDoseRate(avDR);
+        }
+        function onSendStandardDeviation(sd) {
+            sendStandardDeviation(sd);
+        }
+        function onSendDose(d) {
+            sendDose(d);
         }
     }
 

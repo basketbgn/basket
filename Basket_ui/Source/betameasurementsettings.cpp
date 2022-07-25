@@ -26,34 +26,6 @@ void BetaMeasurementSettings::init() {
         // send to qml
         emit sendChambersList(strList);
 
-
-
-        //        ui->comboBox_3->addItem("Гр/с");
-        //        ui->comboBox_3->addItem("Гр/мин");
-        //        ui->comboBox_3->addItem("Гр/ч");
-        //        ui->comboBox_4->addItem("Чувствительный");
-        //        ui->comboBox_4->addItem("Средний");
-        //        ui->comboBox_4->addItem("Грубый");
-
-        //        ui->radioButton->setChecked(true);
-        //        ui->comboBox_2->addItem("Ручной");
-        //        ui->comboBox_2->addItem("Автоматический");
-        //        ui->lineEdit->setText("20");
-        //        ui->lineEdit_2->setText("750");
-        //        ui->label_13->setText("99990");
-        //        ui->lineEdit_3->setText("1");
-        //        ui->lineEdit_4->setEnabled(false);
-        //        ui->lineEdit_4->setVisible(false);
-        //        ui->lineEdit_5->setEnabled(false);
-        //        ui->lineEdit_5->setVisible(false);
-
-        //        ui->lineEdit_5->setValidator(new QDoubleValidator(0.0, 1000.0, 5, ui->lineEdit_4)); //только цифры, 5 знаков после запятой
-
-        //        ui->lineEdit_6->setEnabled(false);
-        //        ui->lineEdit_6->setVisible(false);
-        //        ui->lineEdit_7->setEnabled(false);
-        //        ui->lineEdit_7->setVisible(false);
-
         QString queryS1 = "";
         QString queryS = "SELECT * FROM fullName";
         if(!query.exec(queryS))
@@ -102,7 +74,7 @@ void BetaMeasurementSettings::onMeasurementButton(const QString& dimension,
 
 
     betaMes = new BetaMeasurement;
-    //betaMes->Beta(betaChamber);
+    betaMes->Beta(betaChamber);
     //---------------------------------------------------------------------------------------------------
 //    //передаем эти параметры в конструктор вновь создаваемого объекта класса окна измерения (бета излучения):
 //    Beta_measuring_measure* betaMesMes = new Beta_measuring_measure(this,Dimension,DimensionForTime,Regim,

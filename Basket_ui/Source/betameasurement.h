@@ -20,6 +20,11 @@ public:
     void Beta(Beta_chamber* x);
 signals:
     void sendTime(QVariant time);
+    void sendDoseRate(const QString& doseRate);
+    void sendAverageDoseRate(const QString& avDR);
+    void sendStandardDeviation(const QString& sd);
+    void sendDose(const QString& dose);
+
 public slots:
     void init();
     void onBackButton();
