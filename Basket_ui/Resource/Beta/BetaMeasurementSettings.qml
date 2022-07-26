@@ -245,6 +245,12 @@ Item {
             buttonText: qsTr("Калибровка")
             visible: !isOperator
             onButtonClicked: {
+                _cppApi_BetaMeasurementSettings.onCalibrationButton(range.comboBoxText,
+                                                                    control.checked,
+                                                                    temperature.inputText,
+                                                                    atmosphericPressureMercury.inputText,
+                                                                    correctionFactor.inputText,
+                                                                    chamberComboBox.cbModelCurrentText)
                 stackView.push("qrc:/Beta/BetaCalibration.qml")
             }
         }

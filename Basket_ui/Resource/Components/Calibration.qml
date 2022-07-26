@@ -7,6 +7,34 @@ Item {
     width: 1280
     height: 800
 
+    Connections {
+        target: parent
+        function onSendTime(t) {
+            time = t
+        }
+        function onSendStandardDeviation(sd) {
+            standardDeviationValue = sd;
+        }
+        function onSendCurrentOrCountRateValue(x) {
+            currentOrCountRateValue = x
+        }
+        function onSendDoseRateDimension(dimension) {
+            measuredValueDimension = dimension
+        }
+        function onSendAverageDoseRate(avDR) {
+            averageVal = avDR;
+        }
+        function onSendAverageDoseRateDimension(avDRd) {
+           measuredAverageValueDimension = avDRd;
+        }
+        function onSendDose(d) {
+            integralVal = d;
+        }
+        function onSendDoseDimension(dd) {
+            integralValueDimension = dd;
+        }
+    }
+
     // --- Свойства компонента "Калибровка" ---
 
     property alias time: timeValue.seconds //Время калибровки в секундах
@@ -246,7 +274,7 @@ Item {
             cbFontSizeCoef: 0.9
             inputFieldFontSizeCoef: 0.7
             alignBottom: true
-            dimensionModel: [qsTr("Гр/с"), qsTr("...")]
+            dimensionModel: [qsTr("Гр/с"), qsTr("мГр/с"), qsTr("Гр/ч"), qsTr("мГр/ч")]
             //inputValidator:
             title: qsTr("Значение ") + whatIsMeasured
         }
@@ -307,6 +335,7 @@ Item {
             buttonFontSizeCoef: 0.45
             buttonText: qsTr("Записать")
             onButtonClicked: {
+                save()
                 signalWriteButtonClicked()
             }
         }
@@ -323,6 +352,7 @@ Item {
             buttonText: qsTr("Назад")
             onButtonClicked: {
                 stackView.pop()
+                back()
             }
         }
 
@@ -339,10 +369,12 @@ Item {
             onButtonClicked: {
                 start = !start
                 if(!start) {
-                    calibrationTimer.secondsValue = 0
-                    calibrationTimer.start()
+                    //calibrationTimer.secondsValue = 0
+                    //calibrationTimer.start()
+                    started()
                 } else {
-                    calibrationTimer.stop()
+                    //calibrationTimer.stop()
+                    stopped()
                 }
                 signalStartButtonClicked(start) //start == true - калибровка остановлена, start == false - калибровка начата
 

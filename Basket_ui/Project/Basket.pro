@@ -12,6 +12,7 @@ SOURCES += \
         ../Source/averagemodbus.cpp \
         ../Source/beta.cpp \
         ../Source/beta_chamber.cpp \
+        ../Source/beta_verify.cpp \
         ../Source/betameasurement.cpp \
         ../Source/betameasurementsettings.cpp \
         ../Source/emulelectrometer.cpp \
@@ -24,7 +25,8 @@ SOURCES += \
         ../Source/rs232.cpp \
         ../Source/rs485.cpp \
         ../Source/usersettings.cpp \
-        ../Source/vendorsettings.cpp
+        ../Source/vendorsettings.cpp \
+        ../Source/volthex.cpp
 
 RESOURCES += ../Resource/qml.qrc
 
@@ -45,6 +47,7 @@ HEADERS += \
     ../Source/averagemodbus.h \
     ../Source/beta.h \
     ../Source/beta_chamber.h \
+    ../Source/beta_verify.h \
     ../Source/betameasurement.h \
     ../Source/betameasurementsettings.h \
     ../Source/emulelectrometer.h \
@@ -57,4 +60,5 @@ HEADERS += \
     ../Source/rs232.h \
     ../Source/rs485.h \
     ../Source/usersettings.h \
-    ../Source/vendorsettings.h
+    ../Source/vendorsettings.h \
+    ../Source/volthex.h

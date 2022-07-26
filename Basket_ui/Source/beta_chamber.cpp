@@ -31,7 +31,7 @@ void Beta_chamber::init() {
 }
 
 double Beta_chamber::MPD() {
-    return std::abs(getIres()*sensibility);       //функция из предка Ichamber (возвращает значение тока из Ichamber, умноженного на коэф чувствительности)
+    return std::abs(getIres() * sensibility);       //функция из предка Ichamber (возвращает значение тока из Ichamber, умноженного на коэф чувствительности)
     //qDebug()<<getIres()*sensibility;
 }
 
