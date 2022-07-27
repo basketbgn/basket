@@ -8,8 +8,6 @@
 #include <QObject>
 #include <QTimer>
 #include <QEventLoop>
-#include <QStringListModel>
-
 
 class Beta_verify : public QObject
 {
@@ -24,12 +22,18 @@ signals:
     void sendTime(const QString&);
     void sendCurrentOrCountRateValue(const QString&);
     void sendStandardDeviation(const QString&);
+    void sendListModel(const QStringList&);
+    void sendSensibilityToQml(const QString& );
+    void sendWarningMsg();
 public slots:
     void init();
     void onBackButton();
     void startPressed();
-    void stopPressed(const QString&);
+    void stopPressed();
     void onSaveButton();
+    void onSendDoseRate(const QString& str);
+    void onSendCurrentIndex(const QString& i);
+
 private slots:
     void timeOut();
     void startTimeOut();
@@ -40,8 +44,9 @@ private:
     Beta_chamber* betaChamber{nullptr};
     QTimer* timer{nullptr};
     QTimer* startTimer{nullptr};
-
-
+    uint8_t currentIndex{0};
+    QString currentDoseRate{""};
+    QString sensibility{""};
 
     long time{0};
     double I{0};
@@ -50,8 +55,9 @@ private:
     double otkl{0};
     double StandardDeviation{0};
     QString chamberName{""};
-    QStringList* comList{nullptr};
-    QStringListModel* comModel{nullptr};
+    QStringList* dimensionsList{nullptr};
+
+    void sendSensibility();
 };
 
 #endif // BETA_VERIFY_H

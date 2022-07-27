@@ -22,7 +22,7 @@ private:
     QString comString {"273f4f5f6f7f\0"}; //инициализируем строку данными наподобие данных приходящих с АЦП электрометра
     QString sendString{""};
     QTimer *timer{nullptr};
-    long iter = 0;
+    long iter = 1000;
 public:
     void start();         //старт эмулятора
     void stop();          //стоп эмулятора

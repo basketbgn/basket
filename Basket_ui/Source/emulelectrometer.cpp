@@ -20,10 +20,10 @@ void EmulElectrometer::timeOut() {
     for (int j = 1; j < comString.length(); j += 2) {
         str.append(symbols[j]); //заполняем строку каждым вторым символом из comString
     }
-    //iter = 1000;
+
     // переводит шестнадцатеричную строку в число long + его увеличение по таймеру;
     long numADC = str.toLong(nullptr, 16) + iter;
-    iter++;
+
     // переводит число в шестнадцатиричную строку одной функцией, а не через самостоятельный цикл;
     QString B_16 = QString("%1").arg(numADC,0,16);
     //QString B_16=QString::number(numADC,16); //тоже самое, только по другому написано

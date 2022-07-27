@@ -106,9 +106,10 @@ void BetaMeasurement::timeOut() {
     //qDebug() << "valueCurrentAverageDoseRate" << valueCurrentAverageDoseRate
     //         << "currentDimensionAverageDoseRate" << currentDimensionAverageDoseRate;
     otkl += doseRate * doseRate * timeCoef * timeCoef; //сумма квадратов случайной величины
-    if(time > 0) {
+    if(time > 0) {        
         //CKO по хитрой формуле: корень из D=(1/N)SUM(1,N,Xi^2)-M^2
-        double z = sqrt((otkl / time) - (avDoseRate * avDoseRate));
+        double z = sqrt((otkl / time) - (avDoseRate * avDoseRate));        
+        //qDebug() << "(otkl / time) - (avDoseRate * avDoseRate)" << (otkl / time) - (avDoseRate * avDoseRate);
         // формула получена на основании того что СКО - это корень из дисперсии
         // Дисперсия - математическое ожидание квадрата отклонения случайной величины от её математического ожидания
         // D=M[X-M(X)]^2 = M(X^2) - M^2(X); - особенное свойство которое везде доказывается
@@ -117,6 +118,7 @@ void BetaMeasurement::timeOut() {
         // отсюда и получается данная формула: корень из D=(1/N)SUM(1,N,Xi^2)-(среднее)^2
         //под СКО подразумеваем СКО деленное на среднее и умножить на 100% (относительное отклонение от среднего)
         StandardDeviation = std::abs(z / avDoseRate);
+        //qDebug() << "StandardDeviation=" << StandardDeviation << " z=" << z << " avDoseRate=" << avDoseRate;
         emit sendStandardDeviation(QString::number(StandardDeviation, 'g', 4));
         //ui->label_20->setText(QString::number(StandardDeviation*100,'f',3)+" %");
     }

@@ -7,6 +7,14 @@ Item {
     width: 1280
     height: 800
 
+    function sendText(str) {
+        sendTextToCpp(str)
+    }
+    function sendCurrentIndex(i) {
+        sendCurrentIndexToCpp(i)
+    }
+
+
     Connections {
         target: parent
         function onSendTime(t) {
@@ -274,7 +282,7 @@ Item {
             cbFontSizeCoef: 0.9
             inputFieldFontSizeCoef: 0.7
             alignBottom: true
-            dimensionModel: [qsTr("Гр/с"), qsTr("мГр/с"), qsTr("Гр/ч"), qsTr("мГр/ч")]
+            dimensionModel: [qsTr("Гр/с")/*, qsTr("мГр/с"), qsTr("Гр/ч"), qsTr("мГр/ч")*/]
             //inputValidator:
             title: qsTr("Значение ") + whatIsMeasured
         }

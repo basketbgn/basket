@@ -4,6 +4,7 @@ import QtQuick.Controls.Styles 1.4
 Item {
     id: textInputWithDimension
     property alias dimensionModel: dimensionCb.model //Модель размерностей
+    property alias dimensionModelCurrentIndex: dimensionCb.currentIndex
     property alias title: titleText.text //Название поля ввода
     property alias inputValidator: textInput.validator //валидатор
     property double cbFontSizeCoef: 0.7 //Коэффициент, управляющий размером шрифта комбобокса размерности
@@ -65,6 +66,9 @@ Item {
             onAccepted: {
 
             }
+            onTextChanged: {
+                sendText(textInput.text)
+            }
         }
         Rectangle {
             id: dimensionRect
@@ -78,7 +82,8 @@ Item {
                 id: dimensionCb
                 font.pixelSize: parent.height * cbFontSizeCoef//0.5
                 anchors.fill: parent
-                model: [qsTr("мГр/нКл"), qsTr("Гр/Кл")]
+                currentIndex: 0
+                model: [/*qsTr("мГр/нКл"), qsTr("Гр/Кл")*/]
                 background: Rectangle {
                     color: application.buttonColor
                     border.width: 2
@@ -87,8 +92,8 @@ Item {
                 layer.mipmap: false
                 layer.format: ShaderEffectSource.RGB
                 onActivated:  {
-
-                }
+                    sendCurrentIndex(dimensionCb.currentIndex)
+                }                
                 contentItem: Text {
                     anchors.right: dimensionCb.indicator.left
                     anchors.rightMargin: dimensionCb.width/40

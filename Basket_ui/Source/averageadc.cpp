@@ -2,22 +2,20 @@
 
 #include "averageadc.h"
 
-AverageADC::AverageADC()
-{
+AverageADC::AverageADC() {
     init();
 }
 
-AverageADC::~AverageADC()
-{
+AverageADC::~AverageADC() {
     qDebug()<<"~AverageADC()";
     delete em;
     delete rs232;
 }
 
-void AverageADC::init()
-{
+void AverageADC::init() {
     // инициализация указателя (чтобы можно было бы потом удалить без падения программы далее делаем это при объявлении)
     em = nullptr;
+    times = 10;
     if(QSqlDatabase::contains("myDB")) {
         QSqlDatabase db=QSqlDatabase::database("myDB");
         db.setDatabaseName("config.db");
@@ -38,10 +36,10 @@ void AverageADC::init()
         db.close();
     }
     //если выбран эмулятор вызываем функцию emul()
-    if(CurrSource==true) {
+    if(CurrSource == true) {
         emul();qDebug()<<"Emulator";
     }
-    else { rs_232();qDebug()<<"Detector RS-232";} //выбран реальный детектор
+    else { rs_232(); qDebug()<<"Detector RS-232";} //выбран реальный детектор
 }
 
 //прием сигнала со строкой из эмулятора (или реального электрометра) 2f3f4f5f6f7f
@@ -79,6 +77,11 @@ void AverageADC::rs_232() {
 //функция записи среднего значения в переменную averageADC
 void AverageADC::callAverADC(long avADC) {
     averageADC = avADC;
+//    if(averageADC != 8389607) {
+//        averageADC = 8389607;
+//    } else {
+//        averageADC = 8389907;
+//    }
 }
 
 //функция из которой можно узнать текущее усредненное показание АЦП
