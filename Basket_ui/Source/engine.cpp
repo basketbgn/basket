@@ -10,8 +10,7 @@ void Password::setCurrentPassword(const QString& str) {
 }
 
 Password* Password::pThis = nullptr;
-Password::Password() {
-    pThis = this;
+Password::Password() {    
     currentPassword = "Operator";
 }
 

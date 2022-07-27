@@ -80,11 +80,6 @@ Item {
     signal sendTime(var t)
     signal sendStandardDeviation(var sd)
     signal sendCurrentOrCountRateValue(var dr)
-    signal sendDoseRateDimension(var dr)
-    signal sendAverageDoseRate(var avDR)
-    signal sendAverageDoseRateDimension(var avDRd)
-    signal sendDose(var d);
-    signal sendDoseDimension(var dd);
 
     Connections {
         target: _cppApi_BetaCalibration
@@ -96,23 +91,16 @@ Item {
         }
         function onSendCurrentOrCountRateValue(x) {
             sendCurrentOrCountRateValue(x);
-        }
-        function onSendDimension(dimension) {
-            sendDoseRateDimension(dimension);
-        }
+        }        
         function onSendSensibilityToQml(sens) {
             betaCalibrationCalibration.sensivity = sens
         }
-        function onSendAverageDoseRateDimension(avDRd) {
-            sendAverageDoseRateDimension(avDRd);
-        }
+
         function onSendWarningMsg() {
             messageDialogWarning.visible = true
         }
-        function onSendDoseDimension(dd) {
-            sendDoseDimension(dd);
-        }
-        function onSendListModel(x, y) {
+
+        function onSendListModel(x) {
             betaCalibrationCalibration.measuredValueDimensionModel = x;
         }
 

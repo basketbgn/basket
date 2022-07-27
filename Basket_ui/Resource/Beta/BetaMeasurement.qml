@@ -2,10 +2,42 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Dialogs 1.1
 import "../Components/"
 
 Item {
     id: betaMeasurement
+
+    Timer {
+        id: timerCount1s
+        interval: 1000; running: true; repeat: true
+        onTriggered: {
+            messageDialogBetaMes.time++
+        }
+    }
+    Timer {
+        interval: 6000; running: true; repeat: false
+        onTriggered: {
+            timerCount1s.repeat = false
+            messageDialogBetaMes.standardButtons = StandardButton.Ok
+        }
+    }
+    MessageDialog {
+        id: messageDialogBetaMes
+        property var time: 0
+        icon: StandardIcon.Critical
+        modality: Qt.WindowModal
+        standardButtons : MessageDialog.NoButton
+        title: "ВНИМАНИЕ"
+        text: "ПРОГРЕВ!!! "
+        informativeText: time
+        onAccepted: {
+        }
+        Component.onCompleted: {
+            visible = true
+        }
+    }
+
     signal sendTime(var t)
     signal sendStandardDeviation(var sd)
     signal sendDoseRate(var dr)
