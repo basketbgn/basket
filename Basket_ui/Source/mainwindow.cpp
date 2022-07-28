@@ -61,6 +61,7 @@ void MainWindow::onAccessCodeSubmitButton(const QString& str) {
 
 void MainWindow::onExitButton() {
     qDebug() << "system(shutdown now)";
+    exit(0);
 }
 
 void MainWindow::createDatabase() {

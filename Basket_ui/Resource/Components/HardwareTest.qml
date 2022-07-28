@@ -1,10 +1,48 @@
 ﻿import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.4
+import QtQuick.Dialogs 1.1
 
 Item {
     //Тест аппаратуры
     id: hardwareTest
+
+    Component.onCompleted: {
+        _cppApi_ElectrometerTest.init();
+    }
+
+    Connections {
+        target: _cppApi_ElectrometerTest
+        function onClose(){
+            stackView.pop()
+        }
+        function onProgressBarSetValue(x){
+            percentValue.text = x + "%"
+            progressBar.value = x/100
+        }
+        function onProcedureName(str){
+            procedure.text = str
+        }
+        function onSendADC(str) {
+            adcText.text = str
+        }
+        function onSendADC_V(str) {
+            adcVText.text = str
+        }
+        function onSendTime(t) {
+            timeValue.value = t
+        }
+        function onSendHardwareFault() {
+            messageDialogHardwareFault.visible = true;
+        }
+        function onSendTestResult(str){
+            messageDialogTestResult.text = str
+            messageDialogTestResult.visible = true;
+        }
+        function onSendTestPassedToQml(state) {
+            messageDialogTestResult.isTestPassed = state
+        }
+    }
 
     property alias procedureType: procedure.text //Тип процедуры (прогрев и т.п.)
 
@@ -17,6 +55,37 @@ Item {
     property alias timeValue: timeValue.value //Время в секундах
 
     property alias testResult: resultText.text //Результат теста
+
+    MessageDialog {
+        id: messageDialogHardwareFault
+        icon: StandardIcon.Critical
+        modality: Qt.WindowModal
+        standardButtons : MessageDialog.Ok
+        title: "ВНИМАНИЕ"
+        text: "Нет информации с детектора, \n необходим ремонт!!!"
+        onAccepted: {
+            stackView.pop()
+        }
+        Component.onCompleted: {
+            visible = false
+        }
+    }
+    MessageDialog {
+        id: messageDialogTestResult
+        property bool isTestPassed: false
+        icon: StandardIcon.Information
+        modality: Qt.WindowModal
+        standardButtons : MessageDialog.Ok
+        title: "ВНИМАНИЕ"
+        text: "Указаны не все параметры, запись отменена"
+        onAccepted: {
+            stackView.pop()
+            _cppApi_ElectrometerTest.onClose()
+        }
+        Component.onCompleted: {
+            visible = false
+        }
+    }
 
     // --- Заголовок ---
     StatusBar {
@@ -180,7 +249,7 @@ Item {
             width: parent.width
             anchors.top: time.bottom
             anchors.horizontalCenter: parent.horizontalCenter
-            value: 0.65
+            value: 0.0
             Text {
                 id: percentValue
                 anchors.fill: parent
@@ -262,6 +331,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_ElectrometerTest.onCancelButton()
                 stackView.pop()
             }
         }

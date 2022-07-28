@@ -21,6 +21,18 @@ Item {
         function onTransmitSecondName(secondName) {
             secondNameField.text = secondName
         }
+        function onSendTestPassed(state) {
+            console.log("onSendTestPassed(state)", state)
+            if(state) {
+                measurementButton.isTestPassed = true
+                if(measurementButton.needTestPassed) {
+                    _cppApi_Beta.onMeasurementButton()
+                    stackView.push("qrc:/Beta/BetaMeasurementSettings.qml")
+                }
+            } else {
+                measurementButton.isTestPassed = false
+            }
+        }
     }    
     //  old syntax
 //    Connections {
@@ -237,6 +249,8 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                measurementButton.needTestPassed = false;
+                _cppApi_Beta.onHardwareTestButton()
                 stackView.push("qrc:/Beta/BetaHardwareTest.qml")
             }
         }
@@ -245,7 +259,9 @@ Item {
     // --- Кнопка "Измерение" ---
 
     Rectangle {
-        id: measurementButton        
+        id: measurementButton
+        property bool needTestPassed: false
+        property bool isTestPassed: false
         width: parent.width/2.8
         height: parent.height/2.6
         anchors.verticalCenter: parent.verticalCenter
@@ -272,8 +288,14 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                _cppApi_Beta.onMeasurementButton()
-                stackView.push("qrc:/Beta/BetaMeasurementSettings.qml")
+                if(measurementButton.isTestPassed) {
+                    _cppApi_Beta.onMeasurementButton()
+                    stackView.push("qrc:/Beta/BetaMeasurementSettings.qml")
+                } else {
+                    measurementButton.needTestPassed = true;
+                    _cppApi_Beta.onHardwareTestButton()
+                    stackView.push("qrc:/Beta/BetaHardwareTest.qml")
+                }
             }
         }
     }

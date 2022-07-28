@@ -15,6 +15,7 @@ SOURCES += \
         ../Source/beta_verify.cpp \
         ../Source/betameasurement.cpp \
         ../Source/betameasurementsettings.cpp \
+        ../Source/electrometer_test.cpp \
         ../Source/emulelectrometer.cpp \
         ../Source/engine.cpp \
         ../Source/iblock.cpp \
@@ -50,6 +51,7 @@ HEADERS += \
     ../Source/beta_verify.h \
     ../Source/betameasurement.h \
     ../Source/betameasurementsettings.h \
+    ../Source/electrometer_test.h \
     ../Source/emulelectrometer.h \
     ../Source/engine.h \
     ../Source/iblock.h \

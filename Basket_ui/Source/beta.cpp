@@ -24,6 +24,11 @@ void Beta::onMeasurementButton() {
     updateDB();
 }
 
+void Beta::onHardwareTestButton() {
+    electrometerTest = new Electrometer_test;
+    connect(electrometerTest, &Electrometer_test::sendTestPassed, this, &Beta::isTestPassed);
+}
+
 void Beta::onNameChanged(const QString &str) {
     *name = str;
 }
@@ -53,6 +58,11 @@ void Beta::initDatabase()
     emit transmitName(*name);
     emit transmitSurname(*surname);
     emit transmitSecondName(*secondName);
+}
+
+void Beta::isTestPassed(bool state) {
+    qDebug() << "isTestPassed(bool state) cpp" << state;
+    emit sendTestPassed(state);
 }
 
 void Beta::updateDB() {
