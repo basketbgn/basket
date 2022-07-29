@@ -17,9 +17,8 @@ BetaMeasurement::~BetaMeasurement() {
 
 void BetaMeasurement::init() {
     timer=new QTimer(this);
-    connect(timer,&QTimer::timeout,this,&BetaMeasurement::timeOut); //коннект на ф-ю timeOut
-    timerStart=new QTimer(this);
-    connect(timerStart,&QTimer::timeout,this,&BetaMeasurement::startTimeOut); //коннект на ф-ю timeOut
+    connect(timer,&QTimer::timeout,this,&BetaMeasurement::timeOut); //коннект на ф-ю timeOut    
+    emit sendMode(Regime);
 }
 
 
@@ -52,11 +51,15 @@ void BetaMeasurement::onBackButton() {
 }
 
 void BetaMeasurement::startPressed() {
+    emit sendAdditionalInfo("");
     timer->start(1000);
+    time=0;
+    dose=0;
+    otkl=0;
+    doseForAuto=0;//обнуляем интегральные переменные чтобы не накапливалось
 }
 
-void BetaMeasurement::stopPressed()
-{
+void BetaMeasurement::stopPressed() {
     timer->stop();
 }
 
@@ -64,7 +67,6 @@ void BetaMeasurement::timeOut() {
     //------------------------------------Время-------------------------------------------------------
     time++;
     emit sendTime(QString::number(time));
-    //ui->label_3->setText(QString::number(time) + " c"); //отображение времени
     //------------------------------------Мощность дозы-------------------------------------------------------
     doseRate = beta->MPD(); //считываем измерение из класса Beta_chamber в Гр/с
     qDebug()<<beta->getIres();
@@ -75,15 +77,14 @@ void BetaMeasurement::timeOut() {
     QString currentDimension;
     doseTo4(currentDoseRate, Dimension, valueCurrentDoseRate, currentDimension, 0, 0); //передаем в функцию вывода на экран:
     emit sendDoseRate(valueCurrentDoseRate);
-    //qDebug() << "valueCurrentDoseRate" << valueCurrentDoseRate << "currentDimension" << currentDimension;
-    //emit sendDoseRate(QString::number(doseRate, 'g', 4));
+    //qDebug() << "valueCurrentDoseRate" << valueCurrentDoseRate << "currentDimension" << currentDimension;    
     emit sendDimension(currentDimension);
     //значение (которое преобразуется),размерность,
     //указатель на label в который записывется преобразованная величина,
     //указатель на label в который записывется преобразованная размерность,
 
     //------------------------------------Доза-------------------------------------------------------
-    dose+=doseRate;         // обнуляется при автоматическом измерении, используется для подсчета среднего по дозе
+    dose += doseRate;         // обнуляется при автоматическом измерении, используется для подсчета среднего по дозе
 
     doseForAuto += doseRate;  // не обнуляется при автоматическом измерении, используется для рассчета СКО
     QString valueCurrentDose;
@@ -126,23 +127,23 @@ void BetaMeasurement::timeOut() {
 
 //    //------------------------------Автоматическое измерение-------------------------------------------------------
 //    //условие автоматического измерения (при автоматическом измерении пороги не срабатывают)
-//    if(Regime==true&&TimeAutomatic!=0&&TimesAutomatic!=0) {
-//        //autoMode(dose,timer,ui->label_17,ui->label_13);
-//    } else {
-//        // (если нет авто измерения проверяем пороги)
-//        //------------------------------------Пороги-------------------------------------------------------
-//        //timeThreashold(time,ui->label_21,timer);   //проверка на порог по времени
-//        //doseThreashold(dose,ui->label_21,timer);   //проверка на порог по дозе
-//    }
-}
-
-void BetaMeasurement::startTimeOut() {
-    timer->start(1000);
-    time=0;
-    //ui->label_3->setText(QString::number(time));
-    dose=0;
-    otkl=0;
-    doseForAuto=0;//обнуляем интегральные переменные чтобы не накапливалось
+    if(Regime == true && TimeAutomatic !=0 && TimesAutomatic != 0) {
+        QString autoTime{""};
+        QString autoTimes{""};
+        autoMode(dose, timer, autoTime, autoTimes);
+        emit sendAdditionalInfo("Время одного измерения " + autoTime +
+                                "\nКоличество измерений " + autoTimes);
+        // emit signals to show automatic mode time
+    } else {
+        // (если нет авто измерения проверяем пороги)
+        //------------------------------------Пороги-------------------------------------------------------
+        QString threashold{""};
+        timeThreashold(time, threashold, timer);   //проверка на порог по времени
+        doseThreashold(dose, threashold, timer);   //проверка на порог по дозе
+        if(threashold != "") {
+            emit sendAdditionalInfo(threashold);
+        }
+    }
 }
 
 void BetaMeasurement::autoModeResult(double AverageDoseRate, double DoseRate_deviation_average,
@@ -152,8 +153,17 @@ void BetaMeasurement::autoModeResult(double AverageDoseRate, double DoseRate_dev
             "\nВремя измерений: "+QString::number(TimeAutomatic)+" c";
 //    autoResult = new Auto_measurement_result(this,value,integralValue, autoInitialization);
 //    autoResult->setModal(true);
-//    doseTo4(AverageDoseRate,Dimension,autoResult->avDoseRate,autoResult->avDoseRateDimension);//выводим значения в окне объекта другого класса
-//    doseTo4(AverageDose,DimensionDose,autoResult->avDose,autoResult->avDoseDimension);        //выводим значения в окне объекта другого класса
+    QString avDoseRate;
+    QString avDoseRateDimension;
+    doseTo4(AverageDoseRate, Dimension, avDoseRate, avDoseRateDimension);//выводим значения в окне объекта другого класса
+    QString avDose;
+    QString avDoseDimension;
+    doseTo4(AverageDose, DimensionDose, avDose, avDoseDimension);
+    autoInitialization += "\n Средняя МПД\t" + avDoseRate + " \t" + avDoseRateDimension +
+            "\tСКО " + QString::number(DoseRate_deviation_average) +" %";
+    autoInitialization += "\n Средняя ПД\t" + avDose + " \t" + avDoseDimension +
+            "\tСКО " + QString::number(Dose_deviation_average) +" %";
+    emit sendAutoResult(autoInitialization);
 //    autoResult->avDoseRateDeviation->setText(QString::number(DoseRate_deviation_average) +" %");
 //    autoResult->avDoseDeviation->setText(QString::number(Dose_deviation_average) +" %");
 //    autoResult->show();

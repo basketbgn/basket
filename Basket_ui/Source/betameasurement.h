@@ -28,6 +28,9 @@ signals:
     void sendDoseDimension(const QString& dimensionDose);
     void sendAverageDoseRate(const QString& avDR);
     void sendAverageDoseRateDimension(const QString& dimensionAverDoseRate);
+    void sendAdditionalInfo(const QString& info);
+    void sendMode(bool);
+    void sendAutoResult(const QString& str);
 
 public slots:
     void init();
@@ -35,8 +38,7 @@ public slots:
     void startPressed();
     void stopPressed();
 private slots:
-    void timeOut(); //основная функция измерения в данном классе, обновляющаяся каждую секунду
-    void startTimeOut(); //прогрев
+    void timeOut(); //основная функция измерения в данном классе, обновляющаяся каждую секунду    
 private:
     //метод вызываемый в конце автоматического измерения (передаем в него среднюю мощность дозы, среднюю дозу, и их СКО)
     void autoModeResult(double,double,double,double) override;
@@ -45,7 +47,6 @@ private:
     Beta_chamber* beta{nullptr};                     //указатель на объект класса бета камеры из которого берем результат в Гр/с
     //QString chamberName;
     QTimer* timer;
-    QTimer* timerStart;
 
     ulong time{0};
         double doseRate{0};

@@ -14,3 +14,7 @@ void VendorSettings::onBackButton() {
 void VendorSettings::onUserSettingsButton() {
     userSettings = new UserSettings;
 }
+
+void VendorSettings::onSettingsElectrometerTest() {
+    settingsElectrometer = new Settings_electrometer;
+}

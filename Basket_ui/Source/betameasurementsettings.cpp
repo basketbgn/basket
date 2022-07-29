@@ -139,7 +139,7 @@ void BetaMeasurementSettings::onMeasurementButton(const QString& dimension,
 
     betaMes = new BetaMeasurement(dimension, dimensionTime, modeTemp,
                                   numberOFMeasurements.toInt(), timeOfOneMeasurement.toInt(),
-                                  threasholdTemp/*, timeThreashold.toInt(), doseThreashold.toInt()*/);
+                                  threasholdTemp, timeThreashold.toInt()/*, doseThreashold.toInt()*/);
     betaMes->Beta(betaChamber);
     //----------  Управление электрометром: подача высокого, упраление реле резистор отвечающего за диапазон ------------
     QString str = chamName;

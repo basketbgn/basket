@@ -16,10 +16,11 @@ Item {
         }
     }
     Timer {
-        interval: 6000; running: true; repeat: false
+        interval: 2000; running: true; repeat: false
         onTriggered: {
             timerCount1s.repeat = false
             messageDialogBetaMes.standardButtons = StandardButton.Ok
+            messageDialogBetaMes.visible = false
         }
     }
     MessageDialog {
@@ -87,6 +88,34 @@ Item {
         function onSendDoseDimension(dd) {
             sendDoseDimension(dd);
         }
+        function onSendAdditionalInfo(str) {
+            betaMeasurementMeasurement.additionalInfoTitle = str
+            betaMeasurementMeasurement.start = false;
+            betaMeasurementMeasurement.startButtonText = qsTr("Cтарт")
+
+        }
+        function onSendMode(x) {
+            betaMeasurementMeasurement.measurementAutoMode = x;
+        }
+        function onSendAutoResult(str) {
+            messageDialogAutoResult.text = str;
+            messageDialogAutoResult.visible = true
+        }
+    }
+    //-----------   auto measurements result    ----------------
+    MessageDialog {
+        id: messageDialogAutoResult
+        property var time: 0
+        icon: StandardIcon.Critical
+        modality: Qt.WindowModal
+        standardButtons : MessageDialog.Ok
+        title: "Результаты автоматического измерения"
+        text: ""
+        onAccepted: {
+        }
+        Component.onCompleted: {
+            visible = false
+        }
     }
 
     // --- Заголовок ---
@@ -112,6 +141,7 @@ Item {
 
     // --- Окно измерения ---
     Measurement {
+        id: betaMeasurementMeasurement
         anchors.fill: parent
         deviceType: qsTr("Камера")
         deviceName: qsTr("ИКБ-1")
@@ -120,7 +150,7 @@ Item {
         integralValueType: qsTr("Поглощенная доза")
         integralValueDimension: qsTr("Гр")
         measurementAutoMode: false
-        additionalInfoTitle: measurementAutoMode ? qsTr("Число измерений: ") : ""
-        additionalInfo: measurementAutoMode ? qsTr("3") : ""
+        //additionalInfoTitle: measurementAutoMode ? qsTr("Число измерений: ") : ""
+        //additionalInfo: measurementAutoMode ? qsTr("3") : ""
     }
 }

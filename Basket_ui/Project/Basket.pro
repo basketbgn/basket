@@ -25,6 +25,7 @@ SOURCES += \
         ../Source/modbus_emulator.cpp \
         ../Source/rs232.cpp \
         ../Source/rs485.cpp \
+        ../Source/settings_electrometer.cpp \
         ../Source/usersettings.cpp \
         ../Source/vendorsettings.cpp \
         ../Source/volthex.cpp
@@ -61,6 +62,7 @@ HEADERS += \
     ../Source/modbus_emulator.h \
     ../Source/rs232.h \
     ../Source/rs485.h \
+    ../Source/settings_electrometer.h \
     ../Source/usersettings.h \
     ../Source/vendorsettings.h \
     ../Source/volthex.h

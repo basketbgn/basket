@@ -61,7 +61,7 @@ void MainWindow::onAccessCodeSubmitButton(const QString& str) {
 
 void MainWindow::onExitButton() {
     qDebug() << "system(shutdown now)";
-    exit(0);
+    this_engine->quit();
 }
 
 void MainWindow::createDatabase() {
@@ -85,9 +85,8 @@ void MainWindow::createDatabase() {
         "passManufacturer TEXT(10)," //пароль поверителя, пароль изготовителя
         "passCurrent TEXT(10))";     //текущуй пароль
     //****************************************************************************************************************
-
-    if(!query.exec(queryStr)) //передаем строку с указанием создать таблицу в метод exec() объекта query
-    {
+    //передаем строку с указанием создать таблицу в метод exec() объекта query
+    if(!query.exec(queryStr)) {
         qDebug() << "unable execute query CREATE" << query.lastError().text();
     }
 //     queryStr = "INSERT INTO password (id,passVerifier, passManufacturer, passCurrent) VALUES (0,'КЕРМА','777','1')";

@@ -26,21 +26,6 @@ Item {
         function onSendCurrentOrCountRateValue(x) {
             currentOrCountRateValue = x
         }
-        function onSendDoseRateDimension(dimension) {
-            measuredValueDimension = dimension
-        }
-        function onSendAverageDoseRate(avDR) {
-            averageVal = avDR;
-        }
-        function onSendAverageDoseRateDimension(avDRd) {
-           measuredAverageValueDimension = avDRd;
-        }
-        function onSendDose(d) {
-            integralVal = d;
-        }
-        function onSendDoseDimension(dd) {
-            integralValueDimension = dd;
-        }
     }
 
     // --- Свойства компонента "Калибровка" ---

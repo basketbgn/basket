@@ -272,7 +272,7 @@ Item {
                                                                     numberOFMeasurements.inputText,
                                                                     timeOfOneMeasurement.inputText,
                                                                     thresholds.comboBoxText,
-                                                                    "TimeThreashold",
+                                                                    timeOfOneMeasurement.inputText,
                                                                     "DoseThreashold",
 
                                                                     range.comboBoxText,

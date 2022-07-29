@@ -33,30 +33,29 @@ void Abstract_measurement_measurement::init()
 }
 
 
-void Abstract_measurement_measurement::timeThreashold(ulong &time, QString* threashold,QTimer* timer)
-{
-    if(Threashold==1&&time==TimeThreashold)
-    {
+void Abstract_measurement_measurement::timeThreashold(ulong time, QString& threashold,QTimer* timer) {
+    qDebug() << "Threashold" << Threashold << "TimeThreashold" << TimeThreashold;
+    if(Threashold == 1 && time == TimeThreashold) {
         timer->stop();
-        //threashold->setText("Достигнут порог по времени");
+        threashold = "Достигнут порог по времени";
     }
 }
 
-void Abstract_measurement_measurement::doseThreashold(double &dose,QString* threashold,QTimer* timer,bool Fluence)
-{
-    if(Fluence==true) //если в нейтронном измерении стоит плотность потока (флюенс не делим на 1000)
-    {
-        if(Threashold==2&&dose>=DoseThreashold) //част в част
-        {
+void Abstract_measurement_measurement::doseThreashold(double dose, QString& threashold, QTimer* timer,bool Fluence) {
+    //если в нейтронном измерении стоит плотность потока (флюенс не делим на 1000)
+    if(Fluence) {
+        //част в част
+        if(Threashold == 2 && dose >= DoseThreashold) {
             timer->stop();
+            threashold = "Достигнут порог по флюенсу";
             //threashold->setText("Достигнут порог по флюенсу");
         }
     }
-    else
-    {
-        if(Threashold==2&&dose>=DoseThreashold/1000) //перевод Гр в мГр
-        {
+    else {
+        //перевод Гр в мГр
+        if(Threashold == 2 && dose >= DoseThreashold/1000) {
             timer->stop();
+            threashold = "Достигнут порог по дозе";
             //threashold->setText("Достигнут порог по дозе");
         }
     }

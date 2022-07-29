@@ -20,8 +20,8 @@ public:
 
 protected:
     void init();
-    void timeThreashold(ulong &time, QString* threashold,QTimer* timer); //функция останавливающая измерение при достижении порога по времени
-    void doseThreashold(double &dose, QString* threashold,QTimer* timer,bool Fluence=false); //функция останавливающая измерение при достижении порога по дозе (имеется параметр по умолчанию для флюенса)
+    void timeThreashold(ulong time, QString& threashold,QTimer* timer); //функция останавливающая измерение при достижении порога по времени
+    void doseThreashold(double dose, QString& threashold,QTimer* timer,bool Fluence=false); //функция останавливающая измерение при достижении порога по дозе (имеется параметр по умолчанию для флюенса)
     void doseShow(double, QString&) const;//метод отображающий ПД на экране (вспомогательный, вызывается из doseTo4)
 
 // метод включающий в себя два параметра по умолчанию необходимые для передачи флагов измерения Плотности потока и Флюенса:

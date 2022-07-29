@@ -7,6 +7,49 @@ Item {
     id: electrometerSettings
     property bool limitValuesVisible: false
 
+    Component.onCompleted: {
+        _cppApi_ElectrometerSettings.init();
+    }
+
+    Connections {
+        target: _cppApi_ElectrometerSettings
+        function onSendInitValues(periodRS232,
+                                  R1,
+                                  referenceVoltage,
+                                  heatingTime,
+                                  changeTimeout,
+                                  testTimeout,
+                                  countsAver,
+                                  minDAC,
+                                  maxDAC,
+                                  minRefVolt,
+                                  maxRefVolt,
+                                  minR2,
+                                  maxR2,
+                                  minR3,
+                                  maxR3,
+                                  minI,
+                                  maxI) {
+            pollingPeriodField.text =  periodRS232;
+            r1ValueField.text = R1;
+            referenceVoltageField.text = referenceVoltage;
+            timeOfHeatingField.text = heatingTime;
+            timeOutToModeField.text = changeTimeout;
+            testTimeoutField.text = testTimeout;
+            numberOfCountsField.text = countsAver;
+            adcCodesMinField.text = minDAC;
+            adcCodesMaxField.text = maxDAC;
+            offsetVoltageMinField.text = minRefVolt;
+            offsetVoltageMaxField.text = maxRefVolt;
+            r2ValueMinField.text = minR2;
+            r2ValueMaxField.text = maxR2;
+            r3ValueMinField.text = minR3;
+            r3ValueMaxField.text = maxR3;
+            inputCurrentMinField.text = minI;
+            inputCurrentMaxField.text = maxI;
+        }
+    }
+
     // --- Статус-бар ---
     StatusBar {
         id: electrometerSettingsStatusBar
@@ -77,8 +120,8 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                onTextChanged: _cppApi_ElectrometerSettings.onR1(text)
                 onAccepted: {
-
                 }
             }
         }
@@ -130,8 +173,8 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                onTextChanged: _cppApi_ElectrometerSettings.onReferenceVoltage(text)
                 onAccepted: {
-
                 }
             }
         }
@@ -184,6 +227,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                onTextChanged: _cppApi_ElectrometerSettings.onPeriodRS232(text)
                 onAccepted: {
 
                 }
@@ -238,6 +282,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                onTextChanged: _cppApi_ElectrometerSettings.onTestTimeout(text)
                 onAccepted: {
 
                 }
@@ -291,6 +336,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                onTextChanged: _cppApi_ElectrometerSettings.onHeatingTime(text)
                 onAccepted: {
 
                 }
@@ -344,6 +390,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                onTextChanged: _cppApi_ElectrometerSettings.onChangeTimeout(text)
                 onAccepted: {
 
                 }
@@ -398,6 +445,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                onTextChanged: _cppApi_ElectrometerSettings.onCountsAver(text)
                 onAccepted: {
 
                 }
@@ -511,6 +559,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMinDAC(text)
             onAccepted: {
 
             }
@@ -542,6 +591,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMaxDAC(text)
             onAccepted: {
 
             }
@@ -590,6 +640,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMinRefVolt(text)
             onAccepted: {
 
             }
@@ -622,6 +673,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMaxRefVolt(text)
             onAccepted: {
 
             }
@@ -670,6 +722,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMinR2(text)
             onAccepted: {
 
             }
@@ -702,6 +755,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMaxR2(text)
             onAccepted: {
 
             }
@@ -749,8 +803,8 @@ Item {
             background: Rectangle {
                 color: "transparent"
             }
-
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMinR3(text)
             onAccepted: {
 
             }
@@ -782,8 +836,8 @@ Item {
             background: Rectangle {
                 color: "transparent"
             }
-
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMaxR3(text)
             onAccepted: {
 
             }
@@ -832,6 +886,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMinI(text)
             onAccepted: {
 
             }
@@ -864,6 +919,7 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
+            onTextChanged: _cppApi_ElectrometerSettings.onMaxI(text)
             onAccepted: {
 
             }
@@ -912,6 +968,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_ElectrometerSettings.onBackButton()
                 stackView.pop()
             }
         }
@@ -943,7 +1000,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-
+                _cppApi_ElectrometerSettings.onOkButton()
             }
         }
     }

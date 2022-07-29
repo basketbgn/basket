@@ -56,6 +56,9 @@ Item {
     property alias integralValueDimension: integralValueTitle.dimension //Размерность интегральной величины
     property alias integralVal: integralValue.text //Значение интегральной величины
 
+    property alias start: startButton.start //
+    property alias startButtonText: startButton.buttonText //
+
     property bool measurementAutoMode: true //True - если выбран автоматический режим измерения, False - если выбран ручной режим
 
     signal signalStartButtonClicked(bool start) //Сигнал при нажатии кнопки "Старт" (кнопка "Старт" и "Стоп" - одна и та же, кнопка имеет свойство bool start, показывающее состояение кнопки)
@@ -421,26 +424,28 @@ Item {
     // --- Кнопка "Старт" ---
     CustomButton {
         id: startButton
-        property bool start: true
+        property bool start: false
         width: parent.width/5
         height: parent.height/6.5
         anchors.verticalCenter: backButton.verticalCenter
         anchors.left: parent.horizontalCenter
         anchors.leftMargin: parent.width/30
         buttonFontSizeCoef: 0.3
-        buttonText: start ? qsTr("Старт") : qsTr("Стоп")
+        buttonText: start ? qsTr("Стоп") :  qsTr("Старт")
         onButtonClicked: {
-            start = !start
             if(!start) {
                 //measurementTimer.secondsValue = 0
                 //measurementTimer.start()
                 started()
+                buttonText = qsTr("Стоп");
+                start = true;
             } else {
                 //measurementTimer.stop()
                 stopped()
+                buttonText = qsTr("Старт");
+                start = false;
             }
-            signalStartButtonClicked(start) //start == true - калибровка остановлена, start == false - калибровка начата
-
+            //signalStartButtonClicked(start) //start == true - калибровка остановлена, start == false - калибровка начата
         }
     }
 }

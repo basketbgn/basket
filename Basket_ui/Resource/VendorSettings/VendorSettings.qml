@@ -64,6 +64,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_VendorSettings.onSettingsElectrometerTest()
                 stackView.push("qrc:/VendorSettings/ElectrometerSettings.qml")
             }
         }
