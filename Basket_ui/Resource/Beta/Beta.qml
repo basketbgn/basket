@@ -1,10 +1,46 @@
-import QtQuick 2.0
-import QtQuick.Controls 1.0
-import QtQuick.Controls 2.0
+import QtQuick.Controls 1.2
 import QtQuick.Controls.Styles 1.4
+import QtQuick 2.0
+import QtQuick.Controls 2.5
 
 Item {
     id: beta
+    //  --- fill textFields from database ---
+    Component.onCompleted: {
+        _cppApi_Beta.initDatabase();
+    }
+    // in Qml 5.15 there is a new syntax for connections
+    Connections {
+        target: _cppApi_Beta
+        function onTransmitName(name) {
+            nameField.text = name
+        }
+        function onTransmitSurname(surname) {
+            surnameField.text = surname
+        }
+        function onTransmitSecondName(secondName) {
+            secondNameField.text = secondName
+        }
+        function onSendTestPassed(state) {
+            console.log("onSendTestPassed(state)", state)
+            if(state) {
+                measurementButton.isTestPassed = true
+                if(measurementButton.needTestPassed) {
+                    _cppApi_Beta.onMeasurementButton()
+                    stackView.push("qrc:/Beta/BetaMeasurementSettings.qml")
+                }
+            } else {
+                measurementButton.isTestPassed = false
+            }
+        }
+    }    
+    //  old syntax
+//    Connections {
+//        target: _cppApi
+//            onTransmitName: function(name){
+//            surnameField.text = name
+//        }
+//    }
 
     // --- Pane использую для того, чтобы он ловил фокус при клике вне полей ввода, таким образом и само поле ввода будет терять фокус ---
     Pane {
@@ -19,7 +55,7 @@ Item {
     // --- Статус-бар = Заголовок ---
     StatusBar {
         id: betaStatusBar
-        anchors.top: parent.top
+        anchors.top: parent.top        
         style: StatusBarStyle {
             background: Rectangle {
                 color: "#595959"
@@ -54,6 +90,7 @@ Item {
     }
     Rectangle {
         id: name
+        signal sendName(var str)
         width: parent.width/3.5
         height: parent.height/10
         anchors.top: nameText.bottom
@@ -76,8 +113,12 @@ Item {
                 color: "transparent"
             }
             text: qsTr("")
-            onAccepted: {
-
+//            onAccepted: {
+//                name.sendName(text)
+//                _cppApi.cppSlot(text)
+//            }
+            onTextChanged: {
+                _cppApi_Beta.onNameChanged(text)
             }
         }
     }
@@ -124,6 +165,9 @@ Item {
             onAccepted: {
 
             }
+            onTextChanged: {
+                _cppApi_Beta.onSurnameChanged(text)
+            }
         }
     }
         //--- Отчество ---
@@ -169,6 +213,9 @@ Item {
             onAccepted: {
 
             }
+            onTextChanged: {
+                _cppApi_Beta.onSecondNameChanged(text)
+            }
         }
     }
 
@@ -202,6 +249,8 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                measurementButton.needTestPassed = false;
+                _cppApi_Beta.onHardwareTestButton()
                 stackView.push("qrc:/Beta/BetaHardwareTest.qml")
             }
         }
@@ -211,6 +260,8 @@ Item {
 
     Rectangle {
         id: measurementButton
+        property bool needTestPassed: false
+        property bool isTestPassed: false
         width: parent.width/2.8
         height: parent.height/2.6
         anchors.verticalCenter: parent.verticalCenter
@@ -237,7 +288,14 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                stackView.push("qrc:/Beta/BetaMeasurementSettings.qml")
+                if(measurementButton.isTestPassed) {
+                    _cppApi_Beta.onMeasurementButton()
+                    stackView.push("qrc:/Beta/BetaMeasurementSettings.qml")
+                } else {
+                    measurementButton.needTestPassed = true;
+                    _cppApi_Beta.onHardwareTestButton()
+                    stackView.push("qrc:/Beta/BetaHardwareTest.qml")
+                }
             }
         }
     }
@@ -246,6 +304,8 @@ Item {
 
     Rectangle {
         id: backButton
+
+        signal signalBackButton()
         width: parent.width/3
         height: parent.height/5
         anchors.top: hardwareTestButton.bottom
@@ -283,6 +343,7 @@ Item {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
+                _cppApi_Beta.onBackButton()
                 stackView.pop()
             }
         }

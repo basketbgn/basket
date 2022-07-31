@@ -3,6 +3,36 @@ import QtQuick 2.0
 Item {
     width: 1280
     height: 800
+    id: mesurement
+
+    Connections {
+        target: parent
+        function onSendTime(t) {
+            time = t
+        }
+        function onSendStandardDeviation(sd) {
+            standardDeviation = sd;
+        }
+        function onSendDoseRate(dr) {
+            currentVal = dr
+        }
+        function onSendDoseRateDimension(dimension) {
+            measuredValueDimension = dimension
+        }
+        function onSendAverageDoseRate(avDR) {            
+            averageVal = avDR;
+        }
+        function onSendAverageDoseRateDimension(avDRd) {
+           measuredAverageValueDimension = avDRd;
+        }
+        function onSendDose(d) {
+            integralVal = d;
+        }
+        function onSendDoseDimension(dd) {
+            integralValueDimension = dd;
+        }
+    }
+
 
     // --- Свойства компонента "Измерение" ---
     property alias time: timeValue.seconds //Время измерения в секундах
@@ -15,6 +45,7 @@ Item {
 
     property string measuredValueType: qsTr("МПД") //Тип измеряемого значения
     property string measuredValueDimension: qsTr("Гр/с") //Размерность измеряемой величины
+    property string measuredAverageValueDimension: qsTr("Гр/с") //Размерность измеряемой величины
     property alias averageVal: averageValue.text //Среднее значение измеряемой величины
 
     property alias standardDeviation: standardDeviationStringValue.value //СКО
@@ -24,6 +55,9 @@ Item {
     property alias integralValueType: integralValueTitle.valueType //Тип интегральной величины
     property alias integralValueDimension: integralValueTitle.dimension //Размерность интегральной величины
     property alias integralVal: integralValue.text //Значение интегральной величины
+
+    property alias start: startButton.start //
+    property alias startButtonText: startButton.buttonText //
 
     property bool measurementAutoMode: true //True - если выбран автоматический режим измерения, False - если выбран ручной режим
 
@@ -200,7 +234,7 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         font.pixelSize: height * 0.7
         color: application.fontColor
-        text: qsTr("Средняя ") + measuredValueType + ", " + measuredValueDimension
+        text: qsTr("Средняя ") + measuredValueType + ", " + measuredAverageValueDimension
     }
 
     Text {
@@ -382,6 +416,7 @@ Item {
         buttonFontSizeCoef: 0.3
         buttonText: qsTr("Назад")
         onButtonClicked: {
+            back()
             stackView.pop()
         }
     }
@@ -389,24 +424,28 @@ Item {
     // --- Кнопка "Старт" ---
     CustomButton {
         id: startButton
-        property bool start: true
+        property bool start: false
         width: parent.width/5
         height: parent.height/6.5
         anchors.verticalCenter: backButton.verticalCenter
         anchors.left: parent.horizontalCenter
         anchors.leftMargin: parent.width/30
         buttonFontSizeCoef: 0.3
-        buttonText: start ? qsTr("Старт") : qsTr("Стоп")
+        buttonText: start ? qsTr("Стоп") :  qsTr("Старт")
         onButtonClicked: {
-            start = !start
             if(!start) {
-                measurementTimer.secondsValue = 0
-                measurementTimer.start()
+                //measurementTimer.secondsValue = 0
+                //measurementTimer.start()
+                started()
+                buttonText = qsTr("Стоп");
+                start = true;
             } else {
-                measurementTimer.stop()
+                //measurementTimer.stop()
+                stopped()
+                buttonText = qsTr("Старт");
+                start = false;
             }
-            signalStartButtonClicked(start) //start == true - калибровка остановлена, start == false - калибровка начата
-
+            //signalStartButtonClicked(start) //start == true - калибровка остановлена, start == false - калибровка начата
         }
     }
 }

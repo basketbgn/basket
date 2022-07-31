@@ -6,8 +6,33 @@ import "../Components/"
 
 Item {
     id: betaMeasurementSettings
-
     property bool isOperator: false //тестовое свойство, для проверки появления/скрытия кнопки "Калибровка"
+
+    Component.onCompleted: {
+        _cppApi_BetaMeasurementSettings.init();
+    }
+    // in Qml 5.15 there is a new syntax for connections
+    Connections {
+        target: _cppApi_BetaMeasurementSettings
+        function onSendPassword(str) {
+            if(str === 'Operator') {
+                betaMeasurementSettings.isOperator = true;
+                userType.text = "Оператор"
+            } else if (str === 'Verifier') {
+                betaMeasurementSettings.isOperator = false;
+                userType.text = "Поверитель"
+            } else if(str === 'Vendor') {
+                betaMeasurementSettings.isOperator = false;
+                userType.text = "Изготовитель"
+            }
+        }
+        function onSendChambersList(list) {
+            chamberComboBox.cbModel = list
+        }
+        function onTransmitName(name) {
+            userName.text = name
+        }
+    }
 
     // --- Статус-бар ---
     StatusBar {
@@ -98,7 +123,7 @@ Item {
                 id: chamberComboBox
                 anchors.fill: parent
                 cbFontSizeCoef: 1//0.9
-                cbModel: [qsTr("ИКБ1 Дата поверки: 12.12.2022"), qsTr("ИКБ2 Дата поверки: 12.12.2022")]
+                cbModel: [qsTr("")]
             }
         }
 
@@ -161,7 +186,8 @@ Item {
                 anchors.leftMargin: parent.width/50
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                checked: true
+                checked: false
+                enabled: false
                 indicator: Rectangle {
                     width: parent.width
                     height: parent.height
@@ -202,6 +228,7 @@ Item {
             buttonFontSizeCoef: 0.3
             buttonText: qsTr("Назад")
             onButtonClicked: {
+                _cppApi_BetaMeasurementSettings.onBackButton()
                 stackView.pop()
             }
         }
@@ -218,6 +245,12 @@ Item {
             buttonText: qsTr("Калибровка")
             visible: !isOperator
             onButtonClicked: {
+                _cppApi_BetaMeasurementSettings.onCalibrationButton(range.comboBoxText,
+                                                                    control.checked,
+                                                                    temperature.inputText,
+                                                                    atmosphericPressureMercury.inputText,
+                                                                    correctionFactor.inputText,
+                                                                    chamberComboBox.cbModelCurrentText)
                 stackView.push("qrc:/Beta/BetaCalibration.qml")
             }
         }
@@ -233,6 +266,22 @@ Item {
             buttonFontSizeCoef: 0.3
             buttonText: qsTr("Измерение")
             onButtonClicked: {
+                _cppApi_BetaMeasurementSettings.onMeasurementButton(dimension.comboBoxText,
+                                                                    dimension.comboBoxText,
+                                                                    measurementMode.comboBoxText,
+                                                                    numberOFMeasurements.inputText,
+                                                                    timeOfOneMeasurement.inputText,
+                                                                    thresholds.comboBoxText,
+                                                                    timeOfOneMeasurement.inputText,
+                                                                    "DoseThreashold",
+
+                                                                    range.comboBoxText,
+                                                                    control.checked,
+                                                                    temperature.inputText,
+                                                                    atmosphericPressureMercury.inputText,
+                                                                    correctionFactor.inputText,
+                                                                    chamberComboBox.cbModelCurrentText
+                                                                    )
                 stackView.push("qrc:/Beta/BetaMeasurement.qml")
             }
         }
@@ -321,7 +370,7 @@ Item {
             comboBoxWidth: width * 0.35
             comboBoxHeight: height
             comboBoxFontSizeCoef: 0.85
-            comboBoxModel: [qsTr("Гр/с"), qsTr("...")]
+            comboBoxModel: [qsTr("Гр/с"), qsTr("Гр/мин"), qsTr("Гр/ч")]
             title: qsTr("Размерность\nизмеряемой величины")
         }
 
@@ -339,6 +388,7 @@ Item {
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{8}/}
             title: qsTr("Время одного измерения, с")
+            inputText: "10"
         }
 
         // --- Количество измерений ---
@@ -352,6 +402,7 @@ Item {
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{8}/}
             title: qsTr("Количество измерений")
+            inputText: "1"
         }
 
         // --- Корректирующий коэффициент ---
@@ -366,6 +417,7 @@ Item {
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{,4}[\.\,]{,1}\d{,4}/}
             title: qsTr("Корректирующий коэффициент")
+            inputText: "1"
         }
 
         // --- Кнопка "Условия измерения" ---
@@ -422,6 +474,7 @@ Item {
             inputValidator: RegExpValidator{regExp: /[\-]{,1}\d{,4}[\.\,]{,1}\d{,4}/}
             titleFontSize: parent.height/25
             title: qsTr("Температура, \u00B0C")
+            inputText: "25"
         }
 
         Image {
@@ -445,6 +498,7 @@ Item {
             inputValidator: RegExpValidator{regExp: /\d{,4}[\.\,]{,1}\d{,4}/}
             titleFontSize: parent.height/25
             title: qsTr("Давление, мм.рт.ст.")
+            inputText: "743"
         }
 
         Image {
@@ -488,7 +542,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 font.pixelSize: parent.height*0.65
                 color: application.fontColor
-                text: qsTr("5")
+                text: qsTr((atmosphericPressureMercury.inputText * 133.32).toString())
             }
             Rectangle {
                 id: underLine
