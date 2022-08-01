@@ -59,6 +59,8 @@ private:
     QString blockName{""};
     QString Value{""};
     QString IntegralValue{""};
+
+    quint16 TimerStartCounter = 60;
 };
 
 #endif // GAMMA_IK_MEASURING_MEASURE_H

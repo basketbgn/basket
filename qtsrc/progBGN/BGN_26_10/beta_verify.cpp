@@ -96,8 +96,16 @@ void Beta_verify::timeOut() //раз в секунду
 
 void Beta_verify::startTimeOut()
 {
-    ui->pushButton_3->setEnabled(true);
-    timer->start(1000);
+    if(TimerStartCounter == 0) {
+        startTimer->stop();
+        ui->pushButton_3->setEnabled(true);
+        timer->start(1000);
+        time=0;
+        ui->label_3->setText(QString::number(time) + " c");
+    } else {
+        TimerStartCounter--;
+        ui->label_3->setText("ПРОГРЕВ! " + QString::number(TimerStartCounter));
+    }
 }
 
 void Beta_verify::on_pushButton_2_clicked() //кропка старт
@@ -109,12 +117,12 @@ void Beta_verify::on_pushButton_2_clicked() //кропка старт
     ui->pushButton_3->setEnabled(false);
 
 
-    startTimer->setSingleShot(true);
-    startTimer->start(60000);
+    startTimer->start(1000);
+    TimerStartCounter = 60;
     Isum=0;
     time=0;
     otkl=0;
-    ui->label_3->setText("ПРОГРЕВ!");
+    ui->label_3->setText("ПРОГРЕВ! " + QString::number(TimerStartCounter));
 }
 
 void Beta_verify::on_pushButton_3_clicked() // кнопка стоп
@@ -171,6 +179,5 @@ void Beta_verify::on_pushButton_4_clicked() //кнопка записать
 
 void Beta_verify::on_pushButton_clicked() //назад
 {
-
     close();
 }

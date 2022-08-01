@@ -49,6 +49,7 @@ private:
     double otkl{0};
     double StandardDeviation{0};
     QString chamberName{""};
+    quint16 TimerStartCounter = 60;
 };
 
 #endif // BETA_VERIFY_H

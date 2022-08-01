@@ -51,6 +51,8 @@ private:
 
     quint8 MesParam{0};
     QString chamberName{""};
+
+    quint16 TimerStartCounter = 60;
 };
 
 #endif // GAMMA_IK_VERIFY_H

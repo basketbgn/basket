@@ -58,7 +58,7 @@ private:
     ulong time{0};
     double doseRate{0};
     double dose{0};    // переменная являющаяся интегралом от мощности дозы (выводящаяся на экран) и обнуляющаяся при автоматическом измерении
-
+    quint16 TimerStartCounter = 60;
 };
 
 #endif // BETA_MEASURING_MEASURE_H

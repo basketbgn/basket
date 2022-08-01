@@ -1,4 +1,4 @@
-//********************************  Гамма излучение - ионизационные камеры - измерение ************************
+//!********************************  Гамма излучение - ионизационные камеры - измерение ************************
 
 #include "gamma_ik_measuring_measure.h"
 #include "ui_gamma_ik_measuring_measure.h"
@@ -179,28 +179,35 @@ void Gamma_IK_measuring_measure::on_pushButton_9_clicked()//назад
 
 void Gamma_IK_measuring_measure::on_pushButton_7_clicked() // кнопка старт
 {
+    ui->label_13->setText("1");
     ui->pushButton_7->setEnabled(false);
     ui->pushButton_9->setEnabled(false);
     ui->pushButton_7->setVisible(false);
     ui->pushButton_9->setVisible(false);
     ui->pushButton_8->setEnabled(false);
 
-    timerStart->setSingleShot(true);
-    timerStart->start(60000);
-    ui->label_3->setText(QString::number(time));
+    timerStart->start(1000);
+    TimerStartCounter = 60;
+    ui->label_3->setText(QString::number(TimerStartCounter));
     ui->label_21->setText("ПРОГРЕВ!!!");
 }
 
 void Gamma_IK_measuring_measure::startTimeOut() //прогрев
 {
-    ui->pushButton_8->setEnabled(true);
-    timer->start(1000);
-    time=0;
-    ui->label_3->setText(QString::number(time)); //обнуляем строку со временем
-    dose=0;
-    otkl=0;
-    doseForAuto=0;//обнуляем интегральные переменные чтобы не накапливалось
-    ui->label_21->setText("");//обнуляем строку с порогами
+    if(TimerStartCounter == 0) {
+        timerStart->stop();
+        ui->pushButton_8->setEnabled(true);
+        timer->start(1000);
+        time=0;
+        ui->label_3->setText(QString::number(time) + " c");
+        dose=0;
+        otkl=0;
+        doseForAuto=0;//обнуляем интегральные переменные чтобы не накапливалось
+        ui->label_21->setText(""); //обнуляем строку с порогами
+    } else {
+        TimerStartCounter--;
+        ui->label_3->setText(QString::number(TimerStartCounter));
+    }
 }
 
 

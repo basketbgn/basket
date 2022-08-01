@@ -190,28 +190,38 @@ void Beta_measuring_measure::on_pushButton_clicked() //назад
 
 void Beta_measuring_measure::on_pushButton_2_clicked() //старт
 {
+    ui->label_13->setText("0");
+
     ui->pushButton_2->setEnabled(false);
     ui->pushButton->setEnabled(false);
     ui->pushButton_3->setEnabled(false);
     ui->pushButton_2->setVisible(false);
     ui->pushButton->setVisible(false);
 
-    timerStart->setSingleShot(true);
-    timerStart->start(60000);
-    ui->label_3->setText(QString::number(time));
+    //timerStart->setSingleShot(true);
+    timerStart->start(1000);
+    TimerStartCounter = 60;
+    ui->label_3->setText(QString::number(TimerStartCounter));
     ui->label_21->setText("ПРОГРЕВ!!!");
 }
 
 void Beta_measuring_measure::startTimeOut() //прогрев
 {
-    ui->pushButton_3->setEnabled(true);
-    timer->start(1000);
-    time=0;
-    ui->label_3->setText(QString::number(time));
-    dose=0;
-    otkl=0;
-    doseForAuto=0;//обнуляем интегральные переменные чтобы не накапливалось
-    ui->label_21->setText("");
+    if(TimerStartCounter == 0) {
+        timerStart->stop();
+        ui->pushButton_3->setEnabled(true);
+        timer->start(1000);
+        time=0;
+        ui->label_3->setText(QString::number(time) + " c");
+        dose=0;
+        otkl=0;
+        doseForAuto=0;//обнуляем интегральные переменные чтобы не накапливалось
+        ui->label_21->setText("");
+    } else {
+        TimerStartCounter--;
+        ui->label_3->setText(QString::number(TimerStartCounter));
+    }
+
 }
 
 
