@@ -1,0 +1,718 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+ABSTRACT_MEASUREMENT_MEASUREMENT_H	abstract_measurement_measurement.h	6;"	d
+ADC0	electrometer_test.h	/^    const uint ADC0 = 0x7fffff;$/;"	m	class:Electrometer_test
+AMOUNT	rs485.h	/^    quint8 AMOUNT = 0;              \/\/ количество регистров скорости счета ТОРОПЫ - 2 для float$/;"	m	class:RS485
+AUTO_MEASUREMENT_RESULT_H	auto_measurement_result.h	2;"	d
+AVERAGEADC_H	averageadc.h	2;"	d
+AVERAGEMODBUS_H	averagemodbus.h	2;"	d
+Abstract_measurement_measurement	abstract_measurement_measurement.cpp	/^Abstract_measurement_measurement::Abstract_measurement_measurement(const QString dimension,const int dimensionForTime,$/;"	f	class:Abstract_measurement_measurement
+Abstract_measurement_measurement	abstract_measurement_measurement.h	/^class Abstract_measurement_measurement \/\/класс участвует в множественном наследовании, соответственно он не должен быть наследником QObject иначе возможны конфликты$/;"	c
+Auto_measurement_result	auto_measurement_result.cpp	/^Auto_measurement_result::Auto_measurement_result(QWidget *parent,QString value, QString integralValue,$/;"	f	class:Auto_measurement_result
+Auto_measurement_result	auto_measurement_result.h	/^class Auto_measurement_result : public QDialog$/;"	c
+AverageADC	averageadc.cpp	/^AverageADC::AverageADC()$/;"	f	class:AverageADC
+AverageADC	averageadc.h	/^class AverageADC: public QObject$/;"	c
+AverageModbus	averagemodbus.cpp	/^AverageModbus::AverageModbus()$/;"	f	class:AverageModbus
+AverageModbus	averagemodbus.h	/^class AverageModbus: public QObject$/;"	c
+BAUDS	rs485.h	/^    const int BAUDS = 57600;$/;"	m	class:RS485
+BDG	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::BDG(Block_BDG *pointer) \/\/прием указателя на объект блока БДГ (чтобы можно было бы обращаться к объекту из этого класса)$/;"	f	class:Gamma_BDG_measuring_measure
+BDGorBDKN	rs485.cpp	/^bool RS485::BDGorBDKN=0;$/;"	m	class:RS485	file:
+BDGorBDKN	rs485.h	/^    static bool BDGorBDKN; \/\/BDG=0 BDKN=1$/;"	m	class:RS485
+BETA_CHAMBER_H	beta_chamber.h	2;"	d
+BETA_H	beta.h	2;"	d
+BETA_MEASURING_H	beta_measuring.h	2;"	d
+BETA_MEASURING_MEASURE_H	beta_measuring_measure.h	2;"	d
+BETA_VERIFY_H	beta_verify.h	2;"	d
+BLOCK_BDG_H	block_bdg.h	2;"	d
+BLOCK_BDKN_H	block_bdkn.h	2;"	d
+Beta	beta.cpp	/^Beta::Beta(QWidget *parent) :$/;"	f	class:Beta
+Beta	beta.h	/^class Beta : public QDialog$/;"	c
+Beta	beta_measuring_measure.cpp	/^void Beta_measuring_measure::Beta(Beta_chamber* x) \/\/прием указателя на объект бета камеры (чтобы можно было бы обращаться к объекту из этого класса)$/;"	f	class:Beta_measuring_measure
+Beta_chamber	beta_chamber.cpp	/^Beta_chamber::Beta_chamber(uint8_t r, bool comp,double temp,double p, double corrF, QString chamName)$/;"	f	class:Beta_chamber
+Beta_chamber	beta_chamber.h	/^class Beta_chamber:public Ichamber$/;"	c
+Beta_measuring	beta_measuring.cpp	/^Beta_measuring::Beta_measuring(QWidget *parent) :$/;"	f	class:Beta_measuring
+Beta_measuring	beta_measuring.h	/^class Beta_measuring : public QDialog$/;"	c
+Beta_measuring_measure	beta_measuring_measure.cpp	/^Beta_measuring_measure::Beta_measuring_measure(QWidget *parent, const QString dimension, const int dimensionForTime,$/;"	f	class:Beta_measuring_measure
+Beta_measuring_measure	beta_measuring_measure.h	/^class Beta_measuring_measure : public QDialog, public Abstract_measurement_measurement \/\/множественное наследование$/;"	c
+Beta_verify	beta_verify.cpp	/^Beta_verify::Beta_verify(QWidget *parent) :$/;"	f	class:Beta_verify
+Beta_verify	beta_verify.h	/^class Beta_verify : public QDialog$/;"	c
+Block_BDG	block_bdg.cpp	/^Block_BDG::Block_BDG(float temp,float p, float corrF, QString name, quint8 mesparam):$/;"	f	class:Block_BDG
+Block_BDG	block_bdg.h	/^class Block_BDG : public Iblock$/;"	c
+Block_BDKN	block_bdkn.cpp	/^Block_BDKN::Block_BDKN(float temp,float p, float corrF,$/;"	f	class:Block_BDKN
+Block_BDKN	block_bdkn.h	/^class Block_BDKN:public Iblock$/;"	c
+CAMBERCOMPENSATION_VIEW_H	cambercompensation_view.h	2;"	d
+CHAMBERCOMPENSATION_H	chambercompensation.h	2;"	d
+COM	rs232.h	/^    QString COM;$/;"	m	class:RS232
+CamberCompensation_view	cambercompensation_view.cpp	/^CamberCompensation_view::CamberCompensation_view(QWidget *parent,int voltage) :$/;"	f	class:CamberCompensation_view
+CamberCompensation_view	cambercompensation_view.h	/^class CamberCompensation_view : public QDialog$/;"	c
+ChamberCompensation	chambercompensation.cpp	/^ChamberCompensation::ChamberCompensation(QWidget *parent,int voltage):$/;"	f	class:ChamberCompensation
+ChamberCompensation	chambercompensation.h	/^class ChamberCompensation : public QDialog$/;"	c
+Comp	ichamber.h	/^    bool Comp;     \/\/флаг учета компенсации$/;"	m	class:Ichamber
+ConnectPort	rs485.cpp	/^void RS485::ConnectPort()$/;"	f	class:RS485
+DATA_BITS	rs485.h	/^    const int DATA_BITS = 8;$/;"	m	class:RS485
+DirectoryOfThisScript	.ycm_extra_conf.py	/^def DirectoryOfThisScript():$/;"	f
+DisconnectPort	rs485.cpp	/^void RS485::DisconnectPort()$/;"	f	class:RS485
+ELECTROMETER_TEST_H	electrometer_test.h	2;"	d
+ELECTROMETER_TEST_RESULT_H	electrometer_test_result.h	2;"	d
+EMULELECTROMETER_H	emulelectrometer.h	2;"	d
+Electrometer_test	electrometer_test.cpp	/^Electrometer_test::Electrometer_test(QWidget *parent) :$/;"	f	class:Electrometer_test
+Electrometer_test	electrometer_test.h	/^class Electrometer_test : public QDialog$/;"	c
+Electrometer_test_result	electrometer_test_result.cpp	/^Electrometer_test_result::Electrometer_test_result(QWidget *parent) :$/;"	f	class:Electrometer_test_result
+Electrometer_test_result	electrometer_test_result.h	/^class Electrometer_test_result : public QDialog$/;"	c
+EmulElectrometer	emulelectrometer.cpp	/^EmulElectrometer::EmulElectrometer()$/;"	f	class:EmulElectrometer
+EmulElectrometer	emulelectrometer.h	/^class EmulElectrometer:public QObject$/;"	c
+FlagsForFile	.ycm_extra_conf.py	/^def FlagsForFile( filename, **kwargs ):$/;"	f
+GAMMAIK_CHAMBER_H	gammaik_chamber.h	2;"	d
+GAMMA_BDG_H	gamma_bdg.h	2;"	d
+GAMMA_BDG_MEASURING_H	gamma_bdg_measuring.h	2;"	d
+GAMMA_BDG_MEASURING_MEASURE_H	gamma_bdg_measuring_measure.h	2;"	d
+GAMMA_BDG_TEST_H	gamma_bdg_test.h	2;"	d
+GAMMA_BDG_VERIFY_H	gamma_bdg_verify.h	2;"	d
+GAMMA_H	gamma.h	2;"	d
+GAMMA_IK_H	gamma_ik.h	2;"	d
+GAMMA_IK_MEASURING_H	gamma_ik_measuring.h	2;"	d
+GAMMA_IK_MEASURING_MEASURE_H	gamma_ik_measuring_measure.h	2;"	d
+GAMMA_IK_VERIFY_H	gamma_ik_verify.h	2;"	d
+Gamma	gamma.cpp	/^Gamma::Gamma(QWidget *parent) :$/;"	f	class:Gamma
+Gamma	gamma.h	/^class Gamma : public QDialog$/;"	c
+GammaIK	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::GammaIK(GammaIK_chamber *ikgamma)$/;"	f	class:Gamma_IK_measuring_measure
+GammaIK_chamber	gammaik_chamber.cpp	/^GammaIK_chamber::GammaIK_chamber(uint8_t r, bool comp,double temp,double p, double corrF, QString chamName, quint8 mesparam)$/;"	f	class:GammaIK_chamber
+GammaIK_chamber	gammaik_chamber.h	/^class GammaIK_chamber: public Ichamber$/;"	c
+Gamma_BDG	gamma_bdg.cpp	/^Gamma_BDG::Gamma_BDG(QWidget *parent) :$/;"	f	class:Gamma_BDG
+Gamma_BDG	gamma_bdg.h	/^class Gamma_BDG : public QDialog$/;"	c
+Gamma_BDG_measuring	gamma_bdg_measuring.cpp	/^Gamma_BDG_measuring::Gamma_BDG_measuring(QWidget *parent) :$/;"	f	class:Gamma_BDG_measuring
+Gamma_BDG_measuring	gamma_bdg_measuring.h	/^class Gamma_BDG_measuring : public QDialog$/;"	c
+Gamma_BDG_measuring_measure	gamma_bdg_measuring_measure.cpp	/^Gamma_BDG_measuring_measure::Gamma_BDG_measuring_measure(QWidget *parent,const QString dimension,$/;"	f	class:Gamma_BDG_measuring_measure
+Gamma_BDG_measuring_measure	gamma_bdg_measuring_measure.h	/^class Gamma_BDG_measuring_measure : public QDialog, public Abstract_measurement_measurement$/;"	c
+Gamma_BDG_test	gamma_bdg_test.cpp	/^Gamma_BDG_test::Gamma_BDG_test(QWidget *parent) :$/;"	f	class:Gamma_BDG_test
+Gamma_BDG_test	gamma_bdg_test.h	/^class Gamma_BDG_test : public QDialog$/;"	c
+Gamma_BDG_verify	gamma_bdg_verify.cpp	/^Gamma_BDG_verify::Gamma_BDG_verify(QWidget *parent) :$/;"	f	class:Gamma_BDG_verify
+Gamma_BDG_verify	gamma_bdg_verify.h	/^class Gamma_BDG_verify : public QDialog$/;"	c
+Gamma_IK	gamma_ik.cpp	/^Gamma_IK::Gamma_IK(QWidget *parent) :$/;"	f	class:Gamma_IK
+Gamma_IK	gamma_ik.h	/^class Gamma_IK : public QDialog$/;"	c
+Gamma_IK_measuring	gamma_ik_measuring.cpp	/^Gamma_IK_measuring::Gamma_IK_measuring(QWidget *parent) :$/;"	f	class:Gamma_IK_measuring
+Gamma_IK_measuring	gamma_ik_measuring.h	/^class Gamma_IK_measuring : public QDialog$/;"	c
+Gamma_IK_measuring_measure	gamma_ik_measuring_measure.cpp	/^Gamma_IK_measuring_measure::Gamma_IK_measuring_measure(QWidget *parent,const QString dimension,$/;"	f	class:Gamma_IK_measuring_measure
+Gamma_IK_measuring_measure	gamma_ik_measuring_measure.h	/^class Gamma_IK_measuring_measure : public QDialog, public Abstract_measurement_measurement$/;"	c
+Gamma_IK_verify	gamma_ik_verify.cpp	/^Gamma_IK_verify::Gamma_IK_verify(QWidget *parent) :$/;"	f	class:Gamma_IK_verify
+Gamma_IK_verify	gamma_ik_verify.h	/^class Gamma_IK_verify : public QDialog$/;"	c
+GetCompilationInfoForFile	.ycm_extra_conf.py	/^def GetCompilationInfoForFile( filename ):$/;"	f
+IBLOCK_H	iblock.h	2;"	d
+ICHAMBER_H	ichamber.h	2;"	d
+IKgamma	gamma_ik_measuring.h	/^    GammaIK_chamber* IKgamma;$/;"	m	class:Gamma_IK_measuring
+Iblock	iblock.cpp	/^Iblock::Iblock(float temp,float p, float corrF):$/;"	f	class:Iblock
+Iblock	iblock.h	/^class Iblock:public QObject$/;"	c
+Ichamber	ichamber.cpp	/^Ichamber::Ichamber(uint8_t r,bool comp,double temp,double p, double corrF):$/;"	f	class:Ichamber
+Ichamber	ichamber.h	/^class Ichamber:public QObject$/;"	c
+Initialization	auto_measurement_result.h	/^    QString Initialization;$/;"	m	class:Auto_measurement_result
+IsHeaderFile	.ycm_extra_conf.py	/^def IsHeaderFile( filename ):$/;"	f
+MAINWINDOW_H	mainwindow.h	2;"	d
+MODBUS_EMULATOR_H	modbus_emulator.h	2;"	d
+MPD	beta_chamber.cpp	/^double Beta_chamber::MPD()$/;"	f	class:Beta_chamber
+MainWindow	mainwindow.cpp	/^MainWindow::MainWindow(QWidget *parent) :$/;"	f	class:MainWindow
+MainWindow	mainwindow.h	/^class MainWindow : public QMainWindow     \/\/ наследуется от QMainWindow$/;"	c
+MakeRelativePathsInFlagsAbsolute	.ycm_extra_conf.py	/^def MakeRelativePathsInFlagsAbsolute( flags, working_directory ):$/;"	f
+Modbus_emulator	modbus_emulator.cpp	/^Modbus_emulator::Modbus_emulator()$/;"	f	class:Modbus_emulator
+Modbus_emulator	modbus_emulator.h	/^class Modbus_emulator: public QObject$/;"	c
+NEUTRON_BDKN_TEST_H	neutron_bdkn_test.h	2;"	d
+NEUTRON_H	neutron.h	2;"	d
+NEUTRON_MEASURING_H	neutron_measuring.h	2;"	d
+NEUTRON_MEASURING_MEASURE_H	neutron_measuring_measure.h	2;"	d
+NEUTRON_VERIFY_H	neutron_verify.h	2;"	d
+Neutron	neutron.cpp	/^Neutron::Neutron(QWidget *parent) :$/;"	f	class:Neutron
+Neutron	neutron.h	/^class Neutron : public QDialog$/;"	c
+Neutron_BDKN_test	neutron_bdkn_test.cpp	/^Neutron_BDKN_test::Neutron_BDKN_test(QWidget *parent) :$/;"	f	class:Neutron_BDKN_test
+Neutron_BDKN_test	neutron_bdkn_test.h	/^class Neutron_BDKN_test : public QDialog$/;"	c
+Neutron_measuring	neutron_measuring.cpp	/^Neutron_measuring::Neutron_measuring(QWidget *parent) :$/;"	f	class:Neutron_measuring
+Neutron_measuring	neutron_measuring.h	/^class Neutron_measuring : public QDialog$/;"	c
+Neutron_measuring_measure	neutron_measuring_measure.cpp	/^Neutron_measuring_measure::Neutron_measuring_measure(QWidget *parent,$/;"	f	class:Neutron_measuring_measure
+Neutron_measuring_measure	neutron_measuring_measure.h	/^class Neutron_measuring_measure : public QDialog, public Abstract_measurement_measurement$/;"	c
+Neutron_verify	neutron_verify.cpp	/^Neutron_verify::Neutron_verify(QWidget *parent) :$/;"	f	class:Neutron_verify
+Neutron_verify	neutron_verify.h	/^class Neutron_verify : public QDialog$/;"	c
+PARITY	rs485.h	/^    const int PARITY = QSerialPort::NoParity;$/;"	m	class:RS485
+PASSWORD_H	password.h	2;"	d
+PORT	rs485.h	/^    const QString PORT = "\/dev\/ttyUSB0";$/;"	m	class:RS485
+Passed	gamma_bdg_test.h	/^    bool Passed=true;$/;"	m	class:Gamma_BDG_test
+Passed	neutron_bdkn_test.h	/^    bool Passed=true;$/;"	m	class:Neutron_BDKN_test
+Password	password.cpp	/^Password::Password()$/;"	f	class:Password
+Password	password.h	/^class Password$/;"	c
+RESPONSE_TIME	rs485.h	/^    const int RESPONSE_TIME = 1000;$/;"	m	class:RS485
+RS232	rs232.cpp	/^RS232::RS232(QObject* parent):QObject(parent)$/;"	f	class:RS232
+RS232	rs232.h	/^class RS232:public QObject$/;"	c
+RS232_H	rs232.h	2;"	d
+RS485	rs485.cpp	/^RS485::RS485(QObject* parent):QObject(parent)$/;"	f	class:RS485
+RS485	rs485.h	/^class RS485:public QObject$/;"	c
+RS485_H	rs485.h	2;"	d
+ReadPort	rs485.cpp	/^void RS485::ReadPort() \/\/метод считывания из порта$/;"	f	class:RS485
+RefreshSignal	settings_verifier_gamma_ik.cpp	/^void Settings_verifier_gamma_ik::RefreshSignal()$/;"	f	class:Settings_verifier_gamma_ik
+SERVER_ADDRESS	rs485.h	/^    quint8 SERVER_ADDRESS=0;\/\/ адрес сервера (MASTER)$/;"	m	class:RS485
+SETTINGS_BDG_H	settings_bdg.h	2;"	d
+SETTINGS_BDKN_H	settings_bdkn.h	2;"	d
+SETTINGS_ELECTROMETER_H	settings_electrometer.h	2;"	d
+SETTINGS_H	settings.h	2;"	d
+SETTINGS_VERIFIER_BETA_H	settings_verifier_beta.h	2;"	d
+SETTINGS_VERIFIER_CHANGE_PASSWORD_H	settings_verifier_change_password.h	2;"	d
+SETTINGS_VERIFIER_GAMMA_BDG_H	settings_verifier_gamma_bdg.h	2;"	d
+SETTINGS_VERIFIER_GAMMA_IK_H	settings_verifier_gamma_ik.h	2;"	d
+SETTINGS_VERIFIER_GAMMA_NUCLIDES_H	settings_verifier_gamma_nuclides.h	2;"	d
+SETTINGS_VERIFIER_H	settings_verifier.h	2;"	d
+SETTINGS_VERIFIER_NEUTRON_H	settings_verifier_neutron.h	2;"	d
+SOURCE_EXTENSIONS	.ycm_extra_conf.py	/^SOURCE_EXTENSIONS = [ '.cpp', '.cxx', '.cc', '.c', '.m', '.mm' ]$/;"	v
+START_ADDRESS	rs485.h	/^    quint16 START_ADDRESS = 0;       \/\/ адрес регистра скорости счета ТОРОПЫ$/;"	m	class:RS485
+STOP_BITS	rs485.h	/^    const int STOP_BITS = 1;$/;"	m	class:RS485
+Settings	settings.cpp	/^Settings::Settings(QWidget *parent) :$/;"	f	class:Settings
+Settings	settings.h	/^class Settings : public QDialog$/;"	c
+Settings_BDG	settings_bdg.cpp	/^Settings_BDG::Settings_BDG(QWidget *parent) :$/;"	f	class:Settings_BDG
+Settings_BDG	settings_bdg.h	/^class Settings_BDG : public QDialog$/;"	c
+Settings_BDKN	settings_bdkn.cpp	/^Settings_BDKN::Settings_BDKN(QWidget *parent) :$/;"	f	class:Settings_BDKN
+Settings_BDKN	settings_bdkn.h	/^class Settings_BDKN : public QDialog$/;"	c
+Settings_electrometer	settings_electrometer.cpp	/^Settings_electrometer::Settings_electrometer(QWidget *parent) :$/;"	f	class:Settings_electrometer
+Settings_electrometer	settings_electrometer.h	/^class Settings_electrometer : public QDialog$/;"	c
+Settings_verifier	settings_verifier.cpp	/^Settings_verifier::Settings_verifier(QWidget *parent) :$/;"	f	class:Settings_verifier
+Settings_verifier	settings_verifier.h	/^class Settings_verifier : public QDialog$/;"	c
+Settings_verifier_beta	settings_verifier_beta.cpp	/^Settings_verifier_beta::Settings_verifier_beta(QWidget *parent) :$/;"	f	class:Settings_verifier_beta
+Settings_verifier_beta	settings_verifier_beta.h	/^class Settings_verifier_beta : public QDialog$/;"	c
+Settings_verifier_gamma_bdg	settings_verifier_gamma_bdg.cpp	/^Settings_verifier_gamma_bdg::Settings_verifier_gamma_bdg(QWidget *parent) :$/;"	f	class:Settings_verifier_gamma_bdg
+Settings_verifier_gamma_bdg	settings_verifier_gamma_bdg.h	/^class Settings_verifier_gamma_bdg : public QDialog$/;"	c
+Settings_verifier_gamma_ik	settings_verifier_gamma_ik.cpp	/^Settings_verifier_gamma_ik::Settings_verifier_gamma_ik(QWidget *parent) :$/;"	f	class:Settings_verifier_gamma_ik
+Settings_verifier_gamma_ik	settings_verifier_gamma_ik.h	/^class Settings_verifier_gamma_ik : public QDialog$/;"	c
+Settings_verifier_gamma_nuclides	settings_verifier_gamma_nuclides.cpp	/^Settings_verifier_gamma_nuclides::Settings_verifier_gamma_nuclides(QWidget *parent) :$/;"	f	class:Settings_verifier_gamma_nuclides
+Settings_verifier_gamma_nuclides	settings_verifier_gamma_nuclides.h	/^class Settings_verifier_gamma_nuclides : public QDialog$/;"	c
+Settings_verifier_neutron	settings_verifier_neutron.cpp	/^Settings_verifier_neutron::Settings_verifier_neutron(QWidget *parent) :$/;"	f	class:Settings_verifier_neutron
+Settings_verifier_neutron	settings_verifier_neutron.h	/^class Settings_verifier_neutron : public QDialog$/;"	c
+SlotGetADC	electrometer_test.cpp	/^void Electrometer_test::SlotGetADC()$/;"	f	class:Electrometer_test
+USER_SETTINGS_H	user_settings.h	2;"	d
+Ui	auto_measurement_result.h	/^namespace Ui {$/;"	n
+Ui	beta.h	/^namespace Ui {$/;"	n
+Ui	beta_measuring.h	/^namespace Ui {$/;"	n
+Ui	beta_measuring_measure.h	/^namespace Ui {$/;"	n
+Ui	beta_verify.h	/^namespace Ui {$/;"	n
+Ui	cambercompensation_view.h	/^namespace Ui {$/;"	n
+Ui	chambercompensation.h	/^namespace Ui {$/;"	n
+Ui	electrometer_test.h	/^namespace Ui {$/;"	n
+Ui	electrometer_test_result.h	/^namespace Ui {$/;"	n
+Ui	gamma.h	/^namespace Ui {$/;"	n
+Ui	gamma_bdg.h	/^namespace Ui {$/;"	n
+Ui	gamma_bdg_measuring.h	/^namespace Ui {$/;"	n
+Ui	gamma_bdg_measuring_measure.h	/^namespace Ui {$/;"	n
+Ui	gamma_bdg_test.h	/^namespace Ui {$/;"	n
+Ui	gamma_bdg_verify.h	/^namespace Ui {$/;"	n
+Ui	gamma_ik.h	/^namespace Ui {$/;"	n
+Ui	gamma_ik_measuring.h	/^namespace Ui {$/;"	n
+Ui	gamma_ik_measuring_measure.h	/^namespace Ui {$/;"	n
+Ui	gamma_ik_verify.h	/^namespace Ui {$/;"	n
+Ui	mainwindow.h	/^namespace Ui {$/;"	n
+Ui	neutron.h	/^namespace Ui {$/;"	n
+Ui	neutron_bdkn_test.h	/^namespace Ui {$/;"	n
+Ui	neutron_measuring.h	/^namespace Ui {$/;"	n
+Ui	neutron_measuring_measure.h	/^namespace Ui {$/;"	n
+Ui	neutron_verify.h	/^namespace Ui {$/;"	n
+Ui	settings.h	/^namespace Ui {$/;"	n
+Ui	settings_bdg.h	/^namespace Ui {$/;"	n
+Ui	settings_bdkn.h	/^namespace Ui {$/;"	n
+Ui	settings_electrometer.h	/^namespace Ui {$/;"	n
+Ui	settings_verifier.h	/^namespace Ui {$/;"	n
+Ui	settings_verifier_beta.h	/^namespace Ui {$/;"	n
+Ui	settings_verifier_change_password.h	/^namespace Ui {$/;"	n
+Ui	settings_verifier_gamma_bdg.h	/^namespace Ui {$/;"	n
+Ui	settings_verifier_gamma_ik.h	/^namespace Ui {$/;"	n
+Ui	settings_verifier_gamma_nuclides.h	/^namespace Ui {$/;"	n
+Ui	settings_verifier_neutron.h	/^namespace Ui {$/;"	n
+Ui	user_settings.h	/^namespace Ui {$/;"	n
+Ui	verifybetachambers.h	/^namespace Ui {$/;"	n
+Ui	verifygammachambers.h	/^namespace Ui {$/;"	n
+Ui	verifyneutron.h	/^namespace Ui {$/;"	n
+VERIFYBETACHAMBERS_H	verifybetachambers.h	2;"	d
+VERIFYGAMMACHAMBERS_H	verifygammachambers.h	2;"	d
+VERIFYNEUTRON_H	verifyneutron.h	2;"	d
+VOLTHEX_H	volthex.h	2;"	d
+VerifyBetaChambers	verifybetachambers.cpp	/^VerifyBetaChambers::VerifyBetaChambers(QWidget *parent) :$/;"	f	class:VerifyBetaChambers
+VerifyBetaChambers	verifybetachambers.h	/^class VerifyBetaChambers : public QDialog$/;"	c
+VerifyGammaChambers	verifygammachambers.cpp	/^VerifyGammaChambers::VerifyGammaChambers(QWidget *parent) :$/;"	f	class:VerifyGammaChambers
+VerifyGammaChambers	verifygammachambers.h	/^class VerifyGammaChambers : public QDialog$/;"	c
+VerifyNeutron	verifyneutron.cpp	/^VerifyNeutron::VerifyNeutron(QWidget *parent) :$/;"	f	class:VerifyNeutron
+VerifyNeutron	verifyneutron.h	/^class VerifyNeutron : public QDialog$/;"	c
+WRITE_SIZE	rs485.h	/^    const int WRITE_SIZE = 1;    \/\/ количество перезаписываемых регистров$/;"	m	class:RS485
+WriteToRegister	rs485.cpp	/^void RS485::WriteToRegister()$/;"	f	class:RS485
+account_CR	iblock.cpp	/^void Iblock::account_CR()$/;"	f	class:Iblock
+account_I	ichamber.cpp	/^void Ichamber::account_I()$/;"	f	class:Ichamber
+addRefresh	settings_verifier_neutron.cpp	/^void Settings_verifier_neutron::addRefresh()$/;"	f	class:Settings_verifier_neutron
+addRefreshSlot	settings_verifier_beta.cpp	/^void Settings_verifier_beta::addRefreshSlot()$/;"	f	class:Settings_verifier_beta
+addRefreshSlot	settings_verifier_gamma_nuclides.cpp	/^void Settings_verifier_gamma_nuclides::addRefreshSlot()$/;"	f	class:Settings_verifier_gamma_nuclides
+autoMode	abstract_measurement_measurement.cpp	/^void Abstract_measurement_measurement::autoMode(double &dose, QTimer *timer,QLabel* time,QLabel* times)$/;"	f	class:Abstract_measurement_measurement
+autoModeResult	beta_measuring_measure.cpp	/^void Beta_measuring_measure::autoModeResult(double AverageDoseRate, double DoseRate_deviation_average,$/;"	f	class:Beta_measuring_measure
+autoModeResult	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::autoModeResult(double AverageDoseRate, double DoseRate_deviation_average,$/;"	f	class:Gamma_BDG_measuring_measure
+autoModeResult	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::autoModeResult(double AverageDoseRate, double DoseRate_deviation_average,$/;"	f	class:Gamma_IK_measuring_measure
+autoModeResult	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::autoModeResult(double AverageDoseRate, double DoseRate_deviation_average,$/;"	f	class:Neutron_measuring_measure
+bytesDAC	electrometer_test.h	/^    QByteArray bytesDAC;$/;"	m	class:Electrometer_test
+bytesDAC	ichamber.h	/^    QByteArray bytesDAC; \/\/массив байтов заполняемый значениями ЦАПа и передаваемый вместе со значениями высокого$/;"	m	class:Ichamber
+callAverADC	averageadc.cpp	/^void AverageADC::callAverADC(long avADC) \/\/функция записи среднего значения в переменную averageADC$/;"	f	class:AverageADC
+callAverCR	averagemodbus.cpp	/^void AverageModbus::callAverCR(float avCR) \/\/функция в которой записываем усредненное значение в переменную$/;"	f	class:AverageModbus
+chamberName	beta_chamber.h	/^    QString chamberName; \/\/ имя камеры из которого узнаем чувствительность$/;"	m	class:Beta_chamber
+check	password.cpp	/^int Password::check() \/\/ф-я проверки введенного пароля (статическая)$/;"	f	class:Password
+compensationFlagSlot	beta_measuring.cpp	/^void Beta_measuring::compensationFlagSlot() \/\/ слот приема сигнала о проведенной компенсации$/;"	f	class:Beta_measuring
+compensationFlagSlot	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::compensationFlagSlot() \/\/слот выставляющий компенсацию$/;"	f	class:Gamma_IK_measuring
+compensationSlot	chambercompensation.cpp	/^void ChamberCompensation::compensationSlot(long ucomp1,long ucomp2,long ucomp3)$/;"	f	class:ChamberCompensation
+compilation_database_folder	.ycm_extra_conf.py	/^compilation_database_folder = ''$/;"	v
+connectPort	rs232.cpp	/^void RS232::connectPort()$/;"	f	class:RS232
+database	.ycm_extra_conf.py	/^  database = None$/;"	v
+database	.ycm_extra_conf.py	/^  database = ycm_core.CompilationDatabase( compilation_database_folder )$/;"	v
+delay	cambercompensation_view.cpp	/^void CamberCompensation_view::delay(int x)$/;"	f	class:CamberCompensation_view
+delay	electrometer_test.cpp	/^void Electrometer_test::delay(uint x)$/;"	f	class:Electrometer_test
+delayTimeOut	cambercompensation_view.cpp	/^void CamberCompensation_view::delayTimeOut()$/;"	f	class:CamberCompensation_view
+disconnectPort	rs232.cpp	/^void RS232::disconnectPort()$/;"	f	class:RS232
+doWork	modbus_emulator.cpp	/^void Modbus_emulator::doWork() \/\/слоты для доступа из другого потока$/;"	f	class:Modbus_emulator
+doWork	rs485.cpp	/^void RS485::doWork()$/;"	f	class:RS485
+doseRate	block_bdg.h	/^    float doseRate;$/;"	m	class:Block_BDG
+doseRate	block_bdkn.h	/^    float doseRate;        \/\/текущая мощность (или плотность потока)$/;"	m	class:Block_BDKN
+doseRateCount	block_bdg.cpp	/^void Block_BDG::doseRateCount()$/;"	f	class:Block_BDG
+doseRateCount	block_bdkn.cpp	/^void Block_BDKN::doseRateCount() \/\/функция рассчета окончательного параметра (ПП, МПД, МАЭД)$/;"	f	class:Block_BDKN
+doseRateCount	gammaik_chamber.cpp	/^void  GammaIK_chamber::doseRateCount() \/\/метод из которого можно узнать мощность дозы$/;"	f	class:GammaIK_chamber
+doseRateCountGamma	block_bdg.cpp	/^void Block_BDG::doseRateCountGamma()$/;"	f	class:Block_BDG
+doseShow	abstract_measurement_measurement.cpp	/^void Abstract_measurement_measurement::doseShow(double &z, QLabel *fig4) const$/;"	f	class:Abstract_measurement_measurement
+doseThreashold	abstract_measurement_measurement.cpp	/^void Abstract_measurement_measurement::doseThreashold(double &dose,QLabel* threashold,QTimer* timer,bool Fluence)$/;"	f	class:Abstract_measurement_measurement
+doseTo4	abstract_measurement_measurement.cpp	/^void Abstract_measurement_measurement::doseTo4(double &z1,$/;"	f	class:Abstract_measurement_measurement
+emul	averageadc.cpp	/^void AverageADC::emul()$/;"	f	class:AverageADC
+emul	averagemodbus.cpp	/^void AverageModbus::emul()$/;"	f	class:AverageModbus
+endWork	modbus_emulator.cpp	/^void Modbus_emulator::endWork() \/\/слоты для доступа из другого потока$/;"	f	class:Modbus_emulator
+endWork	rs485.cpp	/^void RS485::endWork()$/;"	f	class:RS485
+error	rs485.cpp	/^void RS485::error() \/\/ошибка соединения$/;"	f	class:RS485
+errorConnectionSlot	averagemodbus.cpp	/^void AverageModbus::errorConnectionSlot() \/\/слот приема сигнала от RS-485 и передачи этого сигнала далее$/;"	f	class:AverageModbus
+errorConnectionSlot	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::errorConnectionSlot() \/\/прием сигнала с ошибкой подключения$/;"	f	class:Gamma_BDG_measuring
+errorConnectionSlot	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::errorConnectionSlot() \/\/окончательный прием сигнала об ошибке подключения.$/;"	f	class:Gamma_BDG_measuring_measure
+errorConnectionSlot	gamma_bdg_test.cpp	/^void Gamma_BDG_test::errorConnectionSlot()$/;"	f	class:Gamma_BDG_test
+errorConnectionSlot	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::errorConnectionSlot()$/;"	f	class:Gamma_BDG_verify
+errorConnectionSlot	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::errorConnectionSlot() \/\/окончательный прием сигнала об ошибке подключения.$/;"	f	class:Gamma_IK_measuring_measure
+errorConnectionSlot	neutron_bdkn_test.cpp	/^void Neutron_BDKN_test::errorConnectionSlot()$/;"	f	class:Neutron_BDKN_test
+errorConnectionSlot	neutron_measuring.cpp	/^void Neutron_measuring::errorConnectionSlot()$/;"	f	class:Neutron_measuring
+errorConnectionSlot	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::errorConnectionSlot()$/;"	f	class:Neutron_measuring_measure
+errorConnectionSlot	neutron_verify.cpp	/^void Neutron_verify::errorConnectionSlot()$/;"	f	class:Neutron_verify
+errorSlot	iblock.cpp	/^void Iblock::errorSlot()$/;"	f	class:Iblock
+flags	.ycm_extra_conf.py	/^flags = [$/;"	v
+gausRand	modbus_emulator.cpp	/^double Modbus_emulator::gausRand(double MO, double sko) \/\/метод выдает случайное значение при передаче в него среднего и ско$/;"	f	class:Modbus_emulator
+getAvCR	averagemodbus.cpp	/^float AverageModbus::getAvCR() \/\/возвращаем значение (по запросу из другого класса)$/;"	f	class:AverageModbus
+getAverageADC	averageadc.cpp	/^long AverageADC::getAverageADC() \/\/функция из которой можно узнать текущее усредненное показание АЦП$/;"	f	class:AverageADC
+getBetaChamber	beta_verify.cpp	/^void Beta_verify::getBetaChamber(Beta_chamber *beta)$/;"	f	class:Beta_verify
+getBlockBDKN	neutron_verify.cpp	/^void Neutron_verify::getBlockBDKN(Block_BDKN* b)$/;"	f	class:Neutron_verify
+getBlockName	block_bdg.cpp	/^QString Block_BDG::getBlockName()$/;"	f	class:Block_BDG
+getBlockName	block_bdkn.cpp	/^QString Block_BDKN::getBlockName()$/;"	f	class:Block_BDKN
+getBlockName	gammaik_chamber.cpp	/^QString GammaIK_chamber::getBlockName()$/;"	f	class:GammaIK_chamber
+getChamberName	beta_chamber.cpp	/^QString Beta_chamber::getChamberName()$/;"	f	class:Beta_chamber
+getDoseRate	block_bdg.cpp	/^float Block_BDG::getDoseRate()$/;"	f	class:Block_BDG
+getDoseRate	block_bdkn.cpp	/^float Block_BDKN::getDoseRate()$/;"	f	class:Block_BDKN
+getDoseRate	gammaik_chamber.cpp	/^double GammaIK_chamber::getDoseRate()$/;"	f	class:GammaIK_chamber
+getDoseRateGamma	block_bdg.cpp	/^float Block_BDG::getDoseRateGamma()$/;"	f	class:Block_BDG
+getGammaBlock	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::getGammaBlock(Block_BDG* b)$/;"	f	class:Gamma_BDG_verify
+getGammaChamber	gamma_ik_verify.cpp	/^void Gamma_IK_verify::getGammaChamber(GammaIK_chamber *beta)$/;"	f	class:Gamma_IK_verify
+getIres	ichamber.cpp	/^double Ichamber::getIres() \/\/ метод из которого можно узнать текущую силу тока (в заданных значениях температуры и влажности)$/;"	f	class:Ichamber
+getMesDiap	block_bdkn.cpp	/^quint8 Block_BDKN::getMesDiap() \/\/ метод возвращающий диапазон$/;"	f	class:Block_BDKN
+getMesParam	block_bdg.cpp	/^quint8 Block_BDG::getMesParam()$/;"	f	class:Block_BDG
+getMesParam	block_bdkn.cpp	/^quint8 Block_BDKN::getMesParam()$/;"	f	class:Block_BDKN
+getMesParam	gammaik_chamber.cpp	/^quint8 GammaIK_chamber::getMesParam()$/;"	f	class:GammaIK_chamber
+h00	electrometer_test.h	/^    QByteArray h00, \/\/ код реле - выкл все$/;"	m	class:Electrometer_test
+h03	electrometer_test.h	/^               h03, \/\/ код реле - К1+К9 - замыкается 10 ГОм + охранный с измерительным электроды - измерение входного тока$/;"	m	class:Electrometer_test
+h15	electrometer_test.h	/^               h15, \/\/ код реле - К2+К3+К9 - замыкается 100 МОм + охранный с измерительным электроды + ИОН на 10 ГОм(для калибровки 10 ГОм)$/;"	m	class:Electrometer_test
+h21	electrometer_test.h	/^               h21, \/\/ код реле - К5+К9 - замыкается 1 МОм и охранный с измерительным электроды$/;"	m	class:Electrometer_test
+h29	electrometer_test.h	/^               h29, \/\/ код реле - К4+К5+К9 - замыкается 1 МОм + охранный с измерительным электроды + ИОН на 100 МОм(для калибровки 100 МОм)$/;"	m	class:Electrometer_test
+h82	electrometer_test.h	/^               h82, \/\/ код реле - К1+К8 - Чувствительный диапазон (не используется)$/;"	m	class:Electrometer_test
+h90	electrometer_test.h	/^               h90, \/\/ код реле - К3+К8 - Средний диапазон (на среднем диапазоне фильтр шумов не подключается)$/;"	m	class:Electrometer_test
+h90	ichamber.h	/^               h90, \/\/ код реле - К3+К8 - Средний диапазон (на среднем диапазоне фильтр шумов не подключается)$/;"	m	class:Ichamber
+hA0	electrometer_test.h	/^               hA0; \/\/ код реле - К5+К7+К8 - Грубый диапазон + фильтр шумов (С1 - 560пФ) (на грубом диапазоне фильтр шумов не отключается)$/;"	m	class:Electrometer_test
+hA0	ichamber.h	/^               hA0; \/\/ код реле - К5+К7+К8 - Грубый диапазон + фильтр шумов (С1 - 560пФ) (на грубом диапазоне фильтр шумов не отключается)$/;"	m	class:Ichamber
+hC2	electrometer_test.h	/^               hC2, \/\/ код реле - К1+К7+К8 - Чувствительный диапазон + фильтр шумов (С1 - 560пФ) (будем использовать всегда)$/;"	m	class:Electrometer_test
+hC2	ichamber.h	/^    QByteArray hC2, \/\/ код реле - К1+К7+К8 - Чувствительный диапазон + фильтр шумов (С1 - 560пФ) (будем использовать всегда)$/;"	m	class:Ichamber
+init	abstract_measurement_measurement.cpp	/^void Abstract_measurement_measurement::init()$/;"	f	class:Abstract_measurement_measurement
+init	auto_measurement_result.cpp	/^void Auto_measurement_result::init()$/;"	f	class:Auto_measurement_result
+init	averageadc.cpp	/^void AverageADC::init()$/;"	f	class:AverageADC
+init	averagemodbus.cpp	/^void AverageModbus::init()$/;"	f	class:AverageModbus
+init	beta.cpp	/^void Beta::init()$/;"	f	class:Beta
+init	beta_chamber.cpp	/^void Beta_chamber::init()$/;"	f	class:Beta_chamber
+init	beta_measuring.cpp	/^void Beta_measuring::init()$/;"	f	class:Beta_measuring
+init	beta_measuring_measure.cpp	/^void Beta_measuring_measure::init()$/;"	f	class:Beta_measuring_measure
+init	beta_verify.cpp	/^void Beta_verify::init()$/;"	f	class:Beta_verify
+init	block_bdg.cpp	/^void Block_BDG::init()$/;"	f	class:Block_BDG
+init	block_bdkn.cpp	/^void Block_BDKN::init()$/;"	f	class:Block_BDKN
+init	cambercompensation_view.cpp	/^void CamberCompensation_view::init()$/;"	f	class:CamberCompensation_view
+init	chambercompensation.cpp	/^void ChamberCompensation::init()$/;"	f	class:ChamberCompensation
+init	electrometer_test.cpp	/^void Electrometer_test::init()$/;"	f	class:Electrometer_test
+init	electrometer_test_result.cpp	/^void Electrometer_test_result::init()$/;"	f	class:Electrometer_test_result
+init	gamma.cpp	/^void Gamma::init()$/;"	f	class:Gamma
+init	gamma_bdg.cpp	/^void Gamma_BDG::init()$/;"	f	class:Gamma_BDG
+init	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::init()$/;"	f	class:Gamma_BDG_measuring
+init	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::init()$/;"	f	class:Gamma_BDG_measuring_measure
+init	gamma_bdg_test.cpp	/^void Gamma_BDG_test::init()$/;"	f	class:Gamma_BDG_test
+init	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::init()$/;"	f	class:Gamma_BDG_verify
+init	gamma_ik.cpp	/^void Gamma_IK::init()$/;"	f	class:Gamma_IK
+init	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::init()$/;"	f	class:Gamma_IK_measuring
+init	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::init()$/;"	f	class:Gamma_IK_measuring_measure
+init	gamma_ik_verify.cpp	/^void Gamma_IK_verify::init()$/;"	f	class:Gamma_IK_verify
+init	gammaik_chamber.cpp	/^void GammaIK_chamber::init()$/;"	f	class:GammaIK_chamber
+init	iblock.cpp	/^void Iblock::init()$/;"	f	class:Iblock
+init	ichamber.cpp	/^void Ichamber::init()$/;"	f	class:Ichamber
+init	mainwindow.cpp	/^void MainWindow::init()$/;"	f	class:MainWindow
+init	modbus_emulator.cpp	/^void Modbus_emulator::init()$/;"	f	class:Modbus_emulator
+init	neutron.cpp	/^void Neutron::init()$/;"	f	class:Neutron
+init	neutron_bdkn_test.cpp	/^void Neutron_BDKN_test::init()$/;"	f	class:Neutron_BDKN_test
+init	neutron_measuring.cpp	/^void Neutron_measuring::init()$/;"	f	class:Neutron_measuring
+init	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::init()$/;"	f	class:Neutron_measuring_measure
+init	neutron_verify.cpp	/^void Neutron_verify::init()$/;"	f	class:Neutron_verify
+init	rs232.cpp	/^void RS232::init()$/;"	f	class:RS232
+init	rs485.cpp	/^void RS485::init()$/;"	f	class:RS485
+init	settings.cpp	/^void Settings::init()$/;"	f	class:Settings
+init	settings_electrometer.cpp	/^void Settings_electrometer::init()$/;"	f	class:Settings_electrometer
+init	settings_verifier.cpp	/^void Settings_verifier::init()$/;"	f	class:Settings_verifier
+init	settings_verifier_beta.cpp	/^void Settings_verifier_beta::init()$/;"	f	class:Settings_verifier_beta
+init	settings_verifier_change_password.cpp	/^void settings_verifier_change_password::init()$/;"	f	class:settings_verifier_change_password
+init	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::init()$/;"	f	class:Settings_verifier_gamma_bdg
+init	settings_verifier_gamma_ik.cpp	/^void Settings_verifier_gamma_ik::init()$/;"	f	class:Settings_verifier_gamma_ik
+init	settings_verifier_gamma_nuclides.cpp	/^void Settings_verifier_gamma_nuclides::init()$/;"	f	class:Settings_verifier_gamma_nuclides
+init	settings_verifier_neutron.cpp	/^void Settings_verifier_neutron::init()$/;"	f	class:Settings_verifier_neutron
+init	user_settings.cpp	/^void user_settings::init()$/;"	f	class:user_settings
+init	verifybetachambers.cpp	/^void VerifyBetaChambers::init()$/;"	f	class:VerifyBetaChambers
+init	verifygammachambers.cpp	/^void VerifyGammaChambers::init()$/;"	f	class:VerifyGammaChambers
+init	verifyneutron.cpp	/^void VerifyNeutron::init()$/;"	f	class:VerifyNeutron
+intVolt	volthex.cpp	/^QByteArray voltHex::intVolt(int volt)$/;"	f	class:voltHex
+iter	emulelectrometer.h	/^    long iter=0;$/;"	m	class:EmulElectrometer
+main	main.cpp	/^int main(int argc, char *argv[])$/;"	f
+neutron	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::neutron(Block_BDKN *x)$/;"	f	class:Neutron_measuring_measure
+onCloseSlot	electrometer_test.cpp	/^void Electrometer_test::onCloseSlot() \/\/прием сигнала о закрытии окна$/;"	f	class:Electrometer_test
+onStateChanged	rs485.cpp	/^void RS485::onStateChanged(quint8 state) \/\/статус соединения$/;"	f	class:RS485
+on_checkBox_clicked	beta_measuring.cpp	/^void Beta_measuring::on_checkBox_clicked()\/\/чекбокс учесть компенсацию$/;"	f	class:Beta_measuring
+on_checkBox_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_checkBox_clicked()$/;"	f	class:Gamma_IK_measuring
+on_comboBox_2_currentIndexChanged	beta_measuring.cpp	/^void Beta_measuring::on_comboBox_2_currentIndexChanged(int index) \/\/ручной, автоматический$/;"	f	class:Beta_measuring
+on_comboBox_2_currentIndexChanged	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_comboBox_2_currentIndexChanged(int index) \/\/ручной, автоматический$/;"	f	class:Gamma_BDG_measuring
+on_comboBox_2_currentIndexChanged	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_comboBox_2_currentIndexChanged(int index)$/;"	f	class:Gamma_IK_measuring
+on_comboBox_2_currentIndexChanged	neutron_measuring.cpp	/^void Neutron_measuring::on_comboBox_2_currentIndexChanged(int index)\/\/режим (0-ручной, 1-автоматический)$/;"	f	class:Neutron_measuring
+on_comboBox_4_currentIndexChanged	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_comboBox_4_currentIndexChanged(int index)$/;"	f	class:Gamma_BDG_measuring
+on_comboBox_4_currentIndexChanged	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_comboBox_4_currentIndexChanged(int index)$/;"	f	class:Gamma_IK_measuring
+on_comboBox_4_currentIndexChanged	neutron_measuring.cpp	/^void Neutron_measuring::on_comboBox_4_currentIndexChanged(int index) \/\/измеряемая величина (0-ПП, 1-МПД, 2-МАЭД)$/;"	f	class:Neutron_measuring
+on_comboBox_currentIndexChanged	beta_measuring.cpp	/^void Beta_measuring::on_comboBox_currentIndexChanged(int index) \/\/смена камеры$/;"	f	class:Beta_measuring
+on_comboBox_currentIndexChanged	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_comboBox_currentIndexChanged(int index)$/;"	f	class:Gamma_IK_measuring
+on_lineEdit_10_textEdited	verifygammachambers.cpp	/^void VerifyGammaChambers::on_lineEdit_10_textEdited(const QString &arg1)    \/\/МИЭД$/;"	f	class:VerifyGammaChambers
+on_lineEdit_10_textEdited	verifyneutron.cpp	/^void VerifyNeutron::on_lineEdit_10_textEdited(const QString &arg1) \/\/МПД без Cd$/;"	f	class:VerifyNeutron
+on_lineEdit_11_textEdited	verifygammachambers.cpp	/^void VerifyGammaChambers::on_lineEdit_11_textEdited(const QString &arg1)    \/\/КЕРМА$/;"	f	class:VerifyGammaChambers
+on_lineEdit_11_textEdited	verifyneutron.cpp	/^void VerifyNeutron::on_lineEdit_11_textEdited(const QString &arg1) \/\/МПД с Cd$/;"	f	class:VerifyNeutron
+on_lineEdit_12_textEdited	verifygammachambers.cpp	/^void VerifyGammaChambers::on_lineEdit_12_textEdited(const QString &arg1)    \/\/МПД$/;"	f	class:VerifyGammaChambers
+on_lineEdit_12_textEdited	verifyneutron.cpp	/^void VerifyNeutron::on_lineEdit_12_textEdited(const QString &arg1) \/\/МАЭД без Cd$/;"	f	class:VerifyNeutron
+on_lineEdit_13_textEdited	verifygammachambers.cpp	/^void VerifyGammaChambers::on_lineEdit_13_textEdited(const QString &arg1)$/;"	f	class:VerifyGammaChambers
+on_lineEdit_13_textEdited	verifyneutron.cpp	/^void VerifyNeutron::on_lineEdit_13_textEdited(const QString &arg1) \/\/МАЭД с Cd$/;"	f	class:VerifyNeutron
+on_lineEdit_17_textEdited	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_lineEdit_17_textEdited(const QString &arg1) \/\/МАЭД$/;"	f	class:Settings_verifier_gamma_bdg
+on_lineEdit_18_textEdited	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_lineEdit_18_textEdited(const QString &arg1) \/\/МНЭД$/;"	f	class:Settings_verifier_gamma_bdg
+on_lineEdit_19_textEdited	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_lineEdit_19_textEdited(const QString &arg1) \/\/МИЭД$/;"	f	class:Settings_verifier_gamma_bdg
+on_lineEdit_20_textEdited	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_lineEdit_20_textEdited(const QString &arg1) \/\/КЕРМА$/;"	f	class:Settings_verifier_gamma_bdg
+on_lineEdit_21_textEdited	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_lineEdit_21_textEdited(const QString &arg1) \/\/МПД$/;"	f	class:Settings_verifier_gamma_bdg
+on_lineEdit_22_textEdited	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_lineEdit_22_textEdited(const QString &arg1) \/\/МЭД$/;"	f	class:Settings_verifier_gamma_bdg
+on_lineEdit_2_editingFinished	settings_verifier_change_password.cpp	/^void settings_verifier_change_password::on_lineEdit_2_editingFinished() \/\/Строка нового пароля$/;"	f	class:settings_verifier_change_password
+on_lineEdit_2_textEdited	beta_measuring.cpp	/^void Beta_measuring::on_lineEdit_2_textEdited(const QString &arg1) \/\/изменение значений давления в мм.рт.ст$/;"	f	class:Beta_measuring
+on_lineEdit_2_textEdited	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_lineEdit_2_textEdited(const QString &arg1)$/;"	f	class:Gamma_BDG_measuring
+on_lineEdit_2_textEdited	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_lineEdit_2_textEdited(const QString &arg1)$/;"	f	class:Gamma_IK_measuring
+on_lineEdit_2_textEdited	neutron_measuring.cpp	/^void Neutron_measuring::on_lineEdit_2_textEdited(const QString &arg1) \/\/ ввод давления$/;"	f	class:Neutron_measuring
+on_lineEdit_4_textEdited	verifybetachambers.cpp	/^void VerifyBetaChambers::on_lineEdit_4_textEdited(const QString &arg1) \/\/ набор текста в строке чувствительность$/;"	f	class:VerifyBetaChambers
+on_lineEdit_4_textEdited	verifygammachambers.cpp	/^void VerifyGammaChambers::on_lineEdit_4_textEdited(const QString &arg1) \/\/МАЭД$/;"	f	class:VerifyGammaChambers
+on_lineEdit_4_textEdited	verifyneutron.cpp	/^void VerifyNeutron::on_lineEdit_4_textEdited(const QString &arg1) \/\/ПП без Cd$/;"	f	class:VerifyNeutron
+on_lineEdit_9_textEdited	verifygammachambers.cpp	/^void VerifyGammaChambers::on_lineEdit_9_textEdited(const QString &arg1) \/\/МНЭД$/;"	f	class:VerifyGammaChambers
+on_lineEdit_9_textEdited	verifyneutron.cpp	/^void VerifyNeutron::on_lineEdit_9_textEdited(const QString &arg1) \/\/ПП с Cd$/;"	f	class:VerifyNeutron
+on_pushButton_2_clicked	beta.cpp	/^void Beta::on_pushButton_2_clicked() \/\/тест аппаратуры$/;"	f	class:Beta
+on_pushButton_2_clicked	beta_measuring.cpp	/^void Beta_measuring::on_pushButton_2_clicked() \/\/кнопка измерение$/;"	f	class:Beta_measuring
+on_pushButton_2_clicked	beta_measuring_measure.cpp	/^void Beta_measuring_measure::on_pushButton_2_clicked() \/\/старт$/;"	f	class:Beta_measuring_measure
+on_pushButton_2_clicked	beta_verify.cpp	/^void Beta_verify::on_pushButton_2_clicked() \/\/кропка старт$/;"	f	class:Beta_verify
+on_pushButton_2_clicked	chambercompensation.cpp	/^void ChamberCompensation::on_pushButton_2_clicked() \/\/кнопка выполнить компенсацию$/;"	f	class:ChamberCompensation
+on_pushButton_2_clicked	electrometer_test_result.cpp	/^void Electrometer_test_result::on_pushButton_2_clicked() \/\/оk$/;"	f	class:Electrometer_test_result
+on_pushButton_2_clicked	gamma.cpp	/^void Gamma::on_pushButton_2_clicked() \/\/БДГ$/;"	f	class:Gamma
+on_pushButton_2_clicked	gamma_bdg.cpp	/^void Gamma_BDG::on_pushButton_2_clicked() \/\/БДГ - тест аппаратуры$/;"	f	class:Gamma_BDG
+on_pushButton_2_clicked	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_pushButton_2_clicked() \/\/измерение$/;"	f	class:Gamma_BDG_measuring
+on_pushButton_2_clicked	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::on_pushButton_2_clicked() \/\/ старт$/;"	f	class:Gamma_BDG_measuring_measure
+on_pushButton_2_clicked	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::on_pushButton_2_clicked() \/\/ кнопка старт$/;"	f	class:Gamma_BDG_verify
+on_pushButton_2_clicked	gamma_ik.cpp	/^void Gamma_IK::on_pushButton_2_clicked() \/\/тест аппаратуры$/;"	f	class:Gamma_IK
+on_pushButton_2_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_pushButton_2_clicked()\/\/измерение$/;"	f	class:Gamma_IK_measuring
+on_pushButton_2_clicked	gamma_ik_verify.cpp	/^void Gamma_IK_verify::on_pushButton_2_clicked() \/\/кнопка старт$/;"	f	class:Gamma_IK_verify
+on_pushButton_2_clicked	mainwindow.cpp	/^void MainWindow::on_pushButton_2_clicked() \/\/гамма$/;"	f	class:MainWindow
+on_pushButton_2_clicked	neutron.cpp	/^void Neutron::on_pushButton_2_clicked() \/\/тест аппаратуры$/;"	f	class:Neutron
+on_pushButton_2_clicked	neutron_measuring.cpp	/^void Neutron_measuring::on_pushButton_2_clicked() \/\/измерение$/;"	f	class:Neutron_measuring
+on_pushButton_2_clicked	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::on_pushButton_2_clicked() \/\/старт$/;"	f	class:Neutron_measuring_measure
+on_pushButton_2_clicked	neutron_verify.cpp	/^void Neutron_verify::on_pushButton_2_clicked() \/\/ кнопка старт$/;"	f	class:Neutron_verify
+on_pushButton_2_clicked	settings.cpp	/^void Settings::on_pushButton_2_clicked() \/\/настройки БДКН$/;"	f	class:Settings
+on_pushButton_2_clicked	settings_bdg.cpp	/^void Settings_BDG::on_pushButton_2_clicked()\/\/назад$/;"	f	class:Settings_BDG
+on_pushButton_2_clicked	settings_bdkn.cpp	/^void Settings_BDKN::on_pushButton_2_clicked()\/\/назад$/;"	f	class:Settings_BDKN
+on_pushButton_2_clicked	settings_electrometer.cpp	/^void Settings_electrometer::on_pushButton_2_clicked() \/\/назад$/;"	f	class:Settings_electrometer
+on_pushButton_2_clicked	settings_verifier.cpp	/^void Settings_verifier::on_pushButton_2_clicked() \/\/ Гамма излучение (ИК)$/;"	f	class:Settings_verifier
+on_pushButton_2_clicked	settings_verifier_beta.cpp	/^void Settings_verifier_beta::on_pushButton_2_clicked() \/\/правка$/;"	f	class:Settings_verifier_beta
+on_pushButton_2_clicked	settings_verifier_change_password.cpp	/^void settings_verifier_change_password::on_pushButton_2_clicked() \/\/ Назад$/;"	f	class:settings_verifier_change_password
+on_pushButton_2_clicked	settings_verifier_gamma_ik.cpp	/^void Settings_verifier_gamma_ik::on_pushButton_2_clicked() \/\/правка$/;"	f	class:Settings_verifier_gamma_ik
+on_pushButton_2_clicked	settings_verifier_gamma_nuclides.cpp	/^void Settings_verifier_gamma_nuclides::on_pushButton_2_clicked() \/\/правка$/;"	f	class:Settings_verifier_gamma_nuclides
+on_pushButton_2_clicked	settings_verifier_neutron.cpp	/^void Settings_verifier_neutron::on_pushButton_2_clicked()\/\/ПРАВКА$/;"	f	class:Settings_verifier_neutron
+on_pushButton_2_clicked	user_settings.cpp	/^void user_settings::on_pushButton_2_clicked() \/\/ Изменить пароль поверителя$/;"	f	class:user_settings
+on_pushButton_2_clicked	verifybetachambers.cpp	/^void VerifyBetaChambers::on_pushButton_2_clicked() \/\/назад$/;"	f	class:VerifyBetaChambers
+on_pushButton_2_clicked	verifygammachambers.cpp	/^void VerifyGammaChambers::on_pushButton_2_clicked()\/\/назад$/;"	f	class:VerifyGammaChambers
+on_pushButton_2_clicked	verifyneutron.cpp	/^void VerifyNeutron::on_pushButton_2_clicked()\/\/назад$/;"	f	class:VerifyNeutron
+on_pushButton_3_clicked	beta.cpp	/^void Beta::on_pushButton_3_clicked() \/\/измерение$/;"	f	class:Beta
+on_pushButton_3_clicked	beta_measuring.cpp	/^void Beta_measuring::on_pushButton_3_clicked() \/\/поверка$/;"	f	class:Beta_measuring
+on_pushButton_3_clicked	beta_measuring_measure.cpp	/^void Beta_measuring_measure::on_pushButton_3_clicked() \/\/стоп$/;"	f	class:Beta_measuring_measure
+on_pushButton_3_clicked	beta_verify.cpp	/^void Beta_verify::on_pushButton_3_clicked() \/\/ кнопка стоп$/;"	f	class:Beta_verify
+on_pushButton_3_clicked	electrometer_test_result.cpp	/^void Electrometer_test_result::on_pushButton_3_clicked() \/\/записать эталонные$/;"	f	class:Electrometer_test_result
+on_pushButton_3_clicked	gamma.cpp	/^void Gamma::on_pushButton_3_clicked() \/\/ИК$/;"	f	class:Gamma
+on_pushButton_3_clicked	gamma_bdg.cpp	/^void Gamma_BDG::on_pushButton_3_clicked() \/\/измерение$/;"	f	class:Gamma_BDG
+on_pushButton_3_clicked	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_pushButton_3_clicked() \/\/поверка$/;"	f	class:Gamma_BDG_measuring
+on_pushButton_3_clicked	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::on_pushButton_3_clicked() \/\/ стоп$/;"	f	class:Gamma_BDG_measuring_measure
+on_pushButton_3_clicked	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::on_pushButton_3_clicked() \/\/кнопка стоп$/;"	f	class:Gamma_BDG_verify
+on_pushButton_3_clicked	gamma_ik.cpp	/^void Gamma_IK::on_pushButton_3_clicked() \/\/измерение$/;"	f	class:Gamma_IK
+on_pushButton_3_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_pushButton_3_clicked() \/\/ поверка$/;"	f	class:Gamma_IK_measuring
+on_pushButton_3_clicked	gamma_ik_verify.cpp	/^void Gamma_IK_verify::on_pushButton_3_clicked() \/\/ кнопка стоп$/;"	f	class:Gamma_IK_verify
+on_pushButton_3_clicked	mainwindow.cpp	/^void MainWindow::on_pushButton_3_clicked() \/\/ нейтроное$/;"	f	class:MainWindow
+on_pushButton_3_clicked	neutron.cpp	/^void Neutron::on_pushButton_3_clicked() \/\/измерение$/;"	f	class:Neutron
+on_pushButton_3_clicked	neutron_measuring.cpp	/^void Neutron_measuring::on_pushButton_3_clicked() \/\/поверка$/;"	f	class:Neutron_measuring
+on_pushButton_3_clicked	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::on_pushButton_3_clicked() \/\/стоп$/;"	f	class:Neutron_measuring_measure
+on_pushButton_3_clicked	neutron_verify.cpp	/^void Neutron_verify::on_pushButton_3_clicked() \/\/ кнопка стoп$/;"	f	class:Neutron_verify
+on_pushButton_3_clicked	settings.cpp	/^void Settings::on_pushButton_3_clicked() \/\/настройки БДГ$/;"	f	class:Settings
+on_pushButton_3_clicked	settings_electrometer.cpp	/^void Settings_electrometer::on_pushButton_3_clicked() \/\/INSERT - скрытая кнопка (нужна для заполнения первой строки таблицы)$/;"	f	class:Settings_electrometer
+on_pushButton_3_clicked	settings_verifier.cpp	/^void Settings_verifier::on_pushButton_3_clicked()  \/\/ Гамма излучение (БДГ)$/;"	f	class:Settings_verifier
+on_pushButton_3_clicked	settings_verifier_beta.cpp	/^void Settings_verifier_beta::on_pushButton_3_clicked()\/\/удалить$/;"	f	class:Settings_verifier_beta
+on_pushButton_3_clicked	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_pushButton_3_clicked() \/\/Ок$/;"	f	class:Settings_verifier_gamma_bdg
+on_pushButton_3_clicked	settings_verifier_gamma_ik.cpp	/^void Settings_verifier_gamma_ik::on_pushButton_3_clicked() \/\/удалить$/;"	f	class:Settings_verifier_gamma_ik
+on_pushButton_3_clicked	settings_verifier_gamma_nuclides.cpp	/^void Settings_verifier_gamma_nuclides::on_pushButton_3_clicked() \/\/удалить$/;"	f	class:Settings_verifier_gamma_nuclides
+on_pushButton_3_clicked	settings_verifier_neutron.cpp	/^void Settings_verifier_neutron::on_pushButton_3_clicked() \/\/удалить$/;"	f	class:Settings_verifier_neutron
+on_pushButton_4_clicked	beta_measuring.cpp	/^void Beta_measuring::on_pushButton_4_clicked() \/\/кнопка компенсация$/;"	f	class:Beta_measuring
+on_pushButton_4_clicked	beta_verify.cpp	/^void Beta_verify::on_pushButton_4_clicked() \/\/кнопка записать$/;"	f	class:Beta_verify
+on_pushButton_4_clicked	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::on_pushButton_4_clicked() \/\/кнопка записать$/;"	f	class:Gamma_BDG_verify
+on_pushButton_4_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_pushButton_4_clicked() \/\/кнопка вызова расчета компенсации$/;"	f	class:Gamma_IK_measuring
+on_pushButton_4_clicked	gamma_ik_verify.cpp	/^void Gamma_IK_verify::on_pushButton_4_clicked() \/\/кнопка записать$/;"	f	class:Gamma_IK_verify
+on_pushButton_4_clicked	mainwindow.cpp	/^void MainWindow::on_pushButton_4_clicked()\/\/exit$/;"	f	class:MainWindow
+on_pushButton_4_clicked	neutron_verify.cpp	/^void Neutron_verify::on_pushButton_4_clicked() \/\/кнопка записать$/;"	f	class:Neutron_verify
+on_pushButton_4_clicked	settings.cpp	/^void Settings::on_pushButton_4_clicked() \/\/ настройки электрометра$/;"	f	class:Settings
+on_pushButton_4_clicked	settings_verifier.cpp	/^void Settings_verifier::on_pushButton_4_clicked()$/;"	f	class:Settings_verifier
+on_pushButton_4_clicked	settings_verifier_beta.cpp	/^void Settings_verifier_beta::on_pushButton_4_clicked() \/\/назад$/;"	f	class:Settings_verifier_beta
+on_pushButton_4_clicked	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::on_pushButton_4_clicked()\/\/назад$/;"	f	class:Settings_verifier_gamma_bdg
+on_pushButton_4_clicked	settings_verifier_gamma_ik.cpp	/^void Settings_verifier_gamma_ik::on_pushButton_4_clicked()\/\/назад$/;"	f	class:Settings_verifier_gamma_ik
+on_pushButton_4_clicked	settings_verifier_gamma_nuclides.cpp	/^void Settings_verifier_gamma_nuclides::on_pushButton_4_clicked() \/\/назад$/;"	f	class:Settings_verifier_gamma_nuclides
+on_pushButton_4_clicked	settings_verifier_neutron.cpp	/^void Settings_verifier_neutron::on_pushButton_4_clicked()\/\/назад$/;"	f	class:Settings_verifier_neutron
+on_pushButton_5_clicked	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::on_pushButton_5_clicked() \/\/ запись фоновой скорости счета$/;"	f	class:Gamma_BDG_verify
+on_pushButton_5_clicked	mainwindow.cpp	/^void MainWindow::on_pushButton_5_clicked() \/\/кнопка проверить$/;"	f	class:MainWindow
+on_pushButton_5_clicked	settings.cpp	/^void Settings::on_pushButton_5_clicked()\/\/кнопка назад$/;"	f	class:Settings
+on_pushButton_5_clicked	settings_verifier.cpp	/^void Settings_verifier::on_pushButton_5_clicked() \/\/btn назад$/;"	f	class:Settings_verifier
+on_pushButton_6_clicked	mainwindow.cpp	/^void MainWindow::on_pushButton_6_clicked() \/\/кнопка настройки$/;"	f	class:MainWindow
+on_pushButton_7_clicked	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::on_pushButton_7_clicked() \/\/ кнопка старт$/;"	f	class:Gamma_IK_measuring_measure
+on_pushButton_7_clicked	mainwindow.cpp	/^void MainWindow::on_pushButton_7_clicked() \/\/настройки поверителя$/;"	f	class:MainWindow
+on_pushButton_8_clicked	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::on_pushButton_8_clicked() \/\/ кнопка стоп$/;"	f	class:Gamma_IK_measuring_measure
+on_pushButton_9_clicked	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::on_pushButton_9_clicked()\/\/назад$/;"	f	class:Gamma_IK_measuring_measure
+on_pushButton_clicked	auto_measurement_result.cpp	/^void Auto_measurement_result::on_pushButton_clicked() \/\/назад$/;"	f	class:Auto_measurement_result
+on_pushButton_clicked	beta.cpp	/^void Beta::on_pushButton_clicked() \/\/назад$/;"	f	class:Beta
+on_pushButton_clicked	beta_measuring.cpp	/^void Beta_measuring::on_pushButton_clicked() \/\/назад$/;"	f	class:Beta_measuring
+on_pushButton_clicked	beta_measuring_measure.cpp	/^void Beta_measuring_measure::on_pushButton_clicked() \/\/назад$/;"	f	class:Beta_measuring_measure
+on_pushButton_clicked	beta_verify.cpp	/^void Beta_verify::on_pushButton_clicked() \/\/назад$/;"	f	class:Beta_verify
+on_pushButton_clicked	cambercompensation_view.cpp	/^void CamberCompensation_view::on_pushButton_clicked()\/\/ отмена$/;"	f	class:CamberCompensation_view
+on_pushButton_clicked	chambercompensation.cpp	/^void ChamberCompensation::on_pushButton_clicked() \/\/назад$/;"	f	class:ChamberCompensation
+on_pushButton_clicked	electrometer_test.cpp	/^void Electrometer_test::on_pushButton_clicked() \/\/отмена$/;"	f	class:Electrometer_test
+on_pushButton_clicked	gamma.cpp	/^void Gamma::on_pushButton_clicked() \/\/назад$/;"	f	class:Gamma
+on_pushButton_clicked	gamma_bdg.cpp	/^void Gamma_BDG::on_pushButton_clicked()\/\/назад$/;"	f	class:Gamma_BDG
+on_pushButton_clicked	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_pushButton_clicked() \/\/назад$/;"	f	class:Gamma_BDG_measuring
+on_pushButton_clicked	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::on_pushButton_clicked() \/\/назад$/;"	f	class:Gamma_BDG_measuring_measure
+on_pushButton_clicked	gamma_bdg_test.cpp	/^void Gamma_BDG_test::on_pushButton_clicked() \/\/Отмена$/;"	f	class:Gamma_BDG_test
+on_pushButton_clicked	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::on_pushButton_clicked() \/\/назад$/;"	f	class:Gamma_BDG_verify
+on_pushButton_clicked	gamma_ik.cpp	/^void Gamma_IK::on_pushButton_clicked() \/\/ назад$/;"	f	class:Gamma_IK
+on_pushButton_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_pushButton_clicked() \/\/назад$/;"	f	class:Gamma_IK_measuring
+on_pushButton_clicked	gamma_ik_verify.cpp	/^void Gamma_IK_verify::on_pushButton_clicked() \/\/назад$/;"	f	class:Gamma_IK_verify
+on_pushButton_clicked	mainwindow.cpp	/^void MainWindow::on_pushButton_clicked() \/\/бета$/;"	f	class:MainWindow
+on_pushButton_clicked	neutron.cpp	/^void Neutron::on_pushButton_clicked() \/\/ назад$/;"	f	class:Neutron
+on_pushButton_clicked	neutron_bdkn_test.cpp	/^void Neutron_BDKN_test::on_pushButton_clicked() \/\/ отмена$/;"	f	class:Neutron_BDKN_test
+on_pushButton_clicked	neutron_measuring.cpp	/^void Neutron_measuring::on_pushButton_clicked() \/\/назад$/;"	f	class:Neutron_measuring
+on_pushButton_clicked	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::on_pushButton_clicked() \/\/назад$/;"	f	class:Neutron_measuring_measure
+on_pushButton_clicked	neutron_verify.cpp	/^void Neutron_verify::on_pushButton_clicked()\/\/назад$/;"	f	class:Neutron_verify
+on_pushButton_clicked	settings.cpp	/^void Settings::on_pushButton_clicked() \/\/настройки пользователей$/;"	f	class:Settings
+on_pushButton_clicked	settings_electrometer.cpp	/^void Settings_electrometer::on_pushButton_clicked() \/\/Ок$/;"	f	class:Settings_electrometer
+on_pushButton_clicked	settings_verifier.cpp	/^void Settings_verifier::on_pushButton_clicked() \/\/ Бета излучение$/;"	f	class:Settings_verifier
+on_pushButton_clicked	settings_verifier_beta.cpp	/^void Settings_verifier_beta::on_pushButton_clicked() \/\/добавить$/;"	f	class:Settings_verifier_beta
+on_pushButton_clicked	settings_verifier_change_password.cpp	/^void settings_verifier_change_password::on_pushButton_clicked() \/\/ Применить$/;"	f	class:settings_verifier_change_password
+on_pushButton_clicked	settings_verifier_gamma_ik.cpp	/^void Settings_verifier_gamma_ik::on_pushButton_clicked() \/\/добавить$/;"	f	class:Settings_verifier_gamma_ik
+on_pushButton_clicked	settings_verifier_gamma_nuclides.cpp	/^void Settings_verifier_gamma_nuclides::on_pushButton_clicked() \/\/добавить$/;"	f	class:Settings_verifier_gamma_nuclides
+on_pushButton_clicked	settings_verifier_neutron.cpp	/^void Settings_verifier_neutron::on_pushButton_clicked() \/\/добавить$/;"	f	class:Settings_verifier_neutron
+on_pushButton_clicked	user_settings.cpp	/^void user_settings::on_pushButton_clicked() \/\/назад$/;"	f	class:user_settings
+on_pushButton_clicked	verifybetachambers.cpp	/^void VerifyBetaChambers::on_pushButton_clicked() \/\/Ок$/;"	f	class:VerifyBetaChambers
+on_pushButton_clicked	verifygammachambers.cpp	/^void VerifyGammaChambers::on_pushButton_clicked() \/\/Ок$/;"	f	class:VerifyGammaChambers
+on_pushButton_clicked	verifyneutron.cpp	/^void VerifyNeutron::on_pushButton_clicked()\/\/ок$/;"	f	class:VerifyNeutron
+on_radioButton_2_clicked	beta_measuring.cpp	/^void Beta_measuring::on_radioButton_2_clicked() \/\/порог по времени$/;"	f	class:Beta_measuring
+on_radioButton_2_clicked	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_radioButton_2_clicked() \/\/порог по времени$/;"	f	class:Gamma_BDG_measuring
+on_radioButton_2_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_radioButton_2_clicked() \/\/порог по времени$/;"	f	class:Gamma_IK_measuring
+on_radioButton_2_clicked	neutron_measuring.cpp	/^void Neutron_measuring::on_radioButton_2_clicked() \/\/порог по времени$/;"	f	class:Neutron_measuring
+on_radioButton_3_clicked	beta_measuring.cpp	/^void Beta_measuring::on_radioButton_3_clicked() \/\/порог по дозе$/;"	f	class:Beta_measuring
+on_radioButton_3_clicked	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_radioButton_3_clicked() \/\/порог по дозе$/;"	f	class:Gamma_BDG_measuring
+on_radioButton_3_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_radioButton_3_clicked() \/\/ порог по дозе$/;"	f	class:Gamma_IK_measuring
+on_radioButton_3_clicked	neutron_measuring.cpp	/^void Neutron_measuring::on_radioButton_3_clicked() \/\/порог по дозе$/;"	f	class:Neutron_measuring
+on_radioButton_clicked	beta_measuring.cpp	/^void Beta_measuring::on_radioButton_clicked() \/\/порог нет$/;"	f	class:Beta_measuring
+on_radioButton_clicked	gamma_bdg_measuring.cpp	/^void Gamma_BDG_measuring::on_radioButton_clicked() \/\/порог нет$/;"	f	class:Gamma_BDG_measuring
+on_radioButton_clicked	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::on_radioButton_clicked() \/\/ порога нет$/;"	f	class:Gamma_IK_measuring
+on_radioButton_clicked	neutron_measuring.cpp	/^void Neutron_measuring::on_radioButton_clicked() \/\/порог нет$/;"	f	class:Neutron_measuring
+override	beta_measuring_measure.h	/^    void autoModeResult(double,double,double,double) override; \/\/метод вызываемый в конце автоматического измерения (передаем в него среднюю мощность дозы, среднюю дозу, и их СКО)$/;"	m	class:Beta_measuring_measure
+override	beta_measuring_measure.h	/^    ~Beta_measuring_measure() override;$/;"	m	class:Beta_measuring_measure
+override	gamma_bdg_measuring_measure.h	/^    void autoModeResult(double,double,double,double) override; \/\/метод вызываемый в конце автоматического измерения (передаем в него среднюю мощность дозы, среднюю дозу, и их СКО)$/;"	m	class:Gamma_BDG_measuring_measure
+override	gamma_bdg_measuring_measure.h	/^    ~Gamma_BDG_measuring_measure() override;    $/;"	m	class:Gamma_BDG_measuring_measure
+override	gamma_ik_measuring_measure.h	/^    void autoModeResult(double,double,double,double) override; \/\/метод вызываемый в конце автоматического измерения (передаем в него среднюю мощность дозы, среднюю дозу, и их СКО)$/;"	m	class:Gamma_IK_measuring_measure
+override	gamma_ik_measuring_measure.h	/^    ~Gamma_IK_measuring_measure() override;$/;"	m	class:Gamma_IK_measuring_measure
+override	neutron_measuring_measure.h	/^    void autoModeResult(double,double,double,double) override; \/\/метод вызываемый в конце автоматического измерения (передаем в него среднюю мощность дозы или ПП, среднюю дозу или Поток, и их СКО)$/;"	m	class:Neutron_measuring_measure
+override	neutron_measuring_measure.h	/^    ~Neutron_measuring_measure() override;$/;"	m	class:Neutron_measuring_measure
+readRequest	rs485.cpp	/^QModbusDataUnit RS485::readRequest() const  \/\/запрос на чтение holding_registers (функция 03)$/;"	f	class:RS485
+readyRead	rs485.cpp	/^void RS485::readyRead() \/\/сигнал в ответ на запрос чтения по таймеру$/;"	f	class:RS485
+recieveData	averageadc.cpp	/^void AverageADC::recieveData(QString COM) \/\/прием сигнала со строкой из эмулятора (или реального электрометра) 2f3f4f5f6f7f$/;"	f	class:AverageADC
+recieveData	averagemodbus.cpp	/^void AverageModbus::recieveData(float countRate) \/\/прием сигнала с данными из одного регистра Модбаса (из эмулятора или детектора)$/;"	f	class:AverageModbus
+rs485	averagemodbus.cpp	/^void AverageModbus::rs485()$/;"	f	class:AverageModbus
+rs_232	averageadc.cpp	/^void AverageADC::rs_232()$/;"	f	class:AverageADC
+sendToComSlot	averageadc.cpp	/^void AverageADC::sendToComSlot(QByteArray x) \/\/слот приема сигнала о записи в СОМ порт$/;"	f	class:AverageADC
+sendToComSlot1	averageadc.cpp	/^void AverageADC::sendToComSlot1(QByteArray volt)\/\/ for HV$/;"	f	class:AverageADC
+sendToElectrometer	ichamber.cpp	/^void Ichamber::sendToElectrometer()$/;"	f	class:Ichamber
+sensibility	beta_chamber.h	/^    double sensibility;  \/\/ чувствительность   $/;"	m	class:Beta_chamber
+setBut	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::setBut(bool x)$/;"	f	class:Settings_verifier_gamma_bdg
+setBut	verifybetachambers.cpp	/^void VerifyBetaChambers::setBut(int x)  \/\/устанавливаем флаг о редактировании=1 или добавлении=0$/;"	f	class:VerifyBetaChambers
+setBut	verifygammachambers.cpp	/^void VerifyGammaChambers::setBut(int x)  \/\/устанавливаем флаг о редактировании=1 или добавлении=2$/;"	f	class:VerifyGammaChambers
+setBut	verifyneutron.cpp	/^void VerifyNeutron::setBut(int x)$/;"	f	class:VerifyNeutron
+setNameCh	settings_verifier_gamma_bdg.cpp	/^void Settings_verifier_gamma_bdg::setNameCh(QString str)$/;"	f	class:Settings_verifier_gamma_bdg
+setNameCh	verifybetachambers.cpp	/^void VerifyBetaChambers::setNameCh(QString str)$/;"	f	class:VerifyBetaChambers
+setNameCh	verifygammachambers.cpp	/^void VerifyGammaChambers::setNameCh(QString str)$/;"	f	class:VerifyGammaChambers
+setNameCh	verifyneutron.cpp	/^void VerifyNeutron::setNameCh(QString str)$/;"	f	class:VerifyNeutron
+setVoltageSlot	ichamber.cpp	/^void Ichamber::setVoltageSlot(const QByteArray &volt) \/\/прием из вне значения байтов высокого напряжения, которые необходимо передать далее$/;"	f	class:Ichamber
+settings_verifier_change_password	settings_verifier_change_password.cpp	/^settings_verifier_change_password::settings_verifier_change_password(QWidget *parent) :$/;"	f	class:settings_verifier_change_password
+settings_verifier_change_password	settings_verifier_change_password.h	/^class settings_verifier_change_password : public QDialog$/;"	c
+singleTimeOut	ichamber.cpp	/^void Ichamber::singleTimeOut()$/;"	f	class:Ichamber
+start	emulelectrometer.cpp	/^void EmulElectrometer::start()$/;"	f	class:EmulElectrometer
+start	modbus_emulator.cpp	/^void Modbus_emulator::start()$/;"	f	class:Modbus_emulator
+start	rs485.cpp	/^void RS485::start()$/;"	f	class:RS485
+startTimeOut	beta_measuring_measure.cpp	/^void Beta_measuring_measure::startTimeOut() \/\/прогрев$/;"	f	class:Beta_measuring_measure
+startTimeOut	beta_verify.cpp	/^void Beta_verify::startTimeOut()$/;"	f	class:Beta_verify
+startTimeOut	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::startTimeOut() \/\/старт с задержкой$/;"	f	class:Gamma_BDG_verify
+startTimeOut	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::startTimeOut() \/\/прогрев$/;"	f	class:Gamma_IK_measuring_measure
+startTimeOut	gamma_ik_verify.cpp	/^void Gamma_IK_verify::startTimeOut()$/;"	f	class:Gamma_IK_verify
+startTimeOut	neutron_verify.cpp	/^void Neutron_verify::startTimeOut()$/;"	f	class:Neutron_verify
+startTimeOut	rs232.cpp	/^void RS232::startTimeOut() \/\/вызывается при срабатывании стартового таймера$/;"	f	class:RS232
+stop	emulelectrometer.cpp	/^void EmulElectrometer::stop()$/;"	f	class:EmulElectrometer
+stop	modbus_emulator.cpp	/^void Modbus_emulator::stop()$/;"	f	class:Modbus_emulator
+stop	rs485.cpp	/^void RS485::stop()$/;"	f	class:RS485
+test	gamma_bdg_test.cpp	/^void Gamma_BDG_test::test()$/;"	f	class:Gamma_BDG_test
+test	neutron_bdkn_test.cpp	/^void Neutron_BDKN_test::test()$/;"	f	class:Neutron_BDKN_test
+testFault	beta_measuring.cpp	/^void Beta_measuring::testFault() \/\/прием сигнала о непрохождении теста$/;"	f	class:Beta_measuring
+testFault	gamma_ik_measuring.cpp	/^void Gamma_IK_measuring::testFault() \/\/прием сигнала о том что тест не пройден$/;"	f	class:Gamma_IK_measuring
+testOkSlot	electrometer_test.cpp	/^void Electrometer_test::testOkSlot()$/;"	f	class:Electrometer_test
+testPassedSlot	gamma_bdg_test.cpp	/^void Gamma_BDG_test::testPassedSlot()$/;"	f	class:Gamma_BDG_test
+testPassedSlot	neutron_bdkn_test.cpp	/^void Neutron_BDKN_test::testPassedSlot()$/;"	f	class:Neutron_BDKN_test
+testSource	electrometer_test.cpp	/^void Electrometer_test::testSource(bool test)$/;"	f	class:Electrometer_test
+time	modbus_emulator.h	/^    QTime* time;$/;"	m	class:Modbus_emulator
+timeOut	beta_measuring_measure.cpp	/^void Beta_measuring_measure::timeOut() \/\/основная функция измерения (раз в секунду)$/;"	f	class:Beta_measuring_measure
+timeOut	beta_verify.cpp	/^void Beta_verify::timeOut() \/\/раз в секунду$/;"	f	class:Beta_verify
+timeOut	cambercompensation_view.cpp	/^void CamberCompensation_view::timeOut()$/;"	f	class:CamberCompensation_view
+timeOut	electrometer_test.cpp	/^void Electrometer_test::timeOut() \/\/ф-я измерения параметров электрометра$/;"	f	class:Electrometer_test
+timeOut	emulelectrometer.cpp	/^void EmulElectrometer::timeOut() \/\/ф-я в которой происходит Эмуляция (простое увеличение смоделированного значения АЦП)$/;"	f	class:EmulElectrometer
+timeOut	gamma_bdg_measuring_measure.cpp	/^void Gamma_BDG_measuring_measure::timeOut() \/\/основная ф-я измерения (обновляется раз в секунду)$/;"	f	class:Gamma_BDG_measuring_measure
+timeOut	gamma_bdg_verify.cpp	/^void Gamma_BDG_verify::timeOut()$/;"	f	class:Gamma_BDG_verify
+timeOut	gamma_ik_measuring_measure.cpp	/^void Gamma_IK_measuring_measure::timeOut()$/;"	f	class:Gamma_IK_measuring_measure
+timeOut	gamma_ik_verify.cpp	/^void Gamma_IK_verify::timeOut()$/;"	f	class:Gamma_IK_verify
+timeOut	iblock.cpp	/^void Iblock::timeOut() \/\/раз в полсекунды рассчитываем значение скорректированной скорости счета$/;"	f	class:Iblock
+timeOut	ichamber.cpp	/^void Ichamber::timeOut() \/\/раз в пол секунды рассчитываем значение Тока (значение АЦП передаются раз в 100мс для эмулятора и не чаще раза в 200 мс (еще и усредняются) для реального электрометра, поэтому расчитывать значение тока чаще не имеет смысла)$/;"	f	class:Ichamber
+timeOut	modbus_emulator.cpp	/^void Modbus_emulator::timeOut()$/;"	f	class:Modbus_emulator
+timeOut	neutron_measuring_measure.cpp	/^void Neutron_measuring_measure::timeOut()$/;"	f	class:Neutron_measuring_measure
+timeOut	neutron_verify.cpp	/^void Neutron_verify::timeOut()$/;"	f	class:Neutron_verify
+timeOut	rs232.cpp	/^void RS232::timeOut() \/\/ф-я чтения с порта RS-232 каждые 100 мс (за это время должна заполнится очередь из байтов)$/;"	f	class:RS232
+timeOut	rs485.cpp	/^void RS485::timeOut()$/;"	f	class:RS485
+timeThreashold	abstract_measurement_measurement.cpp	/^void Abstract_measurement_measurement::timeThreashold(ulong &time,QLabel* threashold,QTimer* timer)$/;"	f	class:Abstract_measurement_measurement
+timer	abstract_measurement_measurement.h	/^        QTimer * timer;$/;"	m	class:Abstract_measurement_measurement
+timer	modbus_emulator.h	/^    QTimer* timer;    $/;"	m	class:Modbus_emulator
+times	averageadc.h	/^    uint8_t times; \/\/количество отсчетов при усреднении$/;"	m	class:AverageADC
+ui	auto_measurement_result.h	/^    Ui::Auto_measurement_result *ui;$/;"	m	class:Auto_measurement_result
+ui	beta.h	/^    Ui::Beta *ui;$/;"	m	class:Beta
+ui	beta_measuring.h	/^    Ui::Beta_measuring *ui;  $/;"	m	class:Beta_measuring
+ui	beta_measuring_measure.h	/^    Ui::Beta_measuring_measure *ui;        $/;"	m	class:Beta_measuring_measure
+ui	beta_verify.h	/^    Ui::Beta_verify *ui;$/;"	m	class:Beta_verify
+ui	cambercompensation_view.h	/^    Ui::CamberCompensation_view *ui;$/;"	m	class:CamberCompensation_view
+ui	chambercompensation.h	/^    Ui::ChamberCompensation *ui;$/;"	m	class:ChamberCompensation
+ui	electrometer_test.h	/^    Ui::Electrometer_test *ui;$/;"	m	class:Electrometer_test
+ui	electrometer_test_result.h	/^    Ui::Electrometer_test_result *ui;$/;"	m	class:Electrometer_test_result
+ui	gamma.h	/^    Ui::Gamma *ui;$/;"	m	class:Gamma
+ui	gamma_bdg.h	/^    Ui::Gamma_BDG *ui;$/;"	m	class:Gamma_BDG
+ui	gamma_bdg_measuring.h	/^    Ui::Gamma_BDG_measuring *ui;$/;"	m	class:Gamma_BDG_measuring
+ui	gamma_bdg_measuring_measure.h	/^    Ui::Gamma_BDG_measuring_measure *ui;$/;"	m	class:Gamma_BDG_measuring_measure
+ui	gamma_bdg_test.h	/^    Ui::Gamma_BDG_test *ui;    $/;"	m	class:Gamma_BDG_test
+ui	gamma_bdg_verify.h	/^    Ui::Gamma_BDG_verify *ui;$/;"	m	class:Gamma_BDG_verify
+ui	gamma_ik.h	/^    Ui::Gamma_IK *ui;$/;"	m	class:Gamma_IK
+ui	gamma_ik_measuring.h	/^    Ui::Gamma_IK_measuring *ui;$/;"	m	class:Gamma_IK_measuring
+ui	gamma_ik_measuring_measure.h	/^    Ui::Gamma_IK_measuring_measure *ui;$/;"	m	class:Gamma_IK_measuring_measure
+ui	gamma_ik_verify.h	/^    Ui::Gamma_IK_verify *ui;$/;"	m	class:Gamma_IK_verify
+ui	mainwindow.h	/^    Ui::MainWindow *ui;$/;"	m	class:MainWindow
+ui	neutron.h	/^    Ui::Neutron *ui;$/;"	m	class:Neutron
+ui	neutron_bdkn_test.h	/^    Ui::Neutron_BDKN_test *ui;$/;"	m	class:Neutron_BDKN_test
+ui	neutron_measuring.h	/^    Ui::Neutron_measuring *ui;$/;"	m	class:Neutron_measuring
+ui	neutron_measuring_measure.h	/^    Ui::Neutron_measuring_measure *ui;$/;"	m	class:Neutron_measuring_measure
+ui	neutron_verify.h	/^    Ui::Neutron_verify *ui;$/;"	m	class:Neutron_verify
+ui	settings.h	/^    Ui::Settings *ui;$/;"	m	class:Settings
+ui	settings_bdg.h	/^    Ui::Settings_BDG *ui;$/;"	m	class:Settings_BDG
+ui	settings_bdkn.h	/^    Ui::Settings_BDKN *ui;$/;"	m	class:Settings_BDKN
+ui	settings_electrometer.h	/^    Ui::Settings_electrometer *ui;$/;"	m	class:Settings_electrometer
+ui	settings_verifier.h	/^    Ui::Settings_verifier *ui;$/;"	m	class:Settings_verifier
+ui	settings_verifier_beta.h	/^    Ui::Settings_verifier_beta *ui;$/;"	m	class:Settings_verifier_beta
+ui	settings_verifier_change_password.h	/^    Ui::settings_verifier_change_password *ui;$/;"	m	class:settings_verifier_change_password
+ui	settings_verifier_gamma_bdg.h	/^    Ui::Settings_verifier_gamma_bdg *ui;$/;"	m	class:Settings_verifier_gamma_bdg
+ui	settings_verifier_gamma_ik.h	/^    Ui::Settings_verifier_gamma_ik *ui;$/;"	m	class:Settings_verifier_gamma_ik
+ui	settings_verifier_gamma_nuclides.h	/^    Ui::Settings_verifier_gamma_nuclides *ui;$/;"	m	class:Settings_verifier_gamma_nuclides
+ui	settings_verifier_neutron.h	/^    Ui::Settings_verifier_neutron *ui;$/;"	m	class:Settings_verifier_neutron
+ui	user_settings.h	/^    Ui::user_settings *ui;$/;"	m	class:user_settings
+ui	verifybetachambers.h	/^    Ui::VerifyBetaChambers *ui;$/;"	m	class:VerifyBetaChambers
+ui	verifygammachambers.h	/^    Ui::VerifyGammaChambers *ui;$/;"	m	class:VerifyGammaChambers
+ui	verifyneutron.h	/^    Ui::VerifyNeutron *ui;$/;"	m	class:VerifyNeutron
+user_settings	user_settings.cpp	/^user_settings::user_settings(QWidget *parent) :$/;"	f	class:user_settings
+user_settings	user_settings.h	/^class user_settings : public QDialog$/;"	c
+voltHex	volthex.cpp	/^voltHex::voltHex()$/;"	f	class:voltHex
+voltHex	volthex.h	/^class voltHex: public QDialog$/;"	c
+writeRequest	rs485.cpp	/^QModbusDataUnit RS485::writeRequest() const  \/\/запрос на запись holding_register (функция 06) пока не нужна$/;"	f	class:RS485
+writeToRS232	rs232.cpp	/^void RS232::writeToRS232(QByteArray& data) \/\/ф-я записи в порт RS-232$/;"	f	class:RS232
+~Abstract_measurement_measurement	abstract_measurement_measurement.cpp	/^Abstract_measurement_measurement::~Abstract_measurement_measurement()$/;"	f	class:Abstract_measurement_measurement
+~Auto_measurement_result	auto_measurement_result.cpp	/^Auto_measurement_result::~Auto_measurement_result()$/;"	f	class:Auto_measurement_result
+~AverageADC	averageadc.cpp	/^AverageADC::~AverageADC()$/;"	f	class:AverageADC
+~AverageModbus	averagemodbus.cpp	/^AverageModbus::~AverageModbus()$/;"	f	class:AverageModbus
+~Beta	beta.cpp	/^Beta::~Beta()$/;"	f	class:Beta
+~Beta_chamber	beta_chamber.cpp	/^Beta_chamber::~Beta_chamber()$/;"	f	class:Beta_chamber
+~Beta_measuring	beta_measuring.cpp	/^Beta_measuring::~Beta_measuring()$/;"	f	class:Beta_measuring
+~Beta_measuring_measure	beta_measuring_measure.cpp	/^Beta_measuring_measure::~Beta_measuring_measure()$/;"	f	class:Beta_measuring_measure
+~Beta_verify	beta_verify.cpp	/^Beta_verify::~Beta_verify()$/;"	f	class:Beta_verify
+~Block_BDG	block_bdg.cpp	/^Block_BDG::~Block_BDG()$/;"	f	class:Block_BDG
+~Block_BDKN	block_bdkn.cpp	/^Block_BDKN::~Block_BDKN()$/;"	f	class:Block_BDKN
+~CamberCompensation_view	cambercompensation_view.cpp	/^CamberCompensation_view::~CamberCompensation_view()$/;"	f	class:CamberCompensation_view
+~ChamberCompensation	chambercompensation.cpp	/^ChamberCompensation::~ChamberCompensation()$/;"	f	class:ChamberCompensation
+~Electrometer_test	electrometer_test.cpp	/^Electrometer_test::~Electrometer_test()$/;"	f	class:Electrometer_test
+~Electrometer_test_result	electrometer_test_result.cpp	/^Electrometer_test_result::~Electrometer_test_result()$/;"	f	class:Electrometer_test_result
+~EmulElectrometer	emulelectrometer.cpp	/^EmulElectrometer::~EmulElectrometer()$/;"	f	class:EmulElectrometer
+~Gamma	gamma.cpp	/^Gamma::~Gamma()$/;"	f	class:Gamma
+~GammaIK_chamber	gammaik_chamber.cpp	/^GammaIK_chamber::~GammaIK_chamber()$/;"	f	class:GammaIK_chamber
+~Gamma_BDG	gamma_bdg.cpp	/^Gamma_BDG::~Gamma_BDG()$/;"	f	class:Gamma_BDG
+~Gamma_BDG_measuring	gamma_bdg_measuring.cpp	/^Gamma_BDG_measuring::~Gamma_BDG_measuring()$/;"	f	class:Gamma_BDG_measuring
+~Gamma_BDG_measuring_measure	gamma_bdg_measuring_measure.cpp	/^Gamma_BDG_measuring_measure::~Gamma_BDG_measuring_measure()$/;"	f	class:Gamma_BDG_measuring_measure
+~Gamma_BDG_test	gamma_bdg_test.cpp	/^Gamma_BDG_test::~Gamma_BDG_test()$/;"	f	class:Gamma_BDG_test
+~Gamma_BDG_verify	gamma_bdg_verify.cpp	/^Gamma_BDG_verify::~Gamma_BDG_verify()$/;"	f	class:Gamma_BDG_verify
+~Gamma_IK	gamma_ik.cpp	/^Gamma_IK::~Gamma_IK()$/;"	f	class:Gamma_IK
+~Gamma_IK_measuring	gamma_ik_measuring.cpp	/^Gamma_IK_measuring::~Gamma_IK_measuring()$/;"	f	class:Gamma_IK_measuring
+~Gamma_IK_measuring_measure	gamma_ik_measuring_measure.cpp	/^Gamma_IK_measuring_measure::~Gamma_IK_measuring_measure()$/;"	f	class:Gamma_IK_measuring_measure
+~Gamma_IK_verify	gamma_ik_verify.cpp	/^Gamma_IK_verify::~Gamma_IK_verify()$/;"	f	class:Gamma_IK_verify
+~Iblock	iblock.cpp	/^Iblock::~Iblock()$/;"	f	class:Iblock
+~Ichamber	ichamber.cpp	/^Ichamber::~Ichamber()$/;"	f	class:Ichamber
+~MainWindow	mainwindow.cpp	/^MainWindow::~MainWindow()   \/\/деструктор$/;"	f	class:MainWindow
+~Modbus_emulator	modbus_emulator.cpp	/^Modbus_emulator::~Modbus_emulator()$/;"	f	class:Modbus_emulator
+~Neutron	neutron.cpp	/^Neutron::~Neutron()$/;"	f	class:Neutron
+~Neutron_BDKN_test	neutron_bdkn_test.cpp	/^Neutron_BDKN_test::~Neutron_BDKN_test()$/;"	f	class:Neutron_BDKN_test
+~Neutron_measuring	neutron_measuring.cpp	/^Neutron_measuring::~Neutron_measuring()$/;"	f	class:Neutron_measuring
+~Neutron_measuring_measure	neutron_measuring_measure.cpp	/^Neutron_measuring_measure::~Neutron_measuring_measure()$/;"	f	class:Neutron_measuring_measure
+~Neutron_verify	neutron_verify.cpp	/^Neutron_verify::~Neutron_verify()$/;"	f	class:Neutron_verify
+~RS232	rs232.cpp	/^RS232::~RS232()$/;"	f	class:RS232
+~RS485	rs485.cpp	/^RS485::~RS485()$/;"	f	class:RS485
+~Settings	settings.cpp	/^Settings::~Settings()$/;"	f	class:Settings
+~Settings_BDG	settings_bdg.cpp	/^Settings_BDG::~Settings_BDG()$/;"	f	class:Settings_BDG
+~Settings_BDKN	settings_bdkn.cpp	/^Settings_BDKN::~Settings_BDKN()$/;"	f	class:Settings_BDKN
+~Settings_electrometer	settings_electrometer.cpp	/^Settings_electrometer::~Settings_electrometer()$/;"	f	class:Settings_electrometer
+~Settings_verifier	settings_verifier.cpp	/^Settings_verifier::~Settings_verifier()$/;"	f	class:Settings_verifier
+~Settings_verifier_beta	settings_verifier_beta.cpp	/^Settings_verifier_beta::~Settings_verifier_beta()$/;"	f	class:Settings_verifier_beta
+~Settings_verifier_gamma_bdg	settings_verifier_gamma_bdg.cpp	/^Settings_verifier_gamma_bdg::~Settings_verifier_gamma_bdg()$/;"	f	class:Settings_verifier_gamma_bdg
+~Settings_verifier_gamma_ik	settings_verifier_gamma_ik.cpp	/^Settings_verifier_gamma_ik::~Settings_verifier_gamma_ik()$/;"	f	class:Settings_verifier_gamma_ik
+~Settings_verifier_gamma_nuclides	settings_verifier_gamma_nuclides.cpp	/^Settings_verifier_gamma_nuclides::~Settings_verifier_gamma_nuclides()$/;"	f	class:Settings_verifier_gamma_nuclides
+~Settings_verifier_neutron	settings_verifier_neutron.cpp	/^Settings_verifier_neutron::~Settings_verifier_neutron()$/;"	f	class:Settings_verifier_neutron
+~VerifyBetaChambers	verifybetachambers.cpp	/^VerifyBetaChambers::~VerifyBetaChambers()$/;"	f	class:VerifyBetaChambers
+~VerifyGammaChambers	verifygammachambers.cpp	/^VerifyGammaChambers::~VerifyGammaChambers()$/;"	f	class:VerifyGammaChambers
+~VerifyNeutron	verifyneutron.cpp	/^VerifyNeutron::~VerifyNeutron()$/;"	f	class:VerifyNeutron
+~settings_verifier_change_password	settings_verifier_change_password.cpp	/^settings_verifier_change_password::~settings_verifier_change_password()$/;"	f	class:settings_verifier_change_password
+~user_settings	user_settings.cpp	/^user_settings::~user_settings()$/;"	f	class:user_settings
