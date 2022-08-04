@@ -9,6 +9,8 @@
 #include <QSqlError>
 #include <QDebug>
 #include <QTimer>
+#include <chrono>
+#include <ctime>
 
 class Ichamber:public QObject
 {
@@ -27,7 +29,7 @@ public slots:
 private slots:
     void timeOut();
     void singleTimeOut();
-
+    void preSingleTimeOut();
 public:
     double getIres();   //можно вызывать из наследника
 
@@ -35,6 +37,7 @@ private:
     AverageADC* averageADC{nullptr}; //указатель на объект класса AverageADC в котором проводится измерение (или эмулятор или детектор)
     QTimer* timer{nullptr};
     QTimer* singleTimer{nullptr};
+    QTimer* preSingleTimer{nullptr};
 
     void init();
     void account_I(); //метод рассчета тока
@@ -60,7 +63,8 @@ private:
     double IchamberRes{0};  //результирующий ток в зависимости от давления и температуры    
     QByteArray hC2, // код реле - К1+К7+К8 - Чувствительный диапазон + фильтр шумов (С1 - 560пФ) (будем использовать всегда)
                h90, // код реле - К3+К8 - Средний диапазон (на среднем диапазоне фильтр шумов не подключается)
-               hA0; // код реле - К5+К7+К8 - Грубый диапазон + фильтр шумов (С1 - 560пФ) (на грубом диапазоне фильтр шумов не отключается)
+               hA0, // код реле - К5+К7+К8 - Грубый диапазон + фильтр шумов (С1 - 560пФ) (на грубом диапазоне фильтр шумов не отключается)
+               h03; // K1+K9 начало измерения
 
 };
 

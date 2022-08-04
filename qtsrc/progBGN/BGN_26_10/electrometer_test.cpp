@@ -35,11 +35,9 @@ void Electrometer_test::testSource(bool test)
 
 void Electrometer_test::init()
 {    
-    setWindowTitle("Тестирование электрометра");
-
     ui->label->setVisible(false);
-    ui->label_3->setVisible(false);
-
+    ui->label_3->setVisible(false); //убираем отладочную информацию
+    setWindowTitle("Тестирование электрометра");
     h00.resize(2);
     h00[0]=0x20; h00[1]=0x30;
     h21.resize(2);

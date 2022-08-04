@@ -1,7 +1,7 @@
 #ifndef NEUTRON_BDKN_TEST_H
 #define NEUTRON_BDKN_TEST_H
 
-#include "block_bdg.h"
+#include "block_bdkn.h"
 
 #include <QDialog>
 
@@ -24,7 +24,7 @@ private slots:
 
 private:
     Ui::Neutron_BDKN_test *ui;
-    Block_BDG* bdg{nullptr};
+    Block_BDKN* bdkn{nullptr};
     void init();
     void test();
 

@@ -15,6 +15,13 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_4">
    <item>
+    <widget class="QLabel" name="label_26">
+     <property name="text">
+      <string>Внимание включено высокое напряжение !!!</string>
+     </property>
+    </widget>
+   </item>
+   <item>
     <layout class="QHBoxLayout" name="horizontalLayout_17">
      <item>
       <widget class="QLabel" name="label_10">

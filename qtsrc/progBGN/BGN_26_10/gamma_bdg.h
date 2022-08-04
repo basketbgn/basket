@@ -26,6 +26,7 @@ private slots:
 
 private:
     Ui::Gamma_BDG *ui;
+    Gamma_BDG_test* gammaBDGtest{nullptr};
     void init();
 };
 

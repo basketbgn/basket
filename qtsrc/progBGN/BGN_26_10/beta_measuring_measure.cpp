@@ -32,6 +32,8 @@ Beta_measuring_measure::~Beta_measuring_measure()
 
 void Beta_measuring_measure::init()
 {
+    ui->label_5->setStyleSheet("color: red; font-size: 25px");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle("Измерение поглощенной дозы бета излучения");
     ui->label_22->setStyleSheet("font-size:100px; color: red;");

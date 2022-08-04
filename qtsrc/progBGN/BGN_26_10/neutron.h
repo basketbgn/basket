@@ -3,6 +3,7 @@
 
 #include "neutron_bdkn_test.h"
 #include "neutron_measuring.h"
+#include "block_bdkn.h"
 #include <QDialog>
 
 namespace Ui {
@@ -26,6 +27,7 @@ private slots:
 
 private:
     Ui::Neutron *ui;
+    Neutron_BDKN_test * neutronTest{nullptr};
     void init();
 };
 

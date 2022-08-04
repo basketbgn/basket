@@ -77,7 +77,7 @@ void Settings_verifier_gamma_bdg::setBut(bool x)
         ui->lineEdit->setEnabled(false);ui->lineEdit_16->setEnabled(false);ui->lineEdit_24->setEnabled(false);
         ui->lineEdit_25->setEnabled(false);
 
-        if(QSqlDatabase::contains("myDB"))
+        if(QSqlDatabase::contains("myDB"))  //создаем таблицу если не была создана, и выводим названия камер в listWidget
         {
             QSqlDatabase db=QSqlDatabase::database("myDB");
             db.setDatabaseName("config.db");
@@ -112,11 +112,6 @@ void Settings_verifier_gamma_bdg::setBut(bool x)
                 ui->lineEdit_20->setText(QString::number(ui->label_42->text().toDouble()/3.6e9,'f',3));
                 ui->lineEdit_21->setText(QString::number(ui->label_44->text().toDouble()/3.6e9,'f',3));
                 ui->lineEdit_22->setText(QString::number(ui->label_46->text().toDouble()/3.6e9,'f',3));
-            }
-            qStr= "SELECT * FROM backgroundgamma";
-            if(!query.exec(qStr)){qDebug()<<"unable execute query SELECT FROM table backgroundgamma"<<query.lastError().text();}
-            if(query.first()) {
-                ui->label_53->setText(query.value("backgroundGamma").toString());
             }
         }
     }

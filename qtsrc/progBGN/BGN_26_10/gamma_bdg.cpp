@@ -12,6 +12,9 @@ Gamma_BDG::Gamma_BDG(QWidget *parent) :
 
 Gamma_BDG::~Gamma_BDG()
 {
+    if(gammaBDGtest) {
+        delete gammaBDGtest;
+    }
     delete ui;
 }
 
@@ -43,7 +46,8 @@ void Gamma_BDG::on_pushButton_clicked()//назад
 
 void Gamma_BDG::on_pushButton_2_clicked() //БДГ - тест аппаратуры
 {
-    Gamma_BDG_test* gammaBDGtest = new Gamma_BDG_test;
+    RS485::BDGorBDKN = 0;
+    gammaBDGtest = new Gamma_BDG_test;
     gammaBDGtest->setModal(true);
     gammaBDGtest->show();
     //QSerialPortInfo::
@@ -51,6 +55,9 @@ void Gamma_BDG::on_pushButton_2_clicked() //БДГ - тест аппаратур
 
 void Gamma_BDG::on_pushButton_3_clicked() //измерение
 {
+    //if(gammaBDGtest) {
+    //    delete gammaBDGtest;
+    //}
     if(QSqlDatabase::contains("myDB"))
     {
         QSqlDatabase db = QSqlDatabase::database("myDB");

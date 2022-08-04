@@ -21,6 +21,8 @@ Gamma_IK_verify::~Gamma_IK_verify()
 
 void Gamma_IK_verify::init()
 {
+    ui->label_9->setStyleSheet("color: red; font-size: 25px");
+
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle("Гамма излучение - ионизационные камеры - калибровка");
     ui->label->setStyleSheet("font-size:100px; color: red;");

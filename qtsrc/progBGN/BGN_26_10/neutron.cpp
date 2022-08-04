@@ -13,6 +13,9 @@ Neutron::Neutron(QWidget *parent) :
 
 Neutron::~Neutron()
 {
+    if(neutronTest) {
+        delete neutronTest;
+    }
     delete ui;
 }
 
@@ -44,13 +47,18 @@ void Neutron::on_pushButton_clicked() // назад
 
 void Neutron::on_pushButton_2_clicked() //тест аппаратуры
 {
-    Neutron_BDKN_test * neutronTest = new Neutron_BDKN_test(this);
+    RS485::BDGorBDKN = 1;
+    neutronTest = new Neutron_BDKN_test(this);
+
     neutronTest->setModal(true);
     neutronTest->show();
 }
 
 void Neutron::on_pushButton_3_clicked() //измерение
 {
+    //if(neutronTest){
+    //    delete neutronTest;
+    //}
     if(QSqlDatabase::contains("myDB"))
     {
         QSqlDatabase db = QSqlDatabase::database("myDB");

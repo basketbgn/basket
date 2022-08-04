@@ -1,5 +1,6 @@
 //*************************** Первое окно *********************************
 
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
@@ -53,17 +54,6 @@ void MainWindow::init()
     queryStr = "UPDATE password SET  passCurrent='1';";  // при загрузке меняем passCurrent на '1', чтобы по умолчанию загружался оператор (а не поверитель и изготовитель)
     if(!query.exec(queryStr))
     {qDebug()<<"unable execute query UPDATE"<<query.lastError().text();}
-
-    queryStr = "CREATE TABLE IF NOT EXISTS backgroundgamma (id INTEGER PRIMARY KEY CHECK (id=0),"
-                                                                 "backgroundGamma TEXT(10))";
-    if(!query.exec(queryStr)) {
-        qDebug()<<"unable execute query CREATE background"<<query.lastError().text();
-    }
-    //if(!query.exec("DROP TABLE backgroundgamma")){qDebug()<<"unable execute query DELETE table electrometer"<<query.lastError().text();}
-    //queryStr = "INSERT INTO backgroundgamma (id,backgroundGamma) VALUES (0,'1')";
-    //if(!query.exec(queryStr)) {
-    //    qDebug()<<"unable execute query INSERT background"<<query.lastError().text();
-    //}
     db.close();
 }
 

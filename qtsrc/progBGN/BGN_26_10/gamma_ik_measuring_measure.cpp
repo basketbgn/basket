@@ -28,6 +28,8 @@ Gamma_IK_measuring_measure::~Gamma_IK_measuring_measure()
 
 void Gamma_IK_measuring_measure::init()
 {
+    ui->label_26->setStyleSheet("color: red; font-size: 25px");
+
     this->setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle("Гамма излучение - Ионизационные камеры - измерение");
     ui->label_22->setStyleSheet("font-size:100px; color: red;");

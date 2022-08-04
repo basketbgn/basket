@@ -13,6 +13,9 @@ Neutron_BDKN_test::Neutron_BDKN_test(QWidget *parent) :
 
 Neutron_BDKN_test::~Neutron_BDKN_test()
 {
+    if(bdkn){
+        delete bdkn;
+    }
     delete ui;
 }
 
@@ -27,8 +30,8 @@ void Neutron_BDKN_test::init()
 
 void Neutron_BDKN_test::test()
 {
-    bdg = new Block_BDG;//создается объект блока БДГ (в него передаются соответствующие ему параметры)
-    connect(bdg,&Block_BDG::errorSig,this,&Neutron_BDKN_test::errorConnectionSlot);
+    bdkn = new Block_BDKN;//создается объект блока БДГ (в него передаются соответствующие ему параметры)
+    connect(bdkn,&Block_BDKN::errorSig,this,&Neutron_BDKN_test::errorConnectionSlot);
 }
 void Neutron_BDKN_test::errorConnectionSlot()
 {

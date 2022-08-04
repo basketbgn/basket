@@ -22,6 +22,9 @@ Beta_verify::~Beta_verify()
 
 void Beta_verify::init()
 {
+    //////////////////////////////////
+    ui->label_8->setStyleSheet("color: red; font-size: 25px");
+    //////////////////////////////////
     setAttribute(Qt::WA_DeleteOnClose);
     setWindowTitle("Калибровка камер бета излучения");
     ui->comboBox->addItem("Гр/с");

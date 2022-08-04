@@ -175,6 +175,7 @@ void Neutron_measuring_measure::on_pushButton_clicked() //назад
 
 void Neutron_measuring_measure::on_pushButton_2_clicked() //старт
 {
+    ui->label_13->setText("1");
     ui->pushButton_2->setEnabled(false);
     ui->pushButton->setEnabled(false);
     ui->pushButton_2->setVisible(false);

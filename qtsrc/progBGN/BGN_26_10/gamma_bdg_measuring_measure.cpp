@@ -102,7 +102,7 @@ void Gamma_BDG_measuring_measure::timeOut() //основная ф-я измер�
     time++;
     ui->label_3->setText(QString::number(time) + " c"); //отображение времени
 //------------------------------------Мощность дозы-------------------------------------------------------
-    doseRate = double(blockBDG->getDoseRateGamma()); //считываем измерение из класса Beta_chamber в чето/с
+    doseRate = double(blockBDG->getDoseRate()); //считываем измерение из класса Beta_chamber в чето/с
     //qDebug()<<beta->MPD();
     double currentDoseRate = doseRate*timeCoef; //для вывода на экран, Мощности Дозы в Гр/с, Гр/мин, Гр/ч
     doseTo4(currentDoseRate,Dimension,ui->label_9,ui->label_2); //передаем в функцию вывода на экран:
@@ -178,6 +178,7 @@ void Gamma_BDG_measuring_measure::BDG(Block_BDG *pointer) //прием указ�
 
 void Gamma_BDG_measuring_measure::on_pushButton_2_clicked() // старт
 {
+    ui->label_13->setText("1");
     ui->pushButton_2->setEnabled(false);
     ui->pushButton->setEnabled(false);
     ui->pushButton_2->setVisible(false);
