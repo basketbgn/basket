@@ -4,6 +4,7 @@
 #include "engine.h"
 #include "betameasurementsettings.h"
 #include "electrometer_test.h"
+#include "averageadc.h"
 
 #include <QObject>
 #include <QSqlDatabase> //подключаем класс настроек для работы с БД
@@ -33,6 +34,7 @@ public slots:
     void initDatabase();
     void isTestPassed(bool state);
 private:
+    AverageADC* globalPointerForAverageAdc{nullptr};
     QString* name;
     QString* surname;
     QString* secondName;

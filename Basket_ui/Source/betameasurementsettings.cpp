@@ -1,8 +1,9 @@
 #include "betameasurementsettings.h"
 
-BetaMeasurementSettings::BetaMeasurementSettings() {
+BetaMeasurementSettings::BetaMeasurementSettings(AverageADC* globAdc) {
     this_engine = Engine::This_engine;
     this_engine->rootContext()->setContextProperty("_cppApi_BetaMeasurementSettings", this);
+    globalAverageADC = globAdc;
 }
 
 BetaMeasurementSettings::~BetaMeasurementSettings() {
@@ -63,7 +64,7 @@ void BetaMeasurementSettings::onCalibrationButton(const QString& range,
     //----------------------------------------------------------------------------------------------
     //передаем установленные параметры из данного окна в конструктор объекта класса бета камеры
     //объект класса Beta_chamber наследуется от класса Ichamber, в котором реализован эмулятор
-    betaChamber = new Beta_chamber(iR,Comp,Temp,P,CorrF,chamName);
+    betaChamber = new Beta_chamber(globalAverageADC, iR,Comp,Temp,P,CorrF,chamName);
     connect(this, &BetaMeasurementSettings::sendToComSig, betaChamber, &Beta_chamber::setVoltageSlot);
     //-----------------------------------------------------------------------------------------------
 
@@ -122,7 +123,7 @@ void BetaMeasurementSettings::onMeasurementButton(const QString& dimension,
     double CorrF = correctionFactor.toDouble();
     const QString & chamName = chamberComboBoxName;
 
-    betaChamber = new Beta_chamber(iR, Comp, Temp, P, CorrF, chamName);
+    betaChamber = new Beta_chamber(globalAverageADC, iR, Comp, Temp, P, CorrF, chamName);
 
     int dimensionTime = 0;
     int pos = dimensionForTime.lastIndexOf(QChar('/'));

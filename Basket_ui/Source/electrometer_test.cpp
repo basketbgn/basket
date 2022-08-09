@@ -7,7 +7,9 @@ Electrometer_test::Electrometer_test(){
 
 Electrometer_test::~Electrometer_test() {
     //qDebug()<<"delete avADC";
-    delete avADC;
+    //delete avADC;
+    //TODO: disconnect
+    disconnect(this,&Electrometer_test::sendToCom,avADC, &AverageADC::sendToComSlot);
     //qDebug()<<"delete msg";
     //qDebug()<<"delete timer";
     delete timer;
@@ -19,6 +21,10 @@ Electrometer_test::~Electrometer_test() {
 
 void Electrometer_test::testSource(bool test) {
     test_source=test;
+}
+
+AverageADC *Electrometer_test::getPointer() {
+    return avADC;
 }
 
 

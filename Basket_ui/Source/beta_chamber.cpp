@@ -1,7 +1,7 @@
 #include "beta_chamber.h"
 
-Beta_chamber::Beta_chamber(uint8_t r, bool comp,double temp,double p, double corrF, QString chamName)
-    :Ichamber(r,comp,temp,p,corrF),chamberName(chamName) {
+Beta_chamber::Beta_chamber(AverageADC* globAdc, uint8_t r, bool comp,double temp,double p, double corrF, QString chamName)
+    :Ichamber(globAdc, r,comp,temp,p,corrF),chamberName(chamName) {
     init();
 }
 

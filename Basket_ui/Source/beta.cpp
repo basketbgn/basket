@@ -12,6 +12,9 @@ Beta::Beta(){
 
 Beta::~Beta() {
     delete name; delete surname; delete secondName;
+    if(globalPointerForAverageAdc) {
+        delete globalPointerForAverageAdc;
+    }
 }
 
 void Beta::onBackButton() {    
@@ -20,13 +23,14 @@ void Beta::onBackButton() {
 }
 
 void Beta::onMeasurementButton() {
-    betaMesurementSettings = new BetaMeasurementSettings;
+    betaMesurementSettings = new BetaMeasurementSettings(globalPointerForAverageAdc);
     updateDB();
 }
 
 void Beta::onHardwareTestButton() {
     electrometerTest = new Electrometer_test;
     connect(electrometerTest, &Electrometer_test::sendTestPassed, this, &Beta::isTestPassed);
+    globalPointerForAverageAdc = electrometerTest->getPointer();
 }
 
 void Beta::onNameChanged(const QString &str) {
@@ -39,8 +43,7 @@ void Beta::onSecondNameChanged(const QString& str) {
     *secondName = str;
 }
 
-void Beta::initDatabase()
-{
+void Beta::initDatabase() {
     if(QSqlDatabase::contains("myDB")) {
         QSqlDatabase db = QSqlDatabase::database("myDB");
         db.setDatabaseName("config.db");

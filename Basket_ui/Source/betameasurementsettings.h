@@ -13,7 +13,7 @@ class BetaMeasurementSettings : public QObject
 {
     Q_OBJECT
 public:
-    BetaMeasurementSettings();
+    BetaMeasurementSettings(AverageADC* globAdc = nullptr);
     ~BetaMeasurementSettings();
 signals:
     void sendPassword(const QString&);
@@ -47,6 +47,7 @@ public slots:
                              const QString& chamberComboBoxName);
 private:
     QQmlApplicationEngine* this_engine;
+    AverageADC* globalAverageADC{nullptr};
     Beta_chamber* betaChamber;
     BetaMeasurement* betaMes;
     Beta_verify* betaVer;
