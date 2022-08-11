@@ -41,12 +41,28 @@
         <file>Components/Measurement.qml</file>
         <file>Components/TextInputWithDimension.qml</file>
         <file>Components/TextInputWithTitle.qml</file>
-        <file>Gamma/Gamma.qml</file>
         <file>Components/HardwareTest.qml</file>
         <file>Beta/BetaHardwareTest.qml</file>
         <file>Neutron/NeutronHardwareTest.qml</file>
         <file>Neutron/NeutronMeasurementSettings.qml</file>
         <file>Neutron/NeutronCalibration.qml</file>
         <file>Neutron/NeutronMeasurement.qml</file>
+        <file>Components/TransitionWindowToMeasurementAndTest.qml</file>
+        <file>Components/Compensation.qml</file>
+        <file>Components/ProgressBarWithPercents.qml</file>
+        <file>Beta/BetaCompensation.qml</file>
+        <file>Components/CustomSwitch.qml</file>
+        <file>Gamma/BDG.qml</file>
+        <file>Gamma/BDGCalibration.qml</file>
+        <file>Gamma/BDGHardwareTest.qml</file>
+        <file>Gamma/BDGMeasurement.qml</file>
+        <file>Gamma/BDGMeasurementSettings.qml</file>
+        <file>Gamma/IonizationChambers.qml</file>
+        <file>Gamma/IonizationChambersCalibration.qml</file>
+        <file>Gamma/IonizationChambersCompensation.qml</file>
+        <file>Gamma/IonizationChambersHardwareTest.qml</file>
+        <file>Gamma/IonizationChambersMeasurement.qml</file>
+        <file>Gamma/IonizationChambersMeasurementSettings.qml</file>
+        <file>Gamma/Gamma.qml</file>
     </qresource>
 </RCC>
