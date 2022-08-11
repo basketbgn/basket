@@ -1,6 +1,8 @@
 import QtQuick 2.14
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.4
+import "../Components"
+
 Item {
     id: vendorSettings
 
@@ -34,8 +36,7 @@ Item {
     }
 
     // --- Кнопки: Настройки пользователей, Настройки БДКН, Настройки БДГ, Настройки электрометра ---
-
-    Rectangle {
+    CustomButton {
         id: settingsElectrometerButton
         height: parent.height/2.5
         width: parent.width/3
@@ -43,132 +44,55 @@ Item {
         anchors.topMargin: parent.height/18
         anchors.right: parent.right
         anchors.rightMargin: parent.width/64
-        border.width: 2
-        border.color: settingsElectrometerMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: settingsElectrometerText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Настройки\nэлектрометра")
-        }
-        MouseArea {
-            id: settingsElectrometerMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                _cppApi_VendorSettings.onSettingsElectrometerTest()
-                stackView.push("qrc:/VendorSettings/ElectrometerSettings.qml")
-            }
+        buttonFontSizeCoef: 0.17
+        buttonText: qsTr("Настройки\nэлектрометра")
+        onButtonClicked: {
+            _cppApi_VendorSettings.onSettingsElectrometerTest()
+            stackView.push("qrc:/VendorSettings/ElectrometerSettings.qml")
         }
     }
 
     // --- Кнопка "Настройки пользователей" ---
-    Rectangle {
+    CustomButton {
         id: userSettingsButton
         width: settingsElectrometerButton.width
         height: settingsElectrometerButton.height
         anchors.right: settingsElectrometerButton.left
         anchors.rightMargin: parent.width/40
         anchors.top: settingsElectrometerButton.top
-        border.width: 2
-        border.color: userSettingsMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: userSettingsText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Настройки\nпользователей")
-        }
-        MouseArea {
-            id: userSettingsMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                _cppApi_VendorSettings.onUserSettingsButton()
-                stackView.push("qrc:/VendorSettings/UsersSettings.qml")
-            }
+        buttonFontSizeCoef: 0.17
+        buttonText: qsTr("Настройки\nпользователей")
+        onButtonClicked: {
+            _cppApi_VendorSettings.onUserSettingsButton()
+            stackView.push("qrc:/VendorSettings/UsersSettings.qml")
         }
     }
 
     // --- Кнопка "Настройки БДГ" ---
-    Rectangle {
+    CustomButton {
         id: settingsBDGButton
         width: userSettingsButton.width
         height: userSettingsButton.height
         anchors.left: userSettingsButton.left
         anchors.top: userSettingsButton.bottom
         anchors.topMargin: parent.height/25
-        border.width: 2
-        border.color: settingsBDGMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: settingsBDGText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Настройки\nБДГ")
-        }
-        MouseArea {
-            id: settingsBDGMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
+        buttonFontSizeCoef: 0.2
+        buttonText: qsTr("Настройки\nБДГ")
+        onButtonClicked: {
 
-            }
         }
     }
 
     // --- Кнопка "Настройки БДКН" ---
-    Rectangle {
+    CustomButton {
         id: settingsBDKNButton
         width: settingsElectrometerButton.width
         height: settingsElectrometerButton.height
         anchors.left: settingsElectrometerButton.left
         anchors.top: settingsBDGButton.top
-        border.width: 2
-        border.color: settingsBDKNMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: settingsBDKNText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Настройки\nБДКН")
-        }
-        MouseArea {
-            id: settingsBDKNMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-
-            }
+        buttonFontSizeCoef: 0.2
+        buttonText: qsTr("Настройки\nБДКН")
+        onButtonClicked: {
         }
     }
 
