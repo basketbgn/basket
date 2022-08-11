@@ -74,7 +74,8 @@ Item {
             id: blockText
             width: cbRectangle.width
             height: cbRectangle.height
-            anchors.bottom: measurementParametersButton.top
+            anchors.top: userType.bottom
+            anchors.topMargin: parent.height/6
             anchors.left: parent.left
             anchors.leftMargin: parent.width/25
             verticalAlignment: Text.AlignVCenter
@@ -89,14 +90,14 @@ Item {
             height: parent.height/16
             anchors.horizontalCenter: blockText.horizontalCenter
             anchors.top: blockText.bottom
-            anchors.topMargin: 0//parent.height/40
-            color: "#313131"
+            anchors.topMargin: 0
+            color: application.buttonColor
             border.width: 2
             border.color: "#eeeeee"
             ComboBoxStyled {
                 id: blockComboBox
                 anchors.fill: parent
-                cbFontSizeCoef: 1//0.9
+                cbFontSizeCoef: 1
                 cbModel: [qsTr("БДКН-ПБ Дата поверки: 12.12.2022"), qsTr("...")]
             }
         }
@@ -122,15 +123,15 @@ Item {
             height: parent.height/16
             anchors.horizontalCenter: measurementValueText.horizontalCenter
             anchors.top: measurementValueText.bottom
-            anchors.topMargin: 0//parent.height/40
-            color: "#313131"
+            anchors.topMargin: 0
+            color: application.buttonColor
             border.width: 2
             border.color: "#eeeeee"
             ComboBoxStyled {
                 id: measurementValueComboBox
                 anchors.fill: parent
-                cbFontSizeCoef: 1//0.9
-                cbModel: [qsTr("Плотность потока"), qsTr("...")]
+                cbFontSizeCoef: 1
+                cbModel: [qsTr("Плотность потока"), qsTr("Мощность поголощенной дозы"), qsTr("Мощность амбиентного эквивалента дозы")]
             }
         }
 
@@ -138,11 +139,9 @@ Item {
         CustomButton {
             id: measurementParametersButton
             width: parent.width/3.89
-            height: parent.height/4
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.verticalCenterOffset: -parent.height/12
-            anchors.right: parent.right
-            anchors.rightMargin: parent.width/25
+            height: parent.height/3
+            anchors.top: blockText.top
+            anchors.right: measurementButton.right
             buttonFontSizeCoef: 0.15
             buttonText: qsTr("Параметры измерения")
             onButtonClicked: {
@@ -215,18 +214,18 @@ Item {
         ComboBoxWithTitle {
             id: range
             height: parent.height/16
-            width: parent.width/2.7
+            width: parent.width/2.3
             anchors.top: parent.top
             anchors.topMargin: parent.height/10
             anchors.left: parent.left
-            anchors.leftMargin: parent.width/12
+            anchors.leftMargin: parent.width/35
             titleFontSize: parent.height/29
-            titleWidth: width*0.4
+            titleWidth: width*0.28
             titleHeight: height
-            comboBoxWidth: width*0.6
+            comboBoxWidth: width*0.72
             comboBoxHeight: height
-            comboBoxFontSizeCoef: 0.85
-            comboBoxModel: [qsTr("Чувствительный"), qsTr("Средний"), qsTr("Грубый"), qsTr("Экспериментально")]
+            comboBoxFontSizeCoef: 0.88
+            comboBoxModel: [qsTr("Нижний (без кадмиевого фильтра)"), qsTr("Верхний (с кадмиевым фильтром)")]
             title: qsTr("Диапазон")
         }
 
@@ -234,25 +233,26 @@ Item {
         ComboBoxWithTitle {
             id: thresholds
             height: parent.height/16
-            width: parent.width/2.7
+            width: parent.width/2.3
             anchors.top: range.bottom
             anchors.topMargin: parent.height/17.4
             anchors.left: range.left
             titleFontSize: parent.height/29
-            titleWidth: width*0.4
+            titleWidth: width*0.28//comboBoxCurrentIndex !== 2 ? width*0.28 : width*0.65//width*0.27
             titleHeight: height
-            comboBoxWidth: width*0.6
+            comboBoxWidth: width*0.45//comboBoxCurrentIndex !== 2 ? width*0.45 : width*0.35//width*0.73
             comboBoxHeight: height
             comboBoxFontSizeCoef: 0.85
-            comboBoxModel: [qsTr("По дозе"), qsTr("По времени, с")]
-            title: qsTr("Пороги")
+            comboBoxModel: [qsTr("По флюенсу, част/см\u00B2"), qsTr("По времени, с"), qsTr("Нет")]
+            valueInputVisible: comboBoxCurrentIndex !== 2
+            title: qsTr("Порог")
         }
 
         //--- Режим измерения ---
         ComboBoxWithTitle {
             id: measurementMode
             height: parent.height/16
-            width: parent.width/2.7
+            width: parent.width/2.3
             anchors.top: thresholds.bottom
             anchors.topMargin: parent.height/17.4
             //anchors.bottom: numberOFMeasurements.top
@@ -271,7 +271,7 @@ Item {
         ComboBoxWithTitle {
             id: dimension
             height: parent.height/16
-            width: parent.width/2.7
+            width: parent.width/2.3
             anchors.top: measurementMode.bottom
             anchors.topMargin: parent.height/17.4
             anchors.left: measurementMode.left
@@ -281,7 +281,7 @@ Item {
             comboBoxWidth: width * 0.35
             comboBoxHeight: height
             comboBoxFontSizeCoef: 0.85
-            comboBoxModel: [qsTr("Гр/с"), qsTr("...")]
+            comboBoxModel: [qsTr("част/см\u00B2с"), qsTr("част/см\u00B2мин"), qsTr("част/см\u00B2ч")]
             title: qsTr("Размерность\nизмеряемой величины")
         }
 
@@ -290,39 +290,39 @@ Item {
         // --- Время одного измерения, с ---
         TextInputWithTitle {
             id: timeOfOneMeasurement
-            width: parent.width/2.7
+            width: parent.width/2.3
             height: parent.height/8
-            anchors.right: parent.right
-            anchors.rightMargin: parent.width/12
-            anchors.top: range.top
-            anchors.topMargin: -parent.height/45
+            anchors.right: numberOFMeasurements.right
+            anchors.bottom: dimension.bottom
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{8}/}
             title: qsTr("Время одного измерения, с")
+            visible: measurementMode.comboBoxCurrentIndex === 1
         }
 
         // --- Количество измерений ---
         TextInputWithTitle {
             id: numberOFMeasurements
-            width: parent.width/2.7
+            width: parent.width/2.3
             height: parent.height/8
-            anchors.right: timeOfOneMeasurement.right
+            anchors.right: correctionFactor.right
             anchors.top: timeOfOneMeasurement.bottom
             anchors.topMargin: (correctionFactor.y - timeOfOneMeasurement.y - timeOfOneMeasurement.height)/2 - numberOFMeasurements.height/2//parent.height/25
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{8}/}
             title: qsTr("Количество измерений")
+            visible: measurementMode.comboBoxCurrentIndex === 1
         }
 
         // --- Корректирующий коэффициент ---
         TextInputWithTitle {
             id: correctionFactor
-            width: parent.width/2.7
+            width: parent.width/2.3
             height: parent.height/8
-            anchors.right: numberOFMeasurements.right
-            //anchors.top: numberOFMeasurements.bottom
-            //anchors.topMargin: parent.height/25
-            anchors.bottom: dimension.bottom
+            anchors.right: parent.right
+            anchors.rightMargin: parent.width/35
+            anchors.top: range.top
+            anchors.topMargin: -parent.height/45
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{,4}[\.\,]{,1}\d{,4}/}
             title: qsTr("Корректирующий коэффициент")
@@ -331,13 +331,13 @@ Item {
         // --- Кнопка "Условия измерения" ---
         CustomButton {
             id: measurementConditionsButton
-            width: parent.width/2.58
-            height: parent.height/9.5
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: correctionFactor.bottom
-            anchors.topMargin: parent.height/15
+            width: correctionFactor.width*0.8
+            height: parent.height/4
+            anchors.horizontalCenter: correctionFactor.horizontalCenter
+            anchors.top: measurementMode.comboBoxCurrentIndex !== 1 ? correctionFactor.bottom : backToMainLayerButton.top
+            anchors.topMargin: measurementMode.comboBoxCurrentIndex !== 1 ? parent.height/15 : 0
             buttonText: qsTr("Условия измерения")
-            buttonFontSizeCoef: 0.4
+            buttonFontSizeCoef: 0.2
             onButtonClicked: {
                 measurementConditions.visible = true
                 measurementParameters.visible = false
@@ -347,13 +347,13 @@ Item {
         // --- Кнопка "Назад" к главному слою---
         CustomButton {
             id: backToMainLayerButton
-            width: parent.width/3.89
-            height: parent.height/5
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: measurementConditionsButton.bottom
-            anchors.topMargin: parent.height/15
+            width: correctionFactor.width*0.8
+            height: parent.height/4
+            anchors.horizontalCenter: measurementMode.comboBoxCurrentIndex !== 1 ? parent.horizontalCenter : thresholds.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height/35
             buttonText: qsTr("Назад")
-            buttonFontSizeCoef: 0.3
+            buttonFontSizeCoef: 0.25
             onButtonClicked: {
                 mainLayer.visible = true
                 measurementParameters.visible = false
