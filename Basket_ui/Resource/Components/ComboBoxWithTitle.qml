@@ -1,5 +1,5 @@
 import QtQuick 2.0
-
+import QtQuick.Controls 2.0
 Item { //Комбо-бокс с названием
 
     property alias titleFontSize: titleText.font.pixelSize //Размер шрифта названия
@@ -13,7 +13,8 @@ Item { //Комбо-бокс с названием
     property alias comboBoxModel: comboBox.cbModel //Модель элементов комбо-бокса
     property alias comboBoxText: comboBox.cbModelCurrentText //Модель элементов комбо-бокса
     property alias comboBoxFontSizeCoef: comboBox.cbFontSizeCoef //Коэффициент, регулирующий размер шрифта комбо-бокса.
-
+    property alias comboBoxCurrentIndex: comboBox.currentIndex
+    property alias valueInputVisible: valueRect.visible
     Text {
         id: titleText
         height: parent.height
@@ -29,18 +30,43 @@ Item { //Комбо-бокс с названием
         wrapMode: Text.WordWrap
         text: qsTr("Название")
     }
+    Rectangle {
+        id: valueRect
+        height: comboBox.height
+        anchors.left: titleText.right
+        anchors.right: comboBox.left
+        anchors.rightMargin: parent.width/50
+        anchors.bottom: comboBox.bottom
+        anchors.bottomMargin: 0
+        color: application.inputFieldColor
+        border.width: 2
+        border.color: "#eeeeee"
+        visible: false
+        TextField {
+            id: valueInput
+            anchors.fill: parent
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            //font.weight: Font.Bold
+            font.pixelSize: parent.height/2
+            validator: RegExpValidator{regExp: /\d{8}/}
+            placeholderText: "значение"
+            background: Rectangle {
+                color: "transparent"
+            }
+            color: application.fontColor
+            text: qsTr("")
+            onAccepted: {
+
+            }
+        }
+    }
     ComboBoxStyled {
         id: comboBox
         height: parent.height
         width: parent.width/2
         anchors.verticalCenter: titleText.verticalCenter
-        anchors.left: titleText.right
+        anchors.right: parent.right
         backgroundColor: "#2E3438"
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;formeditorZoom:0.33;height:800;width:1280}
-}
-##^##*/

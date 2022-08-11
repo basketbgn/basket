@@ -50,7 +50,7 @@ Item {
 
     property alias adcVoltageFieldValue: adcVText.text //Значение АЦП напряжения
 
-    property alias progressBarValue: progressBar.value // Значение прогресс-бара от 0 до 1
+    property alias progressBarValue: progressBar.progressBarValue // Значение прогресс-бара от 0 до 1
 
     property alias timeValue: timeValue.value //Время в секундах
 
@@ -243,22 +243,13 @@ Item {
             text: value + qsTr(" с")
         }
 
-        ProgressBar {
+        ProgressBarWithPercents {
             id: progressBar
             height: parent.height/2
             width: parent.width
             anchors.top: time.bottom
             anchors.horizontalCenter: parent.horizontalCenter
-            value: 0.0
-            Text {
-                id: percentValue
-                anchors.fill: parent
-                verticalAlignment: Text.AlignVCenter
-                horizontalAlignment: Text.AlignHCenter
-                font.pixelSize: parent.height*0.65
-                color: "#333333"
-                text: parent.value*100 + "%"
-            }
+            progressBarValue: 0.0
         }
     }
 
@@ -303,8 +294,24 @@ Item {
         }
     }
 
+
     // --- Кнопка "Отмена" ---
-    Rectangle {
+    CustomButton {
+        id: cancelButton
+        width: parent.width/5
+        height: parent.height/6
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: parent.height/30
+        anchors.horizontalCenter: parent.horizontalCenter
+        buttonFontSizeCoef: 0.35
+        buttonText: qsTr("Отмена")
+        onButtonClicked: {
+            _cppApi_ElectrometerTest.onCancelButton()
+            stackView.pop()
+        }
+    }
+    // --- Кнопка "Отмена" ---
+    /*Rectangle {
         id: cancelButton
         width: parent.width/5
         height: parent.height/6
@@ -335,7 +342,7 @@ Item {
                 stackView.pop()
             }
         }
-    }
+    }*/
 }
 
 /*##^##

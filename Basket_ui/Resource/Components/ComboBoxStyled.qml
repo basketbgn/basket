@@ -6,9 +6,10 @@ Item {
     // Комбо-бокс со стилем
     id: comboBoxStyled
     property alias cbModel: cb.model //Модель, которая используется для заполнения Комбо-бокса
-    property alias cbModelCurrentText: cb.displayText //Модель, которая используется для заполнения Комбо-бокса
+    property alias cbModelCurrentText: cb.displayText //Текст Комбо-бокса
     property double cbFontSizeCoef: 0.7 //Коэффициент, регулирующий размер шрифта, относительно высоты элемента
     property color backgroundColor: "transparent" //цвет фона комбо-бокса
+    property alias currentIndex: cb.currentIndex //текущий индекс
 
     Rectangle {
         id: cbRect
@@ -57,6 +58,7 @@ Item {
                  elide: Text.ElideRight
                  verticalAlignment: Text.AlignVCenter
                  horizontalAlignment: Text.AlignHCenter
+                 fontSizeMode: Text.HorizontalFit
                 }
                 background: Rectangle {
                  color: delegate.pressed? "#e0e0e0" : "#2E3438"
@@ -69,9 +71,9 @@ Item {
                 id: canvas1
                 anchors.verticalCenter: cb.verticalCenter
                 anchors.right: cb.right
-                anchors.rightMargin: cb.width/15
+                anchors.rightMargin: cb.width/20
                 width: height*1.1
-                height: cbRect.height/2
+                height: cbRect.height/3
                 contextType: "2d"
                 onPaint: {
                     context.reset();
