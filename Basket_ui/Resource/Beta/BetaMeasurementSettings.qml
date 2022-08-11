@@ -116,7 +116,7 @@ Item {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: chamberText.bottom
             anchors.topMargin: 0//parent.height/40
-            color: "#313131"
+            color: application.buttonColor
             border.width: 2
             border.color: "#eeeeee"
             ComboBoxStyled {
@@ -154,7 +154,7 @@ Item {
             buttonFontSizeCoef: 0.15
             buttonText: qsTr("Компенсация токов утечки с камерой")
             onButtonClicked: {
-
+                stackView.push("qrc:/Beta/BetaCompensation.qml")
             }
         }
         // --- Свитч "Учесть компенсацию" ---
@@ -178,7 +178,7 @@ Item {
                 color: application.fontColor
                 text: qsTr("Учесть компенсацию")
             }
-            Switch {
+            CustomSwitch {
                 id: control
                 width: cbRectangle.width/10
                 height: cbRectangle.height/1.8
@@ -186,33 +186,10 @@ Item {
                 anchors.leftMargin: parent.width/50
                 anchors.right: parent.right
                 anchors.verticalCenter: parent.verticalCenter
-                checked: false
+                check: true
                 enabled: false
-                indicator: Rectangle {
-                    width: parent.width
-                    height: parent.height
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.verticalCenter: parent.verticalCenter
-                    radius: 20
-                    color: control.checked ? "#17a81a" : "#f8f8f8"
-                    border.color: indicatorMouseArea.containsMouse ? "#0d9aff" : "#2e3438"
-                    border.width: 2
-                    Rectangle {
-                        x: control.checked ? parent.width - width : 0
-                        width: parent.height
-                        height: parent.height
-                        radius: 20
-                        color: control.down ? "#cccccc" : "#ffffff"
-                        border.color: indicatorMouseArea.containsMouse ? "#0d9aff" : "#2e3438"//control.checked ? (control.down ? "#17a81a" : "#21be2b") : "#999999"
-                    }
-                    MouseArea {
-                        id: indicatorMouseArea
-                        anchors.fill: parent
-                        hoverEnabled: true
-                        onClicked: {
-                            control.checked = !control.checked
-                        }
-                    }
+                onIsChecked: {
+
                 }
             }
         }
@@ -328,13 +305,14 @@ Item {
             anchors.topMargin: parent.height/17.4
             anchors.left: range.left
             titleFontSize: parent.height/29
-            titleWidth: width*0.4
+            titleWidth: comboBoxCurrentIndex !== 2 ? width*0.2 : width*0.63
             titleHeight: height
-            comboBoxWidth: width*0.6
+            comboBoxWidth: comboBoxCurrentIndex !== 2 ? width*0.45 : width*0.37
             comboBoxHeight: height
             comboBoxFontSizeCoef: 0.85
-            comboBoxModel: [qsTr("По дозе"), qsTr("По времени, с")]
-            title: qsTr("Пороги")
+            comboBoxModel: [qsTr("По дозе, мГр"), qsTr("По времени, с"), qsTr("Нет")]
+            valueInputVisible: comboBoxCurrentIndex !== 2 //Для порога по дозе или времени отображается поле ввода
+            title: qsTr("Порог")
         }
 
         //--- Режим измерения ---
@@ -347,12 +325,12 @@ Item {
             //anchors.bottom: numberOFMeasurements.top
             anchors.left: thresholds.left
             titleFontSize: parent.height/29
-            titleWidth: width * 0.65
+            titleWidth: width * 0.63
             titleHeight: height
-            comboBoxWidth: width * 0.35
+            comboBoxWidth: width * 0.37
             comboBoxHeight: height
             comboBoxFontSizeCoef: 0.85
-            comboBoxModel: [qsTr("Ручной"), qsTr("Авто")]
+            comboBoxModel: [qsTr("Ручной"), qsTr("Авто")] //При выборе режима "Авто" отображаются поля ввода количества измерений и времени измерения
             title: qsTr("Режим измерения")
         }
 
@@ -365,9 +343,9 @@ Item {
             anchors.topMargin: parent.height/17.4
             anchors.left: measurementMode.left
             titleFontSize: parent.height/29
-            titleWidth: width * 0.65
+            titleWidth: width * 0.63
             titleHeight: height*1.1
-            comboBoxWidth: width * 0.35
+            comboBoxWidth: width * 0.37
             comboBoxHeight: height
             comboBoxFontSizeCoef: 0.85
             comboBoxModel: [qsTr("Гр/с"), qsTr("Гр/мин"), qsTr("Гр/ч")]
@@ -381,13 +359,12 @@ Item {
             id: timeOfOneMeasurement
             width: parent.width/2.7
             height: parent.height/8
-            anchors.right: parent.right
-            anchors.rightMargin: parent.width/12
-            anchors.top: range.top
-            anchors.topMargin: -parent.height/45
+            anchors.right: numberOFMeasurements.right
+            anchors.bottom: dimension.bottom
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{8}/}
             title: qsTr("Время одного измерения, с")
+            visible: measurementMode.comboBoxCurrentIndex === 1
             inputText: "10"
         }
 
@@ -396,12 +373,13 @@ Item {
             id: numberOFMeasurements
             width: parent.width/2.7
             height: parent.height/8
-            anchors.right: timeOfOneMeasurement.right
+            anchors.right: correctionFactor.right
             anchors.top: timeOfOneMeasurement.bottom
             anchors.topMargin: (correctionFactor.y - timeOfOneMeasurement.y - timeOfOneMeasurement.height)/2 - numberOFMeasurements.height/2//parent.height/25
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{8}/}
             title: qsTr("Количество измерений")
+            visible: measurementMode.comboBoxCurrentIndex === 1
             inputText: "1"
         }
 
@@ -410,10 +388,10 @@ Item {
             id: correctionFactor
             width: parent.width/2.7
             height: parent.height/8
-            anchors.right: numberOFMeasurements.right
-            //anchors.top: numberOFMeasurements.bottom
-            //anchors.topMargin: parent.height/25
-            anchors.bottom: dimension.bottom
+            anchors.right: parent.right
+            anchors.rightMargin: parent.width/12
+            anchors.top: range.top
+            anchors.topMargin: -parent.height/45
             titleFontSize: parent.height/29
             inputValidator: RegExpValidator{regExp: /\d{,4}[\.\,]{,1}\d{,4}/}
             title: qsTr("Корректирующий коэффициент")
@@ -423,13 +401,13 @@ Item {
         // --- Кнопка "Условия измерения" ---
         CustomButton {
             id: measurementConditionsButton
-            width: parent.width/2.58
-            height: parent.height/9.5
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: correctionFactor.bottom
-            anchors.topMargin: parent.height/15
+            width: correctionFactor.width //: parent.width/2.58
+            height: parent.height/4 //: parent.height/8.5//9.5
+            anchors.horizontalCenter: correctionFactor.horizontalCenter
+            anchors.top: measurementMode.comboBoxCurrentIndex !== 1 ? correctionFactor.bottom : backToMainLayerButton.top
+            anchors.topMargin: measurementMode.comboBoxCurrentIndex !== 1 ? parent.height/15 : 0
             buttonText: qsTr("Условия измерения")
-            buttonFontSizeCoef: 0.4
+            buttonFontSizeCoef: 0.2
             onButtonClicked: {
                 measurementConditions.visible = true
                 measurementParameters.visible = false
@@ -439,13 +417,13 @@ Item {
         // --- Кнопка "Назад" к главному слою---
         CustomButton {
             id: backToMainLayerButton
-            width: parent.width/3.89
-            height: parent.height/5
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: measurementConditionsButton.bottom
-            anchors.topMargin: parent.height/15
+            width: correctionFactor.width//parent.width/3.89
+            height: parent.height/4//parent.height/5
+            anchors.horizontalCenter: measurementMode.comboBoxCurrentIndex !== 1 ? parent.horizontalCenter : thresholds.horizontalCenter
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: parent.height/35
             buttonText: qsTr("Назад")
-            buttonFontSizeCoef: 0.3
+            buttonFontSizeCoef: 0.25
             onButtonClicked: {
                 mainLayer.visible = true
                 measurementParameters.visible = false
@@ -572,9 +550,3 @@ Item {
         }
     }
 }
-
-/*##^##
-Designer {
-    D{i:0;autoSize:true;formeditorZoom:1.1;height:800;width:1280}
-}
-##^##*/
