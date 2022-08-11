@@ -7,7 +7,8 @@
 class GammaIK_chamber: public Ichamber
 {   
 public:
-    GammaIK_chamber(uint8_t r=0, bool comp=0,double temp=0,double p=0,
+    GammaIK_chamber(AverageADC* globAdc =nullptr,
+					uint8_t r=0, bool comp=0,double temp=0,double p=0,
                     double corrF=0, QString chamName="",quint8 mesparam=0);
     ~GammaIK_chamber();
 

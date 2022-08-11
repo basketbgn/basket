@@ -24,7 +24,7 @@ class Beta_measuring : public QDialog
     Q_OBJECT
 
 public:
-    explicit Beta_measuring(QWidget *parent = nullptr);
+    explicit Beta_measuring(QWidget *parent = nullptr, AverageADC* globAdc = nullptr);
     ~Beta_measuring();
 
 signals:

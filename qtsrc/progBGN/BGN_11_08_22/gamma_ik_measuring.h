@@ -21,7 +21,7 @@ class Gamma_IK_measuring : public QDialog
     Q_OBJECT
 
 public:
-    explicit Gamma_IK_measuring(QWidget *parent = nullptr);
+    explicit Gamma_IK_measuring(QWidget *parent = nullptr, AverageADC* globAdc = nullptr);
     ~Gamma_IK_measuring();
 
 signals:
@@ -59,6 +59,7 @@ private slots:
 
 private:
     Ui::Gamma_IK_measuring *ui;
+    AverageADC* globalAverageADC{nullptr};
     GammaIK_chamber* IKgamma;
     Electrometer_test* elTest{nullptr};
     ChamberCompensation* chambComp{nullptr};

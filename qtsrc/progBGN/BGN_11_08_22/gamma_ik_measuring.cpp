@@ -3,7 +3,7 @@
 #include "gamma_ik_measuring.h"
 #include "ui_gamma_ik_measuring.h"
 
-Gamma_IK_measuring::Gamma_IK_measuring(QWidget *parent) :
+Gamma_IK_measuring::Gamma_IK_measuring(QWidget *parent, AverageADC* globAdc) :
     QDialog(parent),
     ui(new Ui::Gamma_IK_measuring)
 {
@@ -103,7 +103,7 @@ void Gamma_IK_measuring::init()
     }
     elTest=new Electrometer_test(this);
     elTest->testSource(true);//передаем флаг о том что вызываем из окна измерения
-    globalAverageADC = electrometerTest->getPointer();
+    globalAverageADC = elTest->getPointer();
     connect(elTest,&Electrometer_test::closeTestAll,this,&Gamma_IK_measuring::testFault);
     elTest->setModal(true);
     elTest->show();
@@ -111,6 +111,9 @@ void Gamma_IK_measuring::init()
 
 void Gamma_IK_measuring::on_pushButton_clicked() //назад
 {
+    if(globalAverageADC) {
+        delete globalAverageADC;
+    }
     close();
 }
 
@@ -128,7 +131,7 @@ void Gamma_IK_measuring::on_pushButton_2_clicked()//измерение
     //----------------------------------------------------------------------------------------------
     //передаем установленные параметры из данного окна в конструктор объекта класса гамма камеры
     //объект класса GammaIK_chamber наследуется от класса Ichamber, в котором реализован эмулятор
-    IKgamma = new GammaIK_chamber(iR,Comp,Temp,P,CorrF,chamName,mesParam);
+    IKgamma = new GammaIK_chamber(globalAverageADC, iR,Comp,Temp,P,CorrF,chamName,mesParam);
     //коннект на слот который в находится в родителе GammaIK_chamber - Ichamber
     connect(this,&Gamma_IK_measuring::sendToComSig,IKgamma,&GammaIK_chamber::setVoltageSlot);
 
@@ -204,7 +207,7 @@ void Gamma_IK_measuring::on_pushButton_3_clicked() // поверка
     //----------------------------------------------------------------------------------------------
     //передаем установленные параметры из данного окна в конструктор объекта класса гамма камеры
     //объект класса GammaIK_chamber наследуется от класса Ichamber, в котором реализован эмулятор
-    IKgamma = new GammaIK_chamber(iR,Comp,Temp,P,CorrF,chamName,mesParam);
+    IKgamma = new GammaIK_chamber(globalAverageADC, iR,Comp,Temp,P,CorrF,chamName,mesParam);
     //коннект на слот который в находится в родителе GammaIK_chamber - Ichamber
     connect(this,&Gamma_IK_measuring::sendToComSig,IKgamma,&GammaIK_chamber::setVoltageSlot);
     Gamma_IK_verify* gammaIKver = new Gamma_IK_verify(this);
@@ -357,6 +360,9 @@ void Gamma_IK_measuring::on_radioButton_clicked() // порога нет
 
 void Gamma_IK_measuring::testFault() //прием сигнала о том что тест не пройден
 {
+    if(globalAverageADC) {
+        delete globalAverageADC;
+    }
     close();
 }
 

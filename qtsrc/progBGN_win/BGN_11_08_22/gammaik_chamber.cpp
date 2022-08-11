@@ -1,7 +1,7 @@
 #include "gammaik_chamber.h"
 
-GammaIK_chamber::GammaIK_chamber(uint8_t r, bool comp,double temp,double p, double corrF, QString chamName, quint8 mesparam)
-    :Ichamber(r,comp,temp,p,corrF),chamberName(chamName),mesParam(mesparam)
+GammaIK_chamber::GammaIK_chamber(AverageADC* globAdc, uint8_t r, bool comp,double temp,double p, double corrF, QString chamName, quint8 mesparam)
+    :Ichamber(globAdc, r,comp,temp,p,corrF),chamberName(chamName),mesParam(mesparam)
 {
     init();
 }

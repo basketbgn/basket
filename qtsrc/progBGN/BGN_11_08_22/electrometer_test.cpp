@@ -144,8 +144,9 @@ void Electrometer_test::timeOut() //ф-я измерения параметро�
             {
                 //emit closePortTest();
                 //close();
-                emit closeTestAll();
+
                 close();
+                emit closeTestAll();
             }
         }
     }

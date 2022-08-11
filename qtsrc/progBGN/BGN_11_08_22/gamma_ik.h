@@ -26,6 +26,7 @@ private slots:
 
 private:
     Ui::Gamma_IK *ui;
+	AverageADC* globalPointerForAverageAdc{nullptr};
     void init();
 };
 

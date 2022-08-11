@@ -16,7 +16,8 @@ class Ichamber:public QObject
 {
     Q_OBJECT
 public:
-    Ichamber(uint8_t r=0, bool comp=0,double temp=0,double p=0, double corrF=0); //конструктор по умолчанию
+    Ichamber(AverageADC* globAdc = nullptr,
+             uint8_t r=0, bool comp=0,double temp=0,double p=0, double corrF=0); //конструктор по умолчанию
     ~Ichamber();
 
 

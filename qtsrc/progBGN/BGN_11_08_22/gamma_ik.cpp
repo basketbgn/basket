@@ -14,6 +14,9 @@ Gamma_IK::Gamma_IK(QWidget *parent) :
 Gamma_IK::~Gamma_IK()
 {
     delete ui;
+	if(globalPointerForAverageAdc) {
+        delete globalPointerForAverageAdc;
+    }
 }
 
 void Gamma_IK::init()
@@ -45,6 +48,7 @@ void Gamma_IK::on_pushButton_clicked() // назад
 void Gamma_IK::on_pushButton_2_clicked() //тест аппаратуры
 {    
     Electrometer_test* elTest = new Electrometer_test(this);
+	globalPointerForAverageAdc = elTest->getPointer();
     elTest->setModal(true);
     elTest->show();
 }
@@ -72,7 +76,7 @@ void Gamma_IK::on_pushButton_3_clicked() //измерение
         if(!query.exec(queryStr))
         {qDebug()<<"unable execute query UPDATE";}
     }
-    Gamma_IK_measuring* gammaIKmes = new Gamma_IK_measuring(this);
+    Gamma_IK_measuring* gammaIKmes = new Gamma_IK_measuring(this, globalPointerForAverageAdc);
     gammaIKmes->setModal(true);
     gammaIKmes->show();
 }

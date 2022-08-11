@@ -3,7 +3,7 @@
 #include "beta_measuring.h"
 #include "ui_beta_measuring.h"
 
-Beta_measuring::Beta_measuring(QWidget *parent) :
+Beta_measuring::Beta_measuring(QWidget *parent, AverageADC* globAdc) :
     QDialog(parent),
     ui(new Ui::Beta_measuring)
 {
@@ -14,9 +14,12 @@ Beta_measuring::Beta_measuring(QWidget *parent) :
 Beta_measuring::~Beta_measuring()
 {
     qDebug()<<"~Beta_measuring";
-    //delete betaChamber;
+    delete betaChamber;
     qDebug()<<"~betaChamber";
-    //delete chambComp;
+    if(chambComp) {
+        delete chambComp;
+    }
+
     delete ui;
     qDebug()<<"delete chambComp";
 }
@@ -96,7 +99,7 @@ void Beta_measuring::init()
     }    
     elTest=new Electrometer_test(this);    
     elTest->testSource(true);//передаем флаг о том что вызываем из окна измерения
-    globalAverageADC = electrometerTest->getPointer();
+    globalAverageADC = elTest->getPointer();
     connect(elTest,&Electrometer_test::closeTestAll,this,&Beta_measuring::testFault);
     elTest->setModal(true);
     elTest->show();
@@ -104,6 +107,9 @@ void Beta_measuring::init()
 
 void Beta_measuring::on_pushButton_clicked() //назад
 {
+    if(globalAverageADC) {
+        delete globalAverageADC;
+    }
     close();
 }
 
@@ -310,6 +316,9 @@ void Beta_measuring::on_radioButton_clicked() //порог нет
 
 void Beta_measuring::testFault() //прием сигнала о непрохождении теста
 {
+    if(globalAverageADC) {
+        delete globalAverageADC;
+    }
     close();
 }
 

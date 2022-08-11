@@ -24,7 +24,7 @@ class Beta_measuring : public QDialog
     Q_OBJECT
 
 public:
-    explicit Beta_measuring(QWidget *parent = nullptr);
+    explicit Beta_measuring(QWidget *parent = nullptr, AverageADC* globAdc = nullptr);
     ~Beta_measuring();
 
 signals:
@@ -60,6 +60,7 @@ private slots:
 private:
     Ui::Beta_measuring *ui;  
     //AverageADC* AvADC{nullptr};
+    AverageADC* globalAverageADC{nullptr};
     Beta_chamber* betaChamber{nullptr};
     Electrometer_test* elTest{nullptr};
     ChamberCompensation* chambComp{nullptr};

@@ -3,9 +3,18 @@
 #include "ichamber.h"
 #include "qapplication.h"
 
-Ichamber::Ichamber(uint8_t r,bool comp,double temp,double p, double corrF):
+Ichamber::Ichamber(AverageADC* globAdc, uint8_t r,bool comp,double temp,double p, double corrF):
     iR(r),Comp(comp),Temp(temp),P(p),CorrF(corrF) //конструктор объекта (инициализация параметров происходит в списке инициализации)
 {
+    //создаем объект класса AverageADC из которого принимаем усредненное значение выдаваемое АЦП
+    // (эмулятором или детектором(электрометром))
+    if(globAdc) {
+        averageADC = globAdc;
+    } else {
+        averageADC = new AverageADC;
+    }
+    //коннект на запись в СОМ порт
+    connect(this,&Ichamber::writeToComSig,averageADC,&AverageADC::sendToComSlot);
     init();
 }
 
@@ -30,9 +39,6 @@ void Ichamber::init()
     h90[0]=0x29; h90[1]=0x30;
     hA0.resize(2);
     hA0[0]=0x2A; hA0[1]=0x30; //инициализируем коды реле управления диапазоном измерения
-
-    averageADC=new AverageADC; //создаем объект класса AverageADC из которого принимаем усредненное значение выдаваемое АЦП (эмулятором или детектором(электрометром))
-    connect(this,&Ichamber::writeToComSig,averageADC,&AverageADC::sendToComSlot); //коннект на запись в СОМ порт
 
     timer = new QTimer(this);
     connect(timer,&QTimer::timeout,this,&Ichamber::timeOut);
