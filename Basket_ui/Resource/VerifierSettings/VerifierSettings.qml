@@ -1,6 +1,8 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.4
+import "../Components"
+
 Item {
     id: verifierSettings
 
@@ -26,8 +28,7 @@ Item {
     }
 
     // --- Кнопки: Бета излучение (ИК), Гамма излучение (ИК), Гамма излучение (БДГ), Нейтронное излучение (БДКН) ---
-
-    Rectangle {
+    CustomButton {
         id: gammaIKButton
         height: parent.height/2.5
         width: parent.width/3
@@ -35,127 +36,51 @@ Item {
         anchors.topMargin: parent.height/35
         anchors.right: parent.right
         anchors.rightMargin: parent.width/64
-        border.width: 2
-        border.color: gammaIKMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: gammaIKText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Гамма\nизлучение\n(ИК)")
-        }
-        MouseArea {
-            id: gammaIKMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                stackView.push("qrc:/VerifierSettings/VerifierGammaIK.qml")
-            }
+        buttonFontSizeCoef: 0.15
+        buttonText: qsTr("Гамма\nизлучение\n(ИК)")
+        onButtonClicked: {
+            stackView.push("qrc:/VerifierSettings/VerifierGammaIK.qml")
         }
     }
 
-    Rectangle {
+    CustomButton {
         id: betaIKButton
         width: gammaIKButton.width
         height: gammaIKButton.height
         anchors.right: gammaIKButton.left
         anchors.rightMargin: parent.width/40
         anchors.top: gammaIKButton.top
-        border.width: 2
-        border.color: betaIKMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: betaIKText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Бета\nизлучение\n(ИК)")
-        }
-        MouseArea {
-            id: betaIKMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                stackView.push("qrc:/VerifierSettings/VerifierBetaIK.qml")
-            }
+        buttonFontSizeCoef: 0.15
+        buttonText: qsTr("Бета\nизлучение\n(ИК)")
+        onButtonClicked: {
+            stackView.push("qrc:/VerifierSettings/VerifierBetaIK.qml")
         }
     }
 
-    Rectangle {
+    CustomButton {
         id: gammaBDGButton
         width: betaIKButton.width
         height: betaIKButton.height
         anchors.left: betaIKButton.left
         anchors.top: betaIKButton.bottom
         anchors.topMargin: parent.height/25
-        border.width: 2
-        border.color: gammaBDGMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: gammaBDGText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Гамма\nизлучение\n(БДГ)")
-        }
-        MouseArea {
-            id: gammaBDGMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                stackView.push("qrc:/VerifierSettings/VerifierGammaBDG.qml")
-            }
+        buttonFontSizeCoef: 0.15
+        buttonText: qsTr("Гамма\nизлучение\n(БДГ)")
+        onButtonClicked: {
+            stackView.push("qrc:/VerifierSettings/VerifierGammaBDG.qml")
         }
     }
 
-    Rectangle {
+    CustomButton {
         id: neutronButton
         width: betaIKButton.width
         height: betaIKButton.height
         anchors.left: gammaIKButton.left
         anchors.top: gammaBDGButton.top
-        border.width: 2
-        border.color: neutronMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id: neutronText
-            width: parent.width*0.8
-            height: parent.height/2
-            anchors.centerIn: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.5
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Нейтронное\nизлучение\n(БДКН)")
-        }
-        MouseArea {
-            id: neutronMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                stackView.push("qrc:/VerifierSettings/VerifierNeutronBDKN.qml")
-            }
+        buttonFontSizeCoef: 0.15
+        buttonText: qsTr("Нейтронное\nизлучение\n(БДКН)")
+        onButtonClicked: {
+            stackView.push("qrc:/VerifierSettings/VerifierNeutronBDKN.qml")
         }
     }
 
@@ -183,7 +108,7 @@ Item {
             font.pixelSize: parent.height*0.7
             fontSizeMode: Text.Fit
             color: application.fontColor
-            font.underline: true // как смотрится?
+            font.underline: true
             text: qsTr("Контрольная сумма = 357440a83580e9baa84842d65667495d")
         }
     }
