@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.0
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
+import "../Components"
 
 Item {
     id: electrometerSettings
@@ -71,6 +72,14 @@ Item {
         }
     }
 
+    Pane {
+        background: Rectangle {
+            color: "transparent"
+        }
+        anchors.fill: parent
+        focusPolicy: Qt.ClickFocus
+    }
+
     // --- Поля ввода ---
 
     Rectangle {
@@ -112,7 +121,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.weight: Font.Bold
-                font.pixelSize: parent.height/1.5
+                font.pixelSize: parent.height/1.8
                 validator: RegExpValidator{regExp: /\d{8}/}
                 inputMethodHints: Qt.ImhDigitsOnly
                 color: application.fontColor
@@ -120,6 +129,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                placeholderText: qsTr("поле ввода")
                 onTextChanged: _cppApi_ElectrometerSettings.onR1(text)
                 onAccepted: {
                 }
@@ -165,7 +175,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.weight: Font.Bold
-                font.pixelSize: parent.height/1.5
+                font.pixelSize: parent.height/1.8
                 validator: RegExpValidator{regExp: /\d{8}/}
                 inputMethodHints: Qt.ImhDigitsOnly
                 color: application.fontColor
@@ -173,6 +183,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                placeholderText: qsTr("поле ввода")
                 onTextChanged: _cppApi_ElectrometerSettings.onReferenceVoltage(text)
                 onAccepted: {
                 }
@@ -219,7 +230,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.weight: Font.Bold
-                font.pixelSize: parent.height/1.5
+                font.pixelSize: parent.height/1.8
                 validator: RegExpValidator{regExp: /\d{8}/}
                 inputMethodHints: Qt.ImhDigitsOnly
                 color: application.fontColor
@@ -227,6 +238,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                placeholderText: qsTr("поле ввода")
                 onTextChanged: _cppApi_ElectrometerSettings.onPeriodRS232(text)
                 onAccepted: {
 
@@ -274,7 +286,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignBottom
                 font.weight: Font.Bold
-                font.pixelSize: parent.height/1.5
+                font.pixelSize: parent.height/1.8
                 validator: RegExpValidator{regExp: /\d{8}/}
                 inputMethodHints: Qt.ImhDigitsOnly
                 color: application.fontColor
@@ -282,6 +294,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                placeholderText: qsTr("поле ввода")
                 onTextChanged: _cppApi_ElectrometerSettings.onTestTimeout(text)
                 onAccepted: {
 
@@ -328,7 +341,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.weight: Font.Bold
-                font.pixelSize: parent.height/1.5
+                font.pixelSize: parent.height/1.8
                 validator: RegExpValidator{regExp: /\d{8}/}
                 inputMethodHints: Qt.ImhDigitsOnly
                 color: application.fontColor
@@ -336,6 +349,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                placeholderText: qsTr("поле ввода")
                 onTextChanged: _cppApi_ElectrometerSettings.onHeatingTime(text)
                 onAccepted: {
 
@@ -382,7 +396,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.weight: Font.Bold
-                font.pixelSize: parent.height/1.5
+                font.pixelSize: parent.height/1.8
                 validator: RegExpValidator{regExp: /\d{8}/}
                 inputMethodHints: Qt.ImhDigitsOnly
                 color: application.fontColor
@@ -390,6 +404,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                placeholderText: qsTr("поле ввода")
                 onTextChanged: _cppApi_ElectrometerSettings.onChangeTimeout(text)
                 onAccepted: {
 
@@ -437,7 +452,7 @@ Item {
                 horizontalAlignment: Text.AlignHCenter
                 verticalAlignment: Text.AlignVCenter
                 font.weight: Font.Bold
-                font.pixelSize: parent.height/1.5
+                font.pixelSize: parent.height/1.8
                 validator: RegExpValidator{regExp: /\d{8}/}
                 inputMethodHints: Qt.ImhDigitsOnly
                 color: application.fontColor
@@ -445,6 +460,7 @@ Item {
                     color: "transparent"
                 }
                 text: qsTr("")
+                placeholderText: qsTr("поле ввода")
                 onTextChanged: _cppApi_ElectrometerSettings.onCountsAver(text)
                 onAccepted: {
 
@@ -453,35 +469,59 @@ Item {
         }
     }
 
-    //--- Кнопка "Предельные значения результатов теста" ---
     Rectangle {
-        id: limitValuesButton
-        width: r1Value.width
-        height: timeOutToMode.height
-        anchors.left: numberOfCounts.left
-        anchors.verticalCenter: timeOutToMode.verticalCenter
-        anchors.verticalCenterOffset: height/4
-        border.width: 2
-        border.color: limitValuesMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
+        id: comRectangle
+        width: parent.width/2.5//2.8
+        height: parent.height/6
+        anchors.top: numberOfCounts.bottom
+        anchors.topMargin: parent.height/35
+        anchors.left: timeOfHeating.right
+        anchors.leftMargin: parent.width/15
+        color: "transparent"
         visible: !parent.limitValuesVisible
         Text {
-            id: limitValuesText
-            anchors.fill: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.25
+            id: comText
+            width: parent.width
+            height: parent.height/2
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: numberOfCounts.top
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignBottom
+            font.pixelSize: parent.height*0.2
             color: application.fontColor
-            text: qsTr("Предельные значения\nрезультатов теста")
+            text: qsTr("COM-порт")
         }
-        MouseArea {
-            id: limitValuesMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                electrometerSettings.limitValuesVisible = true
+        Rectangle {
+            id: comComboBoxRectangle
+            width: parent.width
+            height: parent.height/2.2
+            anchors.top: parent.verticalCenter
+            anchors.topMargin: parent.height/20
+            anchors.horizontalCenter: parent.horizontalCenter
+            border.width: 2
+            border.color: "#eeeeee"
+            radius: 5
+            color: application.buttonColor
+            ComboBoxStyled {
+                id: comComboBox
+                cbModel: [qsTr("COM1"), qsTr("COM2"), qsTr("COM3"), qsTr("COM5"), qsTr("COM6"), qsTr("COM7")]
+                anchors.fill: parent
             }
+        }
+    }
+
+    //--- Кнопка "Предельные значения результатов теста" ---
+    CustomButton {
+        id: limitValuesButton
+        width: r1Value.width
+        height: okButton.height//timeOutToMode.height
+        anchors.left: numberOfCounts.left
+        anchors.verticalCenter: okButton.verticalCenter//timeOutToMode.verticalCenter
+        anchors.verticalCenterOffset: 0//height/4
+        buttonText: qsTr("Предельные значения\nрезультатов теста")
+        visible: !parent.limitValuesVisible
+        onButtonClicked: {
+            electrometerSettings.limitValuesVisible = true
         }
     }
 
@@ -551,7 +591,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -583,7 +623,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -632,7 +672,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -665,7 +705,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -714,7 +754,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -747,7 +787,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -796,7 +836,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -829,7 +869,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -878,7 +918,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -911,7 +951,7 @@ Item {
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             font.weight: Font.Bold
-            font.pixelSize: parent.height/1.5
+            font.pixelSize: parent.height/1.8
             validator: RegExpValidator{regExp: /\d{8}/}
             inputMethodHints: Qt.ImhDigitsOnly
             color: application.fontColor
@@ -926,128 +966,47 @@ Item {
         }
     }
 
-    //--- Кнопки "ОК" и "Назад" ---
-
-    Rectangle {
+    // --- Кнопка "Назад" ---
+    CustomButton {
         id: backButton
         width: r1Value.width/2.5
         height: r1Value.height
         anchors.top: timeOutToMode.bottom
         anchors.topMargin: parent.height/20
         anchors.left: r1Value.left
-        border.width: 2
-        border.color: backButtonMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
+        buttonText: qsTr("Назад")
         visible: !parent.limitValuesVisible
-        Text {
-            id: backText
-            width: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            anchors.bottom: backImg.top
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.3
-            font.bold: true
-            color: application.fontColor
-            text: qsTr("Назад")
-        }
-        Image {
-            id: backImg
-            height: parent.height/2.2
-            width: parent.width/3
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: parent.height/10
-            mirror: true
-            source: "qrc:/images/back.png"
-        }
-        MouseArea {
-            id: backButtonMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                _cppApi_ElectrometerSettings.onBackButton()
-                stackView.pop()
-            }
+        onButtonClicked: {
+            _cppApi_ElectrometerSettings.onBackButton()
+            stackView.pop()
         }
     }
 
-    Rectangle {
+    // --- Кнопка "ОК"
+    CustomButton {
         id: okButton
         width: backButton.width
         height: backButton.height
         anchors.top: backButton.top
         anchors.right: r1Value.right
-        border.width: 2
-        border.color: okButtonMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
+        buttonText: qsTr("ОК")
         visible: !parent.limitValuesVisible
-        Text {
-            id: okText
-            anchors.fill: parent
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.3
-            font.bold: true
-            color: application.fontColor
-            text: qsTr("ОК")
-        }
-        MouseArea {
-            id: okButtonMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                _cppApi_ElectrometerSettings.onOkButton()
-            }
+        onButtonClicked: {
+            _cppApi_ElectrometerSettings.onOkButton()
         }
     }
 
     //--- Кнопка "Назад" из "предельных значений" ---
-
-    Rectangle {
+    CustomButton {
         id: backFromLimitValuesButton
         width: parent.width/5
         height: r1Value.height
         anchors.top: backButton.top
         anchors.horizontalCenter: parent.horizontalCenter
-        border.width: 2
-        border.color: backFromLimitValuesButtonMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
+        buttonText: qsTr("Назад")
         visible: parent.limitValuesVisible
-        Text {
-            id: backFromLimitValuesText
-            width: parent.width
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            anchors.bottom: backFromLimitValuesImg.top
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.3
-            font.bold: true
-            color: application.fontColor
-            text: qsTr("Назад")
-        }
-        Image {
-            id: backFromLimitValuesImg
-            height: parent.height/2.2
-            width: parent.width/5
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: parent.height/10
-            mirror: true
-            source: "qrc:/images/back.png"
-        }
-        MouseArea {
-            id: backFromLimitValuesButtonMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                electrometerSettings.limitValuesVisible = false
-            }
+        onButtonClicked: {
+            electrometerSettings.limitValuesVisible = false
         }
     }
 }
