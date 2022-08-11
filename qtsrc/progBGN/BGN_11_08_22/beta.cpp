@@ -16,6 +16,9 @@ Beta::~Beta()
 {
     //delete betaMes;
     //delete elTest;//не нужно удалять т.к. удалится сам
+    if(globalPointerForAverageAdc) {
+        delete globalPointerForAverageAdc;
+    }
     delete ui;
     qDebug()<<"~beta";
 }
@@ -50,6 +53,7 @@ void Beta::init()
 void Beta::on_pushButton_2_clicked() //тест аппаратуры
 {    
     elTest = new Electrometer_test(this);
+    globalPointerForAverageAdc = elTest->getPointer();
     elTest->setModal(true);
     elTest->show();
 }
@@ -93,7 +97,7 @@ void Beta::on_pushButton_3_clicked() //измерение
         {qDebug()<<"unable execute query UPDATE";}
     }
 
-    betaMes = new Beta_measuring(this);
+    betaMes = new Beta_measuring(this, globalPointerForAverageAdc);
     betaMes->setModal(true);
     betaMes->show();
 }

@@ -13,7 +13,14 @@ Electrometer_test::Electrometer_test(QWidget *parent) :
 Electrometer_test::~Electrometer_test()
 {
     //qDebug()<<"delete avADC";
-    delete avADC;
+    //delete avADC;
+    if(test_source) {
+        //TODO: disconnect
+        disconnect(this,&Electrometer_test::sendToCom,avADC, &AverageADC::sendToComSlot);
+    } else {
+        delete avADC;
+    }
+    
     //qDebug()<<"delete msg";
     delete msg;
     //qDebug()<<"delete timer";
@@ -25,6 +32,10 @@ Electrometer_test::~Electrometer_test()
     //qDebug()<<"delete ui";
     delete ui;
     //qDebug()<<"delete ui";
+}
+
+AverageADC *Electrometer_test::getPointer() {
+    return avADC;
 }
 
 void Electrometer_test::testSource(bool test)

@@ -60,6 +60,7 @@ private slots:
 private:
     Ui::Beta_measuring *ui;  
     //AverageADC* AvADC{nullptr};
+    AverageADC* globalAverageADC{nullptr};
     Beta_chamber* betaChamber{nullptr};
     Electrometer_test* elTest{nullptr};
     ChamberCompensation* chambComp{nullptr};

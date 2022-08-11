@@ -3,6 +3,7 @@
 
 #include "beta_measuring.h"
 #include "electrometer_test.h"
+#include "averageadc.h"
 
 #include <QDialog>
 
@@ -27,6 +28,7 @@ private slots:
 
 private:
     Ui::Beta *ui;
+    AverageADC* globalPointerForAverageAdc{nullptr};
     Electrometer_test* elTest{nullptr};
     Beta_measuring* betaMes{nullptr};
     void init();

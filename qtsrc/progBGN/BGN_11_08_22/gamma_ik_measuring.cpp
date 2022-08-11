@@ -103,6 +103,7 @@ void Gamma_IK_measuring::init()
     }
     elTest=new Electrometer_test(this);
     elTest->testSource(true);//передаем флаг о том что вызываем из окна измерения
+    globalAverageADC = electrometerTest->getPointer();
     connect(elTest,&Electrometer_test::closeTestAll,this,&Gamma_IK_measuring::testFault);
     elTest->setModal(true);
     elTest->show();

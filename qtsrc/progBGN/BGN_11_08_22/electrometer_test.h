@@ -26,6 +26,7 @@ public:
     ~Electrometer_test();
 
     void testSource(bool); //метод в который передаем флаг отвечающий за то из какого окна был вызван тест
+    AverageADC* getPointer();
 
 signals:
     //void closeSignal();

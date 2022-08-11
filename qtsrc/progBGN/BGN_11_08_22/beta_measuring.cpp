@@ -94,8 +94,9 @@ void Beta_measuring::init()
         }
         db.close();
     }    
-    elTest=new Electrometer_test(this);
+    elTest=new Electrometer_test(this);    
     elTest->testSource(true);//передаем флаг о том что вызываем из окна измерения
+    globalAverageADC = electrometerTest->getPointer();
     connect(elTest,&Electrometer_test::closeTestAll,this,&Beta_measuring::testFault);
     elTest->setModal(true);
     elTest->show();
@@ -123,7 +124,7 @@ void Beta_measuring::on_pushButton_3_clicked() //поверка
     //----------------------------------------------------------------------------------------------
     //передаем установленные параметры из данного окна в конструктор объекта класса бета камеры
     //объект класса Beta_chamber наследуется от класса Ichamber, в котором реализован эмулятор
-    betaChamber = new Beta_chamber(iR,Comp,Temp,P,CorrF,chamName);
+    betaChamber = new Beta_chamber(globalAverageADC, iR,Comp,Temp,P,CorrF,chamName);
     connect(this,&Beta_measuring::sendToComSig,betaChamber,&Beta_chamber::setVoltageSlot);
     //-----------------------------------------------------------------------------------------------
 
@@ -176,7 +177,7 @@ void Beta_measuring::on_pushButton_2_clicked() //кнопка измерение
     //----------------------------------------------------------------------------------------------
     //передаем установленные параметры из данного окна в конструктор объекта класса бета камеры
     //объект класса Beta_chamber наследуется от класса Ichamber, в котором реализован эмулятор
-    betaChamber = new Beta_chamber(iR,Comp,Temp,P,CorrF,chamName);
+    betaChamber = new Beta_chamber(globalAverageADC, iR,Comp,Temp,P,CorrF,chamName);
     connect(this,&Beta_measuring::sendToComSig,betaChamber,&Beta_chamber::setVoltageSlot);
     //-----------------------------------------------------------------------------------------------
 
