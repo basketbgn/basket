@@ -2,6 +2,7 @@ import QtQuick 2.0
 import QtQuick.Controls 1.4
 import QtQuick.Controls 2.0
 import QtQuick.Controls.Styles 1.4
+import "../Components"
 Item {
     id: changeVerifierPassword
 
@@ -177,41 +178,21 @@ Item {
 
     //--- Кнопка "Применить" ---
 
-    Rectangle {
+    CustomButton {
         id: confirmButton
         width: confirmNewPasswordFieldRectangle.width
         height: 1.8 * confirmNewPasswordFieldRectangle.height
         anchors.left: confirmNewPasswordFieldRectangle.left
         anchors.top: confirmNewPasswordFieldRectangle.bottom
         anchors.topMargin: parent.height/15
-        border.width: 2
-        border.color: confirmButtonMouseArea.containsMouse ? "#0d9aff" : "#000000"
-        radius: 5
-        color: application.buttonColor
-        Text {
-            id:confirmText
-            width: parent.width*0.8
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignVCenter
-            font.pixelSize: parent.height*0.3
-            fontSizeMode: Text.Fit
-            color: application.fontColor
-            text: qsTr("Применить")
-        }
-        MouseArea {
-            id: confirmButtonMouseArea
-            anchors.fill: parent
-            hoverEnabled: true
-            onClicked: {
-                if(newPasswordField.text === confirmNewPasswordField.text) {
-                    //
-                } else {
-                    newPasswordField.text = ""
-                    confirmNewPasswordField.text = ""
-                }
+        buttonText: qsTr("Применить")
+        buttonFontSizeCoef: 0.3
+        onButtonClicked: {
+            if(newPasswordField.text === confirmNewPasswordField.text) {
+                //
+            } else {
+                newPasswordField.text = ""
+                confirmNewPasswordField.text = ""
             }
         }
     }
